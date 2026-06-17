@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cheatlo – Privacy Policy</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0d1b2a;
+      color: #c8d8e8;
+      line-height: 1.7;
+      padding: 0 16px;
+    }
+    .container { max-width: 760px; margin: 0 auto; padding: 48px 0 80px; }
+    .badge {
+      display: inline-block;
+      background: #1a3a5c;
+      color: #4fc3f7;
+      border: 1px solid #4fc3f7;
+      border-radius: 8px;
+      padding: 4px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+    h1 { font-size: 28px; color: #4fc3f7; margin-bottom: 6px; }
+    .subtitle { color: #7a9ab8; font-size: 14px; margin-bottom: 40px; }
+    h2 {
+      font-size: 16px;
+      color: #4fc3f7;
+      margin: 36px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #1a3a5c;
+    }
+    p { margin-bottom: 12px; color: #c8d8e8; font-size: 15px; }
+    ul { margin: 8px 0 12px 20px; }
+    li { margin-bottom: 6px; font-size: 15px; }
+    .highlight {
+      background: #1a3a5c;
+      border-left: 3px solid #4fc3f7;
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+      font-size: 15px;
+    }
+    .lang-divider {
+      margin: 56px 0 40px;
+      border: none;
+      border-top: 1px solid #1a3a5c;
+    }
+    a { color: #4fc3f7; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .footer { margin-top: 56px; font-size: 13px; color: #4a6a88; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ── English Section ─────────────────────────────── -->
+  <div class="badge">PRIVACY POLICY</div>
+  <h1>Cheatlo Privacy Policy</h1>
+  <p class="subtitle">Effective date: June 14, 2026 &nbsp;·&nbsp; Last updated: June 14, 2026</p>
+
+  <p>
+    Cheatlo ("we", "our", or "the app") is a retro game cheat encyclopedia for Android.
+    We are committed to protecting your privacy. This policy explains what information is collected,
+    how it is used, and your rights.
+  </p>
+
+  <h2>1. Data We Collect</h2>
+  <div class="highlight">
+    Cheatlo does <strong>not</strong> require an account. No name, email, or personal profile is ever collected by us.
+  </div>
+  <ul>
+    <li><strong>Cheat database &amp; user preferences</strong> — stored entirely on your device (local SQLite). Nothing is uploaded to our servers.</li>
+    <li><strong>Favorites &amp; edited cheats</strong> — saved locally on your device only.</li>
+    <li><strong>Pro purchase status</strong> — stored locally via SharedPreferences; also managed by RevenueCat (see Third-Party Services).</li>
+  </ul>
+
+  <h2>2. Camera Permission</h2>
+  <p>
+    Cheatlo requests camera permission solely for the <strong>Photo Recognition</strong> feature (Pro),
+    which lets you photograph a game cartridge or screen to identify the title automatically.
+  </p>
+  <ul>
+    <li>Images are first processed <strong>on-device</strong> using Google ML Kit OCR (no data leaves your device in this step).</li>
+    <li>If on-device recognition fails, the image may be sent to <strong>Google Cloud Vision API</strong> for further analysis. Google's privacy policy applies.</li>
+    <li>Photos are <strong>never stored</strong> by Cheatlo and are discarded immediately after processing.</li>
+  </ul>
+
+  <h2>3. Internet Usage</h2>
+  <p>The core cheat database works fully <strong>offline</strong>. Internet is used only for:</p>
+  <ul>
+    <li>Serving advertisements (AdMob)</li>
+    <li>Processing in-app purchases (RevenueCat)</li>
+    <li>Photo recognition via Google Cloud Vision API (Pro feature, when local OCR is insufficient)</li>
+  </ul>
+
+  <h2>4. Third-Party Services</h2>
+  <p>Cheatlo integrates the following third-party SDKs, each governed by their own privacy policies:</p>
+  <ul>
+    <li>
+      <strong>Google AdMob</strong> — serves ads to free users.
+      AdMob may collect device identifiers and usage data for ad personalization.
+      <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy →</a>
+    </li>
+    <li>
+      <strong>RevenueCat</strong> — manages in-app purchase verification.
+      RevenueCat collects transaction data necessary to validate purchases.
+      <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat Privacy Policy →</a>
+    </li>
+    <li>
+      <strong>Google ML Kit</strong> — on-device OCR for photo recognition. Runs entirely on your device; no data is sent externally.
+    </li>
+    <li>
+      <strong>Google Cloud Vision API</strong> — fallback image recognition (Pro only). Images are sent to Google's servers and subject to Google's Privacy Policy.
+    </li>
+  </ul>
+
+  <h2>5. Data Retention &amp; Deletion</h2>
+  <p>
+    All user data (favorites, edited cheats, Pro status) is stored locally on your device.
+    You can delete all data at any time by uninstalling the app.
+    We do not maintain any server-side user data to delete on request.
+  </p>
+
+  <h2>6. Children's Privacy</h2>
+  <p>
+    Cheatlo is not directed to children under the age of 13.
+    We do not knowingly collect personal information from children.
+    If you believe a child has provided personal information through our app, please contact us.
+  </p>
+
+  <h2>7. Changes to This Policy</h2>
+  <p>
+    We may update this privacy policy from time to time.
+    Changes will be reflected by updating the "Last updated" date above.
+    Continued use of the app after changes constitutes acceptance of the updated policy.
+  </p>
+
+  <h2>8. Contact Us</h2>
+  <p>
+    If you have any questions about this privacy policy, please contact us at:<br/>
+    <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a>
+  </p>
+
+  <hr class="lang-divider" />
+
+  <!-- ── 繁體中文 Section ──────────────────────────────── -->
+  <div class="badge">隱私權政策</div>
+  <h1>Cheatlo 隱私權政策</h1>
+  <p class="subtitle">生效日期：2026 年 6 月 14 日 &nbsp;·&nbsp; 最後更新：2026 年 6 月 14 日</p>
+
+  <p>
+    Cheatlo（「本應用程式」）是一款 Android 復古遊戲金手指百科工具。
+    我們致力保護您的隱私。本政策說明本 App 收集哪些資訊、如何使用，以及您的相關權利。
+  </p>
+
+  <h2>1. 我們收集的資料</h2>
+  <div class="highlight">
+    Cheatlo <strong>不需要帳號</strong>。我們不會收集您的姓名、Email 或任何個人資料。
+  </div>
+  <ul>
+    <li><strong>金手指資料庫與使用偏好</strong> — 完全儲存在您的裝置本地（SQLite），不會上傳至任何伺服器。</li>
+    <li><strong>收藏清單與編輯記錄</strong> — 僅儲存在您的裝置本地。</li>
+    <li><strong>Pro 解鎖狀態</strong> — 儲存在裝置本地；亦由 RevenueCat 管理購買驗證（詳見第三方服務）。</li>
+  </ul>
+
+  <h2>2. 相機權限</h2>
+  <p>
+    Cheatlo 僅在使用「<strong>拍照辨識</strong>」功能（Pro）時請求相機權限，
+    讓您拍攝遊戲卡帶或畫面自動辨識遊戲名稱。
+  </p>
+  <ul>
+    <li>影像優先由裝置端的 <strong>Google ML Kit OCR</strong> 處理，此步驟不會將資料傳出裝置。</li>
+    <li>若本機辨識失敗，影像可能會傳送至 <strong>Google Cloud Vision API</strong> 進行進一步辨識，適用 Google 的隱私權政策。</li>
+    <li>Cheatlo <strong>不儲存</strong>任何照片，辨識完成後立即捨棄。</li>
+  </ul>
+
+  <h2>3. 網路使用</h2>
+  <p>核心金手指功能可完全<strong>離線</strong>使用。網路僅用於：</p>
+  <ul>
+    <li>顯示廣告（AdMob）</li>
+    <li>處理應用程式內購（RevenueCat）</li>
+    <li>拍照辨識進階分析（Pro，本機辨識不足時）</li>
+  </ul>
+
+  <h2>4. 第三方服務</h2>
+  <ul>
+    <li>
+      <strong>Google AdMob</strong> — 向免費用戶顯示廣告，可能收集裝置識別符與使用資料用於廣告個人化。
+      <a href="https://policies.google.com/privacy" target="_blank">Google 隱私權政策 →</a>
+    </li>
+    <li>
+      <strong>RevenueCat</strong> — 管理應用程式內購驗證，收集必要的交易資料。
+      <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat 隱私權政策 →</a>
+    </li>
+    <li><strong>Google ML Kit</strong> — 裝置端 OCR 文字辨識，所有處理在本機完成，不傳送任何資料。</li>
+    <li><strong>Google Cloud Vision API</strong> — 拍照辨識備援（僅 Pro），影像傳送至 Google 伺服器，適用 Google 隱私權政策。</li>
+  </ul>
+
+  <h2>5. 資料保留與刪除</h2>
+  <p>
+    所有用戶資料（收藏、編輯記錄、Pro 狀態）均儲存在您的裝置本地。
+    解除安裝 App 即可刪除所有本地資料。
+    我們的伺服器端沒有任何用戶資料，無需額外申請刪除。
+  </p>
+
+  <h2>6. 兒童隱私</h2>
+  <p>
+    本 App 不針對 13 歲以下兒童。我們不會故意收集兒童的個人資訊。
+    若您認為兒童曾透過本 App 提供個人資訊，請與我們聯繫。
+  </p>
+
+  <h2>7. 政策異動</h2>
+  <p>
+    我們可能不定期更新本隱私權政策，異動時將更新上方的「最後更新」日期。
+    在異動後繼續使用本 App，即視為接受更新後的政策。
+  </p>
+
+  <h2>8. 聯絡我們</h2>
+  <p>
+    如對本隱私權政策有任何疑問，請透過以下方式聯絡我們：<br/>
+    <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a>
+  </p>
+
+  <div class="footer">© 2026 Cheatlo · TengRip · <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></div>
+
+</div>
+</body>
+</html>
