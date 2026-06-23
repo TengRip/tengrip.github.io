@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Talklo — 隱私政策</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+      background: #fdf9f5;
+      color: #2b2230;
+      line-height: 1.8;
+    }
+
+    header {
+      background: linear-gradient(135deg, #FF6B35 0%, #9B59FF 100%);
+      color: white;
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+
+    header .logo {
+      font-size: 2.2rem;
+      margin-bottom: 6px;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    header p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    nav {
+      background: #fff;
+      border-bottom: 1px solid #ece2da;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+
+    nav a {
+      display: block;
+      padding: 14px 32px;
+      text-decoration: none;
+      color: #7a6e80;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+    }
+
+    nav a.active,
+    nav a:hover {
+      color: #FF6B35;
+      border-bottom-color: #FF6B35;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 40px auto;
+      padding: 0 24px 80px;
+    }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .section h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #FF6B35;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section h2::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 18px;
+      background: #FF6B35;
+      border-radius: 2px;
+    }
+
+    .section p, .section ul {
+      font-size: 0.95rem;
+      color: #4a4050;
+      margin-bottom: 10px;
+    }
+
+    .section ul {
+      padding-left: 20px;
+    }
+
+    .section ul li {
+      margin-bottom: 4px;
+    }
+
+    .section p:last-child,
+    .section ul:last-child {
+      margin-bottom: 0;
+    }
+
+    .updated {
+      text-align: center;
+      font-size: 0.82rem;
+      color: #a098a8;
+      margin-top: 32px;
+    }
+
+    footer {
+      background: #2b2230;
+      color: #a098a8;
+      text-align: center;
+      padding: 24px;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: #FF6B35;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      header .logo { font-size: 1.8rem; }
+      header h1 { font-size: 1.2rem; }
+      nav a { padding: 12px 20px; font-size: 0.9rem; }
+      .section { padding: 18px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🐾</div>
+  <h1>Talklo</h1>
+  <p>讓任何角色開口說話 — AI 寵物 / 動漫角色說話影片生成 App</p>
+</header>
+
+<nav>
+  <a href="#privacy" class="active" onclick="showPage('privacy', this)">隱私政策</a>
+  <a href="#terms" onclick="showPage('terms', this)">服務條款</a>
+</nav>
+
+<main>
+
+  <!-- ── 隱私政策 ── -->
+  <div id="privacy" class="page active">
+
+    <div class="section">
+      <h2>資料蒐集</h2>
+      <p>Talklo 不需要註冊帳號、不收集電子郵件或個人身分資料。使用時會處理以下資料：</p>
+      <ul>
+        <li>您上傳的角色照片（僅限動物 / 動漫角色，App 會在裝置端自動偵測並擋下真人臉孔，偵測過程不會上傳任何資料）</li>
+        <li>您輸入或語音輸入的稿子文字</li>
+        <li>裝置識別碼（App 在本機隨機產生的一串亂碼，用來對應點數餘額，不會用來識別您的真實身分；重新安裝 App 會產生新的識別碼）</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>資料使用與第三方服務</h2>
+      <p>您的稿子與照片會傳送給以下服務商以完成生成：</p>
+      <ul>
+        <li><strong>Replicate</strong>（Kling Avatar V2 模型）：接收您的照片與系統合成的語音，生成嘴型同步的說話影片</li>
+        <li><strong>OpenAI Moderation API</strong>：接收稿子文字，篩檢是否含暴力 / 色情 / 仇恨等不當內容，未通過不會進入生成流程</li>
+        <li><strong>Microsoft Edge TTS</strong>：接收稿子文字，合成語音</li>
+      </ul>
+      <p>上述服務商皆有各自獨立的隱私政策。語音輸入功能使用您手機系統內建的語音辨識服務，文字辨識在裝置上完成。</p>
+    </div>
+
+    <div class="section">
+      <h2>資料儲存</h2>
+      <p>生成完成的影片與點數餘額紀錄，儲存在我們自行管理的伺服器（位於香港），不經過 Google、Firebase 或其他雲端帳號系統。</p>
+      <p>由於 App 沒有登入機制，您的影片與點數紀錄僅與裝置識別碼對應，不會與您的姓名、電子郵件或其他個人身分資訊建立關聯。</p>
+    </div>
+
+    <div class="section">
+      <h2>資料刪除</h2>
+      <p>由於沒有帳號系統，刪除 App 即會清除本機儲存的裝置識別碼與點數對應關係。如需要求刪除伺服器上對應的生成紀錄，請聯絡我們並提供裝置識別碼（App 內可查看）：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+    </div>
+
+    <div class="section">
+      <h2>聯絡方式</h2>
+      <p>如有隱私相關問題，請聯絡：</p>
+      <p>電子郵件：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+    </div>
+
+    <p class="updated">本政策最後更新：2026 年 6 月 23 日</p>
+  </div>
+
+  <!-- ── 服務條款 ── -->
+  <div id="terms" class="page">
+
+    <div class="section">
+      <h2>服務說明</h2>
+      <p>Talklo 是一款讓動物 / 動漫角色「開口說話」的 AI 影片生成 App，提供以下功能：</p>
+      <ul>
+        <li>上傳角色照片 + 輸入稿子，自動生成嘴型同步的說話影片</li>
+        <li>多種語音音色可選</li>
+        <li>多段影片串接</li>
+        <li>一鍵分享至社群平台</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>內容限制</h2>
+      <p>目前版本僅開放動物 / 動漫角色，<strong>不支援真人臉孔上傳</strong>，App 偵測到真人臉孔會直接擋下。稿子文字會經過內容審核，含暴力、色情、仇恨言論等不當內容將無法生成。</p>
+      <p>所有生成影片皆會標示「Talklo · AI Generated」，明確標示為 AI 生成內容。</p>
+    </div>
+
+    <div class="section">
+      <h2>AI 生成效果免責聲明</h2>
+      <p>Talklo 的影片生成基於第三方 AI 模型，存在以下限制：</p>
+      <ul>
+        <li>生成效果可能因每次運算而略有差異，少數情況畫面可能出現雜訊或不易理解的文字</li>
+        <li>生成時間視伺服器忙碌程度可能由數十秒到數分鐘不等</li>
+        <li>本 App 不保證每次生成結果皆完全符合預期</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>點數與計費說明</h2>
+      <ul>
+        <li>Talklo 採點數制計費：每秒語音消耗 3 點，點數可用於購買（規格以購買頁實際顯示為準）</li>
+        <li>新用戶獲贈免費點數供體驗使用</li>
+        <li>點數沒有使用期限</li>
+        <li>因內容審核未通過、伺服器或 AI 服務商端發生錯誤導致生成失敗，已扣除的點數將自動全額退回，不需要另外申請</li>
+        <li>對生成效果不滿意者，可使用同一張照片與稿子，以半價重新生成一次</li>
+        <li>影片串接為免費功能，不會扣除點數</li>
+        <li>已購買的點數如涉及退款，依 Google Play 之退款政策處理</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>使用規範</h2>
+      <p>使用 Talklo 即表示您同意：</p>
+      <ul>
+        <li>僅上傳您有權使用、且不違反第三人權利的照片</li>
+        <li>不上傳真人臉孔或嘗試規避真人臉孔偵測機制</li>
+        <li>不將本 App 用於生成違法、騷擾、誹謗或侵權內容</li>
+        <li>不嘗試破解、逆向工程或干擾服務運作</li>
+        <li>遵守 Google Play 服務條款</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>責任限制</h2>
+      <p>在法律允許的最大範圍內，Talklo 對因使用本 App 所產生的任何直接或間接損失不承擔責任。本條款受中華民國法律管轄。</p>
+    </div>
+
+    <p class="updated">本條款最後更新：2026 年 6 月 23 日</p>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Talklo · <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+</footer>
+
+<script>
+  function showPage(id, el) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    el.classList.add('active');
+    return false;
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const hash = location.hash.replace('#', '');
+    if (hash === 'terms') {
+      showPage('terms', document.querySelector('nav a[href="#terms"]'));
+    }
+  });
+</script>
+
+</body>
+</html>
