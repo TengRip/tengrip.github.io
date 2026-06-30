@@ -27,9 +27,24 @@
     box-shadow:0 2px 10px rgba(255,140,80,0.12);
   }
   .app:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(255,111,60,0.18);}
-  .app-name{font-size:16px;font-weight:600;margin:0 0 4px;}
-  .app-desc{font-size:13px;color:var(--muted);margin:0;}
+  .app-name{font-size:16px;font-weight:600;margin:0 0 6px;}
   .arrow{color:var(--accent);font-size:18px;flex-shrink:0;margin-left:16px;}
+
+  /* 四語輪播 */
+  .desc-cycle{position:relative;height:32px;overflow:hidden;}
+  .desc-cycle span{
+    position:absolute;top:0;left:0;right:0;
+    font-size:13px;color:var(--muted);
+    line-height:1.4;opacity:0;
+    animation:langcycle 12s infinite;
+    animation-delay:var(--d,0s);
+  }
+  @keyframes langcycle{
+    0%,100%{opacity:0;}
+    8%{opacity:1;}
+    22%{opacity:1;}
+    30%{opacity:0;}
+  }
 
   .divider{border:none;border-top:1px solid rgba(176,137,104,0.2);margin:32px 0 28px;}
 
@@ -58,7 +73,12 @@
     <a class="app" href="https://play.google.com/store/apps/details?id=com.maxteng.petsoul" target="_blank" rel="noopener">
       <div>
         <p class="app-name">PetSoul — 寵物情緒 AI 日記</p>
-        <p class="app-desc">com.maxteng.petsoul</p>
+        <div class="desc-cycle">
+          <span style="--d:0s">拍一張照，AI 讀懂牠的心情，記錄毛孩的每一天。</span>
+          <span style="--d:3s">AI reads your pet's mood from a photo. Art & diary.</span>
+          <span style="--d:6s">写真1枚でAIがペットの感情を読み取り毎日記録。</span>
+          <span style="--d:9s">사진으로 AI가 반려동물 감정 분석·무드 아트 생성。</span>
+        </div>
       </div>
       <span class="arrow">→</span>
     </a>
@@ -66,7 +86,12 @@
     <a class="app" href="https://play.google.com/store/apps/details?id=com.maxteng.roadguard" target="_blank" rel="noopener">
       <div>
         <p class="app-name">RoadGuard — 行車蒐證工具</p>
-        <p class="app-desc">com.maxteng.roadguard</p>
+        <div class="desc-cycle">
+          <span style="--d:0s">行車影片放大截圖，自動疊加時間戳，輕鬆蒐證違規。</span>
+          <span style="--d:3s">Zoom dashcam footage & screenshot with auto timestamp.</span>
+          <span style="--d:6s">ドラレコ映像を拡大・スクリーンショット、証拠保存。</span>
+          <span style="--d:9s">블랙박스 영상 확대·스크린샷으로 교통위반 증거 수집。</span>
+        </div>
       </div>
       <span class="arrow">→</span>
     </a>
@@ -74,7 +99,12 @@
     <a class="app" href="https://play.google.com/store/apps/details?id=com.maxteng.blackjackpro" target="_blank" rel="noopener">
       <div>
         <p class="app-name">Blackjack Trainer Pro — 21點專業訓練</p>
-        <p class="app-desc">com.maxteng.blackjackpro</p>
+        <div class="desc-cycle">
+          <span style="--d:0s">真實賭場規則的 21 點訓練，內建 Hi-Lo 算牌系統。</span>
+          <span style="--d:3s">Real casino rules. Hi-Lo card counting. Basic strategy.</span>
+          <span style="--d:6s">本物のルールで学ぶ21点。Hi-Loカードカウント搭載。</span>
+          <span style="--d:9s">실제 카지노 규칙 블랙잭 훈련. Hi-Lo 카드 카운팅。</span>
+        </div>
       </div>
       <span class="arrow">→</span>
     </a>
@@ -82,7 +112,12 @@
     <a class="app" href="https://play.google.com/store/apps/details?id=com.maxteng.pixzap" target="_blank" rel="noopener">
       <div>
         <p class="app-name">PixZap — 全能照片編輯器</p>
-        <p class="app-desc">com.maxteng.pixzap</p>
+        <div class="desc-cycle">
+          <span style="--d:0s">壓縮、GIF、AI 修復，一個 App 搞定所有圖片需求。</span>
+          <span style="--d:3s">Compress, GIF, AI style — all-in-one photo toolkit. Free!</span>
+          <span style="--d:6s">圧縮・GIF・AI修復、1つのアプリで写真のすべて。</span>
+          <span style="--d:9s">압축·GIF·AI복원, 사진 모든 것이 하나의 앱에!</span>
+        </div>
       </div>
       <span class="arrow">→</span>
     </a>
@@ -90,7 +125,12 @@
     <a class="app" href="https://play.google.com/store/apps/details?id=com.maxteng.snap_puzzle" target="_blank" rel="noopener">
       <div>
         <p class="app-name">SnapPuzzle — 照片拼圖大冒險</p>
-        <p class="app-desc">com.maxteng.snap_puzzle</p>
+        <div class="desc-cycle">
+          <span style="--d:0s">把照片變成拼圖，傳給朋友比快、藏入祕密訊息！</span>
+          <span style="--d:3s">Turn photos into puzzles. Challenge friends & hide messages!</span>
+          <span style="--d:6s">写真をパズルに！友達に挑戦状を、秘密のメッセージも。</span>
+          <span style="--d:9s">사진을 퍼즐로! 친구에게 도전장·비밀 메시지 숨기기。</span>
+        </div>
       </div>
       <span class="arrow">→</span>
     </a>
@@ -101,7 +141,12 @@
     <div class="app-coming">
       <div>
         <p class="app-name">Jotlo — 會 AI 的筆記本</p>
-        <p class="app-desc">com.maxteng.jotlo</p>
+        <div class="desc-cycle">
+          <span style="--d:0s">拍照讓 AI 整理，用 Markdown 優雅寫作。</span>
+          <span style="--d:3s">Photo → AI organizes it. Write beautifully in Markdown.</span>
+          <span style="--d:6s">写真を撮ればAIが整理。Markdownで美しく書ける。</span>
+          <span style="--d:9s">사진 찍으면 AI가 정리. Markdown으로 깔끔하게 작성。</span>
+        </div>
       </div>
       <span class="badge">審核中</span>
     </div>
@@ -109,7 +154,12 @@
     <div class="app-coming">
       <div>
         <p class="app-name">Cheatlo — 遊戲金手指百科</p>
-        <p class="app-desc">com.maxteng.cheatlo</p>
+        <div class="desc-cycle">
+          <span style="--d:0s">收錄 15 萬組金手指，自動匯出模擬器格式！</span>
+          <span style="--d:3s">159,510 retro cheats · Auto emulator format export.</span>
+          <span style="--d:6s">レトロゲームのチート15万件、エミュレータ形式自動変換。</span>
+          <span style="--d:9s">레트로 게임 치트 159,510개, 에뮬레이터 형식 자동 변환。</span>
+        </div>
       </div>
       <span class="badge">審核中</span>
     </div>
@@ -117,7 +167,12 @@
     <div class="app-coming">
       <div>
         <p class="app-name">Snifflo — 寵物食品成分掃描</p>
-        <p class="app-desc">com.maxteng.snifflo</p>
+        <div class="desc-cycle">
+          <span style="--d:0s">拍一下標籤，立刻知道哪些成分對你的貓狗有害。</span>
+          <span style="--d:3s">Scan pet food labels. Know what's safe for your pet.</span>
+          <span style="--d:6s">ラベルをスキャンするだけ、ペットに危険な成分がわかる。</span>
+          <span style="--d:9s">라벨을 찍으면 끝. 반려동물에게 위험한 성분 즉시 확인。</span>
+        </div>
       </div>
       <span class="badge">審核中</span>
     </div>
