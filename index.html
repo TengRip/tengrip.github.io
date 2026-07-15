@@ -7,6 +7,7 @@
 <style>
   :root{
     --bg:#FFF8F0;--card:#FFFFFF;--text:#4A3728;--muted:#B08968;--accent:#FF6F3C;
+    --ios-bg:#EEF1F8;--ios-text:#5B6B99;--ios-bg-strong:#E1E7F7;--ios-text-strong:#3D4E85;
   }
   *{box-sizing:border-box;}
   body{
@@ -16,19 +17,39 @@
   }
   .wrap{max-width:560px;width:100%;padding:64px 24px 48px;}
   h1{font-size:32px;margin:0 0 4px;letter-spacing:0.5px;color:#3D2B1F;}
-  .sub{color:var(--muted);font-size:15px;margin:0 0 40px;}
+  .sub{color:var(--muted);font-size:15px;margin:0 0 14px;}
+
+  .legend{
+    display:flex;align-items:center;gap:8px;
+    font-size:12px;color:var(--muted);margin:0 0 36px;line-height:1.5;
+  }
+  .legend .ios-badge{flex-shrink:0;}
 
   .section-title{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin:0 0 14px;}
 
   .app{
-    display:flex;align-items:center;justify-content:space-between;
+    display:flex;align-items:center;
     background:var(--card);border-radius:14px;padding:18px 20px;margin-bottom:14px;
     text-decoration:none;color:var(--text);transition:transform .15s, box-shadow .15s;
     box-shadow:0 2px 10px rgba(255,140,80,0.12);
   }
   .app:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(255,111,60,0.18);}
-  .app-name{font-size:16px;font-weight:600;margin:0 0 6px;}
+
+  .app-icon{
+    width:44px;height:44px;border-radius:12px;object-fit:cover;flex-shrink:0;
+    margin-right:16px;box-shadow:0 1px 4px rgba(0,0,0,0.15);background:#eee;
+  }
+  .app-body{flex:1;min-width:0;}
+  .app-title-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:0 0 6px;}
+  .app-name{font-size:16px;font-weight:600;margin:0;}
   .arrow{color:var(--accent);font-size:18px;flex-shrink:0;margin-left:16px;}
+
+  /* iOS 狀態徽章：跟 Google Play 橘色系刻意區分成藍灰系 */
+  .ios-badge{
+    font-size:10.5px;font-weight:700;color:var(--ios-text);background:var(--ios-bg);
+    border-radius:6px;padding:3px 8px;white-space:nowrap;letter-spacing:.2px;flex-shrink:0;
+  }
+  .ios-badge.review{color:var(--ios-text-strong);background:var(--ios-bg-strong);}
 
   /* 四語輪播 */
   .desc-cycle{position:relative;height:52px;overflow:hidden;}
@@ -49,15 +70,35 @@
   .divider{border:none;border-top:1px solid rgba(176,137,104,0.2);margin:32px 0 28px;}
 
   .app-coming{
-    display:flex;align-items:center;justify-content:space-between;
+    display:flex;align-items:center;
     background:var(--card);border-radius:14px;padding:18px 20px;margin-bottom:14px;
-    color:var(--text);opacity:0.55;
+    color:var(--text);opacity:0.7;
     box-shadow:0 1px 6px rgba(255,140,80,0.06);
   }
+  .app-coming .app-icon{opacity:0.85;}
   .badge{
     font-size:11px;font-weight:700;color:var(--accent);background:#FFF0EA;
-    border-radius:6px;padding:4px 9px;flex-shrink:0;margin-left:12px;letter-spacing:0.3px;
+    border-radius:6px;padding:4px 9px;white-space:nowrap;letter-spacing:0.3px;
   }
+  .badge-group{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;margin-left:12px;}
+
+  /* 雙平台卡片：同時有 Google Play + App Store 狀態時用，取代單一整卡連結 + 箭頭 */
+  .app-dual{flex-wrap:wrap;row-gap:12px;}
+  .app-dual .app-body{min-width:180px;}
+  .store-links{display:flex;gap:8px;flex-shrink:0;margin-left:16px;}
+  @media (max-width:480px){
+    .store-links{margin-left:60px;width:100%;}
+  }
+  .store-badge{
+    font-size:11px;font-weight:700;color:var(--accent);background:#FFF0EA;
+    border-radius:6px;padding:7px 11px;text-decoration:none;white-space:nowrap;
+    transition:background .15s;
+  }
+  .store-badge:hover{background:#FFE3D6;}
+  .store-badge.pending{
+    color:var(--ios-text-strong);background:var(--ios-bg-strong);cursor:default;
+  }
+  .store-badge.pending:hover{background:var(--ios-bg-strong);}
 
   footer{margin-top:48px;color:var(--muted);font-size:13px;}
   footer a{color:var(--accent);text-decoration:none;}
@@ -66,13 +107,18 @@
 <body>
   <div class="wrap">
     <h1>MaxTeng</h1>
-    <p class="sub">獨立開發者 · Android App 工具與遊戲</p>
+    <p class="sub">獨立開發者 · Android &amp; iOS App 工具與遊戲</p>
+    <p class="legend"><span class="ios-badge">iOS 準備中</span> 已完成 iOS 版開發，尚未正式上架</p>
 
     <p class="section-title">已上架</p>
 
     <a class="app" href="https://play.google.com/store/apps/details?id=com.maxteng.petsoul" target="_blank" rel="noopener">
-      <div>
-        <p class="app-name">PetSoul — 寵物情緒 AI 日記</p>
+      <img class="app-icon" src="assets/icons/petsoul.png" alt="" loading="lazy">
+      <div class="app-body">
+        <div class="app-title-row">
+          <p class="app-name">PetSoul — 寵物情緒 AI 日記</p>
+          <span class="ios-badge">iOS 準備中</span>
+        </div>
         <div class="desc-cycle">
           <span style="--d:0s">拍一張照，AI 讀懂牠的心情，記錄毛孩的每一天。</span>
           <span style="--d:3s">AI reads your pet's mood from a photo. Art & diary.</span>
@@ -84,8 +130,12 @@
     </a>
 
     <a class="app" href="https://play.google.com/store/apps/details?id=com.maxteng.roadguard" target="_blank" rel="noopener">
-      <div>
-        <p class="app-name">RoadGuard — 行車蒐證工具</p>
+      <img class="app-icon" src="assets/icons/roadguard.png" alt="" loading="lazy">
+      <div class="app-body">
+        <div class="app-title-row">
+          <p class="app-name">RoadGuard — 行車蒐證工具</p>
+          <span class="ios-badge">iOS 準備中</span>
+        </div>
         <div class="desc-cycle">
           <span style="--d:0s">行車影片放大截圖，自動疊加時間戳，輕鬆蒐證違規。</span>
           <span style="--d:3s">Zoom dashcam footage & screenshot with auto timestamp.</span>
@@ -96,8 +146,10 @@
       <span class="arrow">→</span>
     </a>
 
-    <a class="app" href="https://play.google.com/store/apps/details?id=com.maxteng.blackjackpro" target="_blank" rel="noopener">
-      <div>
+    <!-- 雙平台卡片：iOS 版正式核准上架後，把 App Store 徽章從 pending span 換成正式連結 <a>（App Store Connect → App 資訊 → 頁面連結，格式類似 https://apps.apple.com/app/idXXXXXXXXXX） -->
+    <div class="app app-dual">
+      <img class="app-icon" src="assets/icons/blackjackpro.png" alt="" loading="lazy">
+      <div class="app-body">
         <p class="app-name">Blackjack Trainer Pro — 21點專業訓練</p>
         <div class="desc-cycle">
           <span style="--d:0s">真實賭場規則的 21 點訓練，內建 Hi-Lo 算牌系統。</span>
@@ -106,11 +158,15 @@
           <span style="--d:9s">실제 카지노 규칙 블랙잭 훈련. Hi-Lo 카드 카운팅。</span>
         </div>
       </div>
-      <span class="arrow">→</span>
-    </a>
+      <div class="store-links">
+        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.blackjackpro" target="_blank" rel="noopener">Google Play</a>
+        <span class="store-badge pending">App Store 審核中</span>
+      </div>
+    </div>
 
     <a class="app" href="https://play.google.com/store/apps/details?id=com.maxteng.pixzap" target="_blank" rel="noopener">
-      <div>
+      <img class="app-icon" src="assets/icons/pixzap.png" alt="" loading="lazy">
+      <div class="app-body">
         <p class="app-name">PixZap — 全能照片編輯器</p>
         <div class="desc-cycle">
           <span style="--d:0s">壓縮、GIF、AI 修復，一個 App 搞定所有圖片需求。</span>
@@ -123,8 +179,12 @@
     </a>
 
     <a class="app" href="https://play.google.com/store/apps/details?id=com.maxteng.snap_puzzle" target="_blank" rel="noopener">
-      <div>
-        <p class="app-name">SnapPuzzle — 照片拼圖大冒險</p>
+      <img class="app-icon" src="assets/icons/snappuzzle.png" alt="" loading="lazy">
+      <div class="app-body">
+        <div class="app-title-row">
+          <p class="app-name">SnapPuzzle — 照片拼圖大冒險</p>
+          <span class="ios-badge">iOS 準備中</span>
+        </div>
         <div class="desc-cycle">
           <span style="--d:0s">把照片變成拼圖，傳給朋友比快、藏入祕密訊息！</span>
           <span style="--d:3s">Turn photos into puzzles. Challenge friends & hide messages!</span>
@@ -136,7 +196,8 @@
     </a>
 
     <a class="app" href="https://play.google.com/store/apps/details?id=com.maxteng.jotlo" target="_blank" rel="noopener">
-      <div>
+      <img class="app-icon" src="assets/icons/jotlo.png" alt="" loading="lazy">
+      <div class="app-body">
         <p class="app-name">Jotlo — 會 AI 的筆記本</p>
         <div class="desc-cycle">
           <span style="--d:0s">拍照讓 AI 整理，用 Markdown 優雅寫作。</span>
@@ -149,7 +210,8 @@
     </a>
 
     <a class="app" href="https://play.google.com/store/apps/details?id=com.maxteng.cliplo" target="_blank" rel="noopener">
-      <div>
+      <img class="app-icon" src="assets/icons/cliplo.png" alt="" loading="lazy">
+      <div class="app-body">
         <p class="app-name">Cliplo — 剪貼簿與 QR 掃描</p>
         <div class="desc-cycle">
           <span style="--d:0s">複製自動記錄、QR 隨手掃、一鍵翻譯，內建片語庫，再也不用到處找。</span>
@@ -162,7 +224,8 @@
     </a>
 
     <a class="app" href="https://play.google.com/store/apps/details?id=com.maxteng.filelo" target="_blank" rel="noopener">
-      <div>
+      <img class="app-icon" src="assets/icons/filelo.png" alt="" loading="lazy">
+      <div class="app-body">
         <p class="app-name">Filelo — 智能檔案整理器</p>
         <div class="desc-cycle">
           <span style="--d:0s">一鍵整理任何資料夾！智慧分類圖片、影片、文件，60秒讓手機變乾淨。</span>
@@ -178,7 +241,8 @@
     <p class="section-title">即將推出</p>
 
     <div class="app-coming">
-      <div>
+      <img class="app-icon" src="assets/icons/memorlo.png" alt="" loading="lazy">
+      <div class="app-body">
         <p class="app-name">Memorlo — 老照片修復與故事</p>
         <div class="desc-cycle">
           <span style="--d:0s">修復、上色、讓老照片動起來，再用 AI 寫下那段回憶。</span>
@@ -187,11 +251,15 @@
           <span style="--d:9s">오래된 사진 복원·채색·움직이기, AI가 그 추억의 이야기를.</span>
         </div>
       </div>
-      <span class="badge">審核中</span>
+      <div class="badge-group">
+        <span class="badge">審核中</span>
+        <span class="ios-badge">iOS 準備中</span>
+      </div>
     </div>
 
     <div class="app-coming">
-      <div>
+      <img class="app-icon" src="assets/icons/cheatlo.png" alt="" loading="lazy">
+      <div class="app-body">
         <p class="app-name">Cheatlo — 遊戲金手指百科</p>
         <div class="desc-cycle">
           <span style="--d:0s">收錄 15 萬組金手指，自動匯出模擬器格式！</span>
@@ -200,11 +268,15 @@
           <span style="--d:9s">레트로 게임 치트 159,510개, 에뮬레이터 형식 자동 변환。</span>
         </div>
       </div>
-      <span class="badge">審核中</span>
+      <div class="badge-group">
+        <span class="badge">審核中</span>
+        <span class="ios-badge">iOS 準備中</span>
+      </div>
     </div>
 
     <div class="app-coming">
-      <div>
+      <img class="app-icon" src="assets/icons/snifflo.png" alt="" loading="lazy">
+      <div class="app-body">
         <p class="app-name">Snifflo — 寵物食品成分掃描</p>
         <div class="desc-cycle">
           <span style="--d:0s">拍一下標籤，立刻知道哪些成分對你的貓狗有害。</span>
@@ -213,11 +285,15 @@
           <span style="--d:9s">라벨을 찍으면 끝. 반려동물에게 위험한 성분 즉시 확인。</span>
         </div>
       </div>
-      <span class="badge">審核中</span>
+      <div class="badge-group">
+        <span class="badge">審核中</span>
+        <span class="ios-badge">iOS 準備中</span>
+      </div>
     </div>
 
     <div class="app-coming">
-      <div>
+      <img class="app-icon" src="assets/icons/singlo.png" alt="" loading="lazy">
+      <div class="app-body">
         <p class="app-name">唱歌囉 Singlo — AI 卡拉 OK 神器</p>
         <div class="desc-cycle">
           <span style="--d:0s">跟著歌詞唱歌，AI 幫你即時打分，人人都能開演唱會。</span>
@@ -230,7 +306,8 @@
     </div>
 
     <div class="app-coming">
-      <div>
+      <img class="app-icon" src="assets/icons/ticklo.png" alt="" loading="lazy">
+      <div class="app-body">
         <p class="app-name">Ticklo — 節拍器調音器練習計時器三器合一</p>
         <div class="desc-cycle">
           <span style="--d:0s">節拍器、調音器、練習計時器三合一，樂手練習好夥伴。</span>
@@ -243,7 +320,8 @@
     </div>
 
     <div class="app-coming">
-      <div>
+      <img class="app-icon" src="assets/icons/vitalo.png" alt="" loading="lazy">
+      <div class="app-body">
         <p class="app-name">Vitalo — 貓狗慢性病照護記錄</p>
         <div class="desc-cycle">
           <span style="--d:0s">幫慢性病毛孩記錄體重、用藥與回診，照護不遺漏。</span>
@@ -252,11 +330,15 @@
           <span style="--d:9s">만성질환 반려동물의 체중·투약·통원을 기록, 꼼꼼한 케어。</span>
         </div>
       </div>
-      <span class="badge">審核中</span>
+      <div class="badge-group">
+        <span class="badge">審核中</span>
+        <span class="ios-badge">iOS 準備中</span>
+      </div>
     </div>
 
     <div class="app-coming">
-      <div>
+      <img class="app-icon" src="assets/icons/spendlo.png" alt="" loading="lazy">
+      <div class="app-body">
         <p class="app-name">Spendlo — 日韓購物退稅助手</p>
         <div class="desc-cycle">
           <span style="--d:0s">拍收據，AI 幫你判斷退稅資格，海外購物不吃虧。</span>
@@ -265,7 +347,10 @@
           <span style="--d:9s">영수증만 찍으면 AI가 세금 환급 자격을 바로 판별。</span>
         </div>
       </div>
-      <span class="badge">審核中</span>
+      <div class="badge-group">
+        <span class="badge">審核中</span>
+        <span class="ios-badge">iOS 準備中</span>
+      </div>
     </div>
 
     <footer>聯絡信箱：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></footer>
