@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trucelo — 隱私政策</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+      background: #F5F4F0;
+      color: #1A1A1A;
+      line-height: 1.8;
+    }
+
+    header {
+      background: linear-gradient(135deg, #F5F4F0 0%, #ebe9e2 100%);
+      border-bottom: 1px solid #2F5D4F33;
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+
+    header .logo {
+      font-size: 2.4rem;
+      margin-bottom: 8px;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #2F5D4F;
+      margin-bottom: 4px;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      font-size: 0.9rem;
+      color: #6B6B64;
+    }
+
+    nav {
+      background: #ffffff;
+      border-bottom: 1px solid #1A1A1A14;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+
+    nav a {
+      display: block;
+      padding: 14px 36px;
+      text-decoration: none;
+      color: #6B6B64;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+    }
+
+    nav a.active,
+    nav a:hover {
+      color: #2F5D4F;
+      border-bottom-color: #2F5D4F;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 40px auto;
+      padding: 0 24px 80px;
+    }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .section {
+      background: #ffffff;
+      border: 1px solid #1A1A1A14;
+      border-radius: 4px;
+      padding: 24px 28px;
+      margin-bottom: 16px;
+    }
+
+    .section h2 {
+      font-size: 1.0rem;
+      font-weight: 600;
+      color: #2F5D4F;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section h2::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 18px;
+      background: #2F5D4F;
+      border-radius: 0;
+    }
+
+    .section p, .section ul {
+      font-size: 0.93rem;
+      color: #6B6B64;
+      margin-bottom: 10px;
+    }
+
+    .section ul {
+      padding-left: 20px;
+    }
+
+    .section ul li {
+      margin-bottom: 6px;
+    }
+
+    .section a {
+      color: #2F5D4F;
+      text-decoration: none;
+    }
+
+    .section a:hover {
+      text-decoration: underline;
+    }
+
+    .section p:last-child,
+    .section ul:last-child {
+      margin-bottom: 0;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #2F5D4F1a;
+      color: #2F5D4F;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .updated {
+      text-align: center;
+      font-size: 0.82rem;
+      color: #6B6B6488;
+      margin-top: 32px;
+    }
+
+    footer {
+      background: #eceae3;
+      border-top: 1px solid #1A1A1A14;
+      color: #6B6B64;
+      text-align: center;
+      padding: 24px;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: #2F5D4F;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.3rem; }
+      nav a { padding: 12px 22px; font-size: 0.88rem; }
+      .section { padding: 18px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🐾</div>
+  <h1>TRUCELO</h1>
+  <p>讓貓咪們，好好停戰</p>
+</header>
+
+<nav>
+  <a href="#privacy" class="active" onclick="return showPage('privacy', this)">隱私政策</a>
+  <a href="#terms" onclick="return showPage('terms', this)">服務條款</a>
+</nav>
+
+<main>
+
+  <!-- ── 隱私政策 ── -->
+  <div id="privacy" class="page active">
+
+    <div class="section">
+      <h2>基本原則 <span class="badge">本地優先</span></h2>
+      <p>Trucelo 是一款多貓家庭衝突管理 App，不需要帳號、不需要登入。</p>
+      <ul>
+        <li>資源檢查表、新貓引入排程、衝突觀察記錄、貓咪名單皆僅儲存於您的裝置本地，不會上傳至任何伺服器</li>
+        <li>不蒐集、不上傳任何個人資料</li>
+        <li>不使用相機、麥克風、定位等裝置感測器</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>目前無廣告 / 無應用內購買</h2>
+      <p>Trucelo 目前為完全免費版本，未整合任何廣告 SDK 或付費機制。若未來加入相關功能，會更新本頁面並在 App 內告知。</p>
+    </div>
+
+    <div class="section">
+      <h2>內容免責聲明</h2>
+      <p>App 內資源檢查表、新貓引入排程等建議依據 AAFP（American Association of Feline Practitioners）等獸醫行為學公開資料設計，但<strong style="color:#1A1A1A">不能取代專業獸醫或動物行為專家的診斷建議</strong>。若貓咪間衝突嚴重或有肢體傷害，請務必洽詢獸醫。</p>
+    </div>
+
+    <div class="section">
+      <h2>兒童隱私</h2>
+      <p>Trucelo 適合所有年齡使用。本 App 不蒐集任何可識別個人身份的資料，無論使用者年齡為何。</p>
+    </div>
+
+    <div class="section">
+      <h2>聯絡方式</h2>
+      <p>如有隱私相關問題，請聯絡：</p>
+      <p>電子郵件：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+    </div>
+
+    <p class="updated">本政策最後更新：2026 年 7 月 30 日</p>
+  </div>
+
+  <!-- ── 服務條款 ── -->
+  <div id="terms" class="page">
+
+    <div class="section">
+      <h2>服務說明</h2>
+      <p>Trucelo 提供以下核心功能：</p>
+      <ul>
+        <li><strong style="color:#1A1A1A">資源足夠性檢查</strong>：依「貓數＋1」原則檢查貓砂盆等資源是否足夠</li>
+        <li><strong style="color:#1A1A1A">新貓引入排程器</strong>：AAFP 十階段引入流程，依貓咪行為判斷是否進到下一步</li>
+        <li><strong style="color:#1A1A1A">衝突觀察記錄</strong>：記錄多貓間異常反應，找出隱性資源霸凌模式</li>
+        <li><strong style="color:#1A1A1A">貓咪名單管理</strong>：為家中每隻貓命名，方便記錄指名道姓</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>使用規範</h2>
+      <p>使用 Trucelo 即表示您同意：</p>
+      <ul>
+        <li>App 內容僅供參考，不作為醫療或行為診斷依據</li>
+        <li>不嘗試破解、逆向工程或干擾 App 運作</li>
+        <li>不將本 App 用於任何違法目的</li>
+        <li>遵守 Google Play / App Store 服務條款</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>責任限制</h2>
+      <p>在法律允許的最大範圍內，Trucelo 對因使用本 App 內容所產生的任何損失不承擔責任。任何貓咪衝突或健康疑慮，請以獸醫/專業人士實際判斷為準。本條款受中華民國法律管轄。</p>
+    </div>
+
+    <div class="section">
+      <h2>聯絡方式</h2>
+      <p>如有任何問題，請聯絡：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+    </div>
+
+    <p class="updated">本條款最後更新：2026 年 7 月 30 日</p>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Trucelo · <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+</footer>
+
+<script>
+  function showPage(id, el) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    el.classList.add('active');
+    return false;
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const hash = location.hash.replace('#', '');
+    if (hash === 'terms') {
+      showPage('terms', document.querySelector('nav a[href="#terms"]'));
+    }
+  });
+</script>
+
+</body>
+</html>
