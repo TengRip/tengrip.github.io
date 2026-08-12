@@ -1,0 +1,72 @@
+# tengrip.github.io — MaxTeng 開發者首頁
+
+> 獨立開發者 RIP（MaxTeng）的品牌首頁，列出所有 App 的 Android／iOS 上架卡片，同時放 `app-ads.txt`（AdMob 驗證用）與各 App 的隱私政策頁。
+
+**線上網址：** https://tengrip.github.io
+**GitHub repo：** `TengRip/tengrip.github.io`（公開，預設分支 `main`）
+**版次：** v3.0
+**日期：** 2026-08-08
+**狀態：** 已上架 15 張卡片（8 支雙平台已通過至少一邊審核 + 7 支單平台已上架）、即將推出 5 張卡片
+
+---
+
+## 資料夾結構
+
+```
+tengrip.github.io/
+├── index.html          # 首頁本體，App 卡片清單
+├── app-ads.txt          # AdMob 驗證用，格式固定不要動
+├── assets/icons/        # 各 App icon，統一裁成 180×180 png
+└── privacy/{app}/       # 各 App 隱私政策頁（部分 App 仍用舊的獨立 repo，見下方說明）
+```
+
+## 卡片規則（重要，之後新增/更新卡片前先看這段）
+
+- **已上架**區：至少一個平台（Android 或 iOS）已經是「正式版／已通過審核公開可查」才能放進來，用 `apps public view` 或商店頁面實際打開確認，不要只憑記憶判斷。
+  - 兩平台都上架 → `app app-dual` 樣式，`store-links` 放兩個真連結（Google Play + App Store）
+  - 只有一個平台上架、另一個平台已送審 → 一樣 `app app-dual`，已上架那個放真連結，另一個放 `<span class="store-badge pending">App Store 審核中</span>`
+  - 只有一個平台、且另一個平台完全沒有開發計畫或已放棄（如 Blackjack 因模擬賭博政策被拒且確定不重送）→ 單一 `<a class="app">` 整卡連結，不放對面平台的任何徽章
+- **即將推出**區：兩個平台都還沒上架，但至少一邊已經送審或在測試中，才值得放卡片。兩邊都完全沒開始動工的 App 不用勉強做卡片。
+  - 橘色 `.badge`：Android 狀態，文字依實際情況寫（例如「Android 測試中」），不要固定套用「審核中」
+  - 藍灰 `.ios-badge`：iOS「準備中」＝已完成開發但尚未送審；`.ios-badge.review`（多一個 `review` class）＝「iOS 審核中」＝已送出等 Apple 結果，兩者語意不同，別混用
+- 每張卡片的四語輪播說明（`desc-cycle`）順序固定：繁中 → 英文 → 日文 → 韓文，全形句號 `。` 只用在日文/韓文結尾，繁中/英文用半形句點
+
+## 查證方式（不要只憑 memory 判斷上架狀態）
+
+```bash
+# 列出 App Store Connect 全部 App
+asc apps list --paginate --output table
+
+# 查單一 App 的版本狀態（READY_FOR_DISTRIBUTION/READY_FOR_SALE 才可能是真上架，
+# WAITING_FOR_REVIEW/IN_REVIEW 是送審中，REJECTED 要另外確認是否已放棄）
+asc status --app <App ID> --include app,appstore --output json
+
+# 再用公開頁面二次確認真的抓得到（版本狀態顯示已核准，不代表商店頁面已經公開）
+asc apps public view --app <App ID> --country tw --output json
+```
+
+Android 正式版清單沒有對應的 CLI，直接跟 RIP 要 Google Play Console 首頁截圖最準確（「應用程式狀態」欄要顯示「正式版」）。
+
+## 本地預覽
+
+`file://` 協定在部分瀏覽器自動化工具會被擋，本地測試改用：
+
+```bash
+cd tengrip.github.io
+python -m http.server 8930
+# 開 http://localhost:8930/index.html
+```
+
+---
+
+## 版本紀錄
+
+| 版次 | 日期 | 說明 |
+|---|---|---|
+| v3.0 | 2026-08-08 | **全站用 asc CLI 逐一查證後大整理**：RIP 反映卡片標籤不一致、很多 App 沒做卡片，並提供 Google Play Console 首頁截圖列出當下 10 支 Android 正式版 App。用 `asc apps list --paginate` 抓出 ASC 全部 17 支 App，逐一 `asc status`＋`asc apps public view` 查證版本狀態與公開可查性，不沿用已過期的 memory 記錄。**查出兩個站上沒更新到的落差**：Cheatlo、Memorlo 其實 iOS 早已通過審核上架，但站上還放在「即將推出」，已搬移至「已上架」。**修正三個錯誤/缺漏**：Blackjack Trainer Pro iOS 狀態其實是 `REJECTED`（模擬賭博政策退件已確定放棄，不會再送審），移除卡片上錯誤的「App Store 審核中」徽章，改回純 Google Play 單卡；Singlo 漏放 Google Play 徽章（Android 明明已是正式版），補上；PixZap、PetSoul 的 iOS 其實都已送審（`IN_REVIEW`／`WAITING_FOR_REVIEW`），原本卡片完全沒標示，補上「App Store 審核中」徽章。**新增 4 張卡片**（即將推出）：Scriblo、Readlo、Tracklo（Android 封測中）、Warplo（無 Android 計畫，只放 iOS 徽章），icon 從各專案 `assets/store/icon_512x512.png` 或 iOS `AppIcon.appiconset` 用 Python PIL 縮成 180×180。**重新定義徽章語意**：「iOS 準備中」（尚未送審）vs「iOS 審核中」（已送審，沿用原本就存在但沒被用過的 `.ios-badge.review` CSS class）明確區分開，之前兩者混用；「即將推出」區 Android 徽章文字改成描述實際狀態（如「Android 測試中」），不再固定寫「審核中」。改完用本地 `python -m http.server`＋Playwright 截圖核對排版無跑版。同步更新 [[project_pixzap]]／[[project_vitalo]]／[[project_memorlo]] 三份過期的 memory 記錄。 |
+| v2.5 | 2026-07-25～07-27 | Talklo（iOS 正式上架，App Store-only 單徽章卡片）、Singlo（iOS 審核通過先標示「即將上架」，確認 `READY_FOR_SALE` 且商店頁面可正常打開後才移入已上架）陸續補齊；Ticklo/Spendlo 卡片曾漏寫 `app app-dual` 完整 class 導致跑版，已修復（之後新增卡片養成跟既有卡片對照 class 的習慣）。 |
+| v2.1 | 2026-07-23 | Ticklo、Spendlo iOS 正式上架，卡片移入已上架區塊；RoadGuard 改為雙平台正式連結卡片（Android＋iOS 皆為真連結）。 |
+| v2.0 | 2026-07-15 | **改版支援雙平台**：首頁從純 Android 升級為 Android＋iOS 雙平台首頁，延續原本奶油底＋橘色點綴的視覺，新增真實 App icon（180×180）與「iOS 準備中」藍灰徽章系統，跟 Google Play 橘色系刻意區分。 |
+| v1.1 | 2026-06-30～07-10 | 新增四語輪播說明（繁中/EN/JP/KR，CSS 動畫每 3 秒切換）；新增「即將推出」分區；PixZap、SnapPuzzle、Jotlo、Cliplo、Filelo 陸續轉正式版移入已上架。 |
+| v1.0 | 2026-06-17 | **首頁建立**：因應 Google Play「商店設定 → 網站」欄位同時被 AdMob 拿來抓 `app-ads.txt`、也會顯示給真實使用者點擊，做了這個 index.html 首頁跟 `app-ads.txt` 並存；暖色系（奶油底 #FFF8F0＋橘色點綴），初始卡片清單。 |
+| v0.1 | 2026-06-16 | 新增 `app-ads.txt`（AdMob 收益驗證用）。 |
