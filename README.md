@@ -4,9 +4,9 @@
 
 **線上網址：** https://tengrip.github.io
 **GitHub repo：** `TengRip/tengrip.github.io`（公開，預設分支 `main`）
-**版次：** v3.1
-**日期：** 2026-08-14
-**狀態：** 已上架 16 張卡片、即將推出 4 張卡片
+**版次：** v3.2
+**日期：** 2026-08-16
+**狀態：** 已上架 16 張卡片（Chronlo iOS 補上正式連結）、即將推出 4 張卡片
 
 ---
 
@@ -63,6 +63,7 @@ python -m http.server 8930
 
 | 版次 | 日期 | 說明 |
 |---|---|---|
+| v3.2 | 2026-08-16 | Chronlo iOS 審核通過並發佈正式版（`asc status` 確認 `READY_FOR_DISTRIBUTION`，商店頁面 `apps.apple.com/tw/app/id6790975397` 實測 200）。卡片本來就在「已上架」區塊（Android 已是正式版），這次只是把 `store-links` 裡的 `<span class="store-badge pending">App Store 審核中</span>` 換成真連結，變成跟 Ticklo/RoadGuard 一樣的雙平台真連結卡片。 |
 | v3.1 | 2026-08-14 | **再次用 asc CLI 全站 17 支 App 逐一查證＋RIP 提供 Google Play Console 截圖（14 支 Android 正式版）大整理**。**查出重要落差**：Warplo iOS 其實已通過審核上架（`READY_FOR_DISTRIBUTION`，商店頁面可打開），從「即將推出」搬到「已上架」（單一 App Store 徽章，無 Android 計畫）；Ticklo、Talklo、Cheatlo、Memorlo 的 Android 版其實都已轉正式版，四張卡片補上 Google Play 徽章變成雙平台。**發現 5 支 App 的 iOS 最新版本從送審中變成 `REJECTED`**（PetSoul、Snifflo、Readlo、Tracklo、Scriblo），商店頁面目前都無法公開存取，卡片上原本寫「App Store 審核中」／`.ios-badge.review` 的徽章已過時，改回「iOS 準備中」/預設 `.ios-badge`（RIP 確認用這個文字，不特別強調曾被拒過）。其餘 RoadGuard、SnapPuzzle、Singlo、PixZap、Chronlo、Spendlo、Jotlo、Filelo、Cliplo、Blackjack 核對後現況與網頁一致未變動。改完用本地 `python -m http.server`＋Playwright 截圖核對排版無跑版。 |
 | v3.0 | 2026-08-08 | **全站用 asc CLI 逐一查證後大整理**：RIP 反映卡片標籤不一致、很多 App 沒做卡片，並提供 Google Play Console 首頁截圖列出當下 10 支 Android 正式版 App。用 `asc apps list --paginate` 抓出 ASC 全部 17 支 App，逐一 `asc status`＋`asc apps public view` 查證版本狀態與公開可查性，不沿用已過期的 memory 記錄。**查出兩個站上沒更新到的落差**：Cheatlo、Memorlo 其實 iOS 早已通過審核上架，但站上還放在「即將推出」，已搬移至「已上架」。**修正三個錯誤/缺漏**：Blackjack Trainer Pro iOS 狀態其實是 `REJECTED`（模擬賭博政策退件已確定放棄，不會再送審），移除卡片上錯誤的「App Store 審核中」徽章，改回純 Google Play 單卡；Singlo 漏放 Google Play 徽章（Android 明明已是正式版），補上；PixZap、PetSoul 的 iOS 其實都已送審（`IN_REVIEW`／`WAITING_FOR_REVIEW`），原本卡片完全沒標示，補上「App Store 審核中」徽章。**新增 4 張卡片**（即將推出）：Scriblo、Readlo、Tracklo（Android 封測中）、Warplo（無 Android 計畫，只放 iOS 徽章），icon 從各專案 `assets/store/icon_512x512.png` 或 iOS `AppIcon.appiconset` 用 Python PIL 縮成 180×180。**重新定義徽章語意**：「iOS 準備中」（尚未送審）vs「iOS 審核中」（已送審，沿用原本就存在但沒被用過的 `.ios-badge.review` CSS class）明確區分開，之前兩者混用；「即將推出」區 Android 徽章文字改成描述實際狀態（如「Android 測試中」），不再固定寫「審核中」。改完用本地 `python -m http.server`＋Playwright 截圖核對排版無跑版。同步更新 [[project_pixzap]]／[[project_vitalo]]／[[project_memorlo]] 三份過期的 memory 記錄。 |
 | v2.5 | 2026-07-25～07-27 | Talklo（iOS 正式上架，App Store-only 單徽章卡片）、Singlo（iOS 審核通過先標示「即將上架」，確認 `READY_FOR_SALE` 且商店頁面可正常打開後才移入已上架）陸續補齊；Ticklo/Spendlo 卡片曾漏寫 `app app-dual` 完整 class 導致跑版，已修復（之後新增卡片養成跟既有卡片對照 class 的習慣）。 |
