@@ -4,9 +4,9 @@
 
 **線上網址：** https://tengrip.github.io
 **GitHub repo：** `TengRip/tengrip.github.io`（公開，預設分支 `main`）
-**版次：** v3.3
-**日期：** 2026-08-20
-**狀態：** 已上架 17 張卡片（PixZap iOS 補上正式連結）、即將推出 4 張卡片
+**版次：** v3.7
+**日期：** 2026-08-26
+**狀態：** 已上架 17 張卡片（Readlo iOS 補上正式連結）、即將推出 3 張卡片
 
 ---
 
@@ -63,6 +63,7 @@ python -m http.server 8930
 
 | 版次 | 日期 | 說明 |
 |---|---|---|
+| v3.7 | 2026-08-26 | Readlo iOS 審核通過並發佈正式版（`asc versions list` 確認 `READY_FOR_SALE`／`READY_FOR_DISTRIBUTION`，商店頁面 `apps.apple.com/tw/app/id6798077578` 實測 200）。卡片從「即將推出」搬到「已上架」，用 `app app-dual` 樣式＋單一 App Store 徽章（Android 正式版存取權申請被 Google 打回，尚在重跑 14 天封測，暫無 Google Play 徽章可放）。 |
 | v3.6 | 2026-08-26 | RIP 確認後再拿掉 Dobby Blog 卡片，「網站作品」區剩 8 張：貓知道、RoadGuard 網頁版、SlimDrop、Living Portrait、Ticklo／Cheatlo／Cliplo 網頁版、PlayShot Studio。 |
 | v3.5 | 2026-08-26 | RIP 確認後拿掉 ChronoTrace、iPAS 練習工具、AvatarPal 三張卡片（先不對外展示），「網站作品」區剩 9 張：貓知道、RoadGuard 網頁版、SlimDrop、Living Portrait、Ticklo／Cheatlo／Cliplo 網頁版、Dobby Blog、PlayShot Studio。 |
 | v3.4 | 2026-08-26 | **新增「網站作品」分區**：在既有 App 卡片（已上架／即將推出）下方新增 12 張網站作品卡片（貓知道、RoadGuard 網頁版、SlimDrop、Living Portrait、Ticklo／Cheatlo／Cliplo 網頁版、Dobby Blog、PlayShot Studio、ChronoTrace、iPAS 練習工具、AvatarPal），沿用 `.app` 卡片結構＋四語輪播說明，圖示改用 emoji 方塊（新增 `.site-icon` class）取代 App icon 圖檔，避免另外準備圖片素材。刻意不收錄：貓空纜車調度系統／事故輔導改善 AI 助理（幫特定單位做的內部系統，公開曝光有職場疑慮）、小放電（朋友接案站，內容尚未補齊）、app-radar／PAO Wizard（RIP 自用內部工具非作品展示）。改完用本地 `python -m http.server`＋瀏覽器截圖核對排版無跑版。 |
