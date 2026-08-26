@@ -63,6 +63,7 @@ python -m http.server 8930
 
 | 版次 | 日期 | 說明 |
 |---|---|---|
+| v3.5 | 2026-08-26 | RIP 確認後拿掉 ChronoTrace、iPAS 練習工具、AvatarPal 三張卡片（先不對外展示），「網站作品」區剩 9 張：貓知道、RoadGuard 網頁版、SlimDrop、Living Portrait、Ticklo／Cheatlo／Cliplo 網頁版、Dobby Blog、PlayShot Studio。 |
 | v3.4 | 2026-08-26 | **新增「網站作品」分區**：在既有 App 卡片（已上架／即將推出）下方新增 12 張網站作品卡片（貓知道、RoadGuard 網頁版、SlimDrop、Living Portrait、Ticklo／Cheatlo／Cliplo 網頁版、Dobby Blog、PlayShot Studio、ChronoTrace、iPAS 練習工具、AvatarPal），沿用 `.app` 卡片結構＋四語輪播說明，圖示改用 emoji 方塊（新增 `.site-icon` class）取代 App icon 圖檔，避免另外準備圖片素材。刻意不收錄：貓空纜車調度系統／事故輔導改善 AI 助理（幫特定單位做的內部系統，公開曝光有職場疑慮）、小放電（朋友接案站，內容尚未補齊）、app-radar／PAO Wizard（RIP 自用內部工具非作品展示）。改完用本地 `python -m http.server`＋瀏覽器截圖核對排版無跑版。 |
 | v3.3 | 2026-08-20 | PixZap iOS 審核通過並發佈正式版（`asc status` 確認 `READY_FOR_DISTRIBUTION`）。把 `store-links` 裡的 `<span class="store-badge pending">App Store 審核中</span>` 換成真連結 `apps.apple.com/tw/app/id6796897369`，變成雙平台真連結卡片。順帶更新 PetSoul：今天稍早重新送審後狀態已變成 `WAITING_FOR_REVIEW`，卡片文字從「iOS 準備中」改成「iOS 審核中」（沿用 pending 樣式，只換文字，站上還沒有真連結可放）。 |
 | v3.2 | 2026-08-16 | Chronlo iOS 審核通過並發佈正式版（`asc status` 確認 `READY_FOR_DISTRIBUTION`，商店頁面 `apps.apple.com/tw/app/id6790975397` 實測 200）。卡片本來就在「已上架」區塊（Android 已是正式版），這次只是把 `store-links` 裡的 `<span class="store-badge pending">App Store 審核中</span>` 換成真連結，變成跟 Ticklo/RoadGuard 一樣的雙平台真連結卡片。 |
