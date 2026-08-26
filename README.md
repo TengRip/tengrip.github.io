@@ -4,9 +4,9 @@
 
 **線上網址：** https://tengrip.github.io
 **GitHub repo：** `TengRip/tengrip.github.io`（公開，預設分支 `main`）
-**版次：** v3.8
+**版次：** v3.9
 **日期：** 2026-08-26
-**狀態：** 已上架 18 張卡片（Tracklo iOS 補上正式連結）、即將推出 2 張卡片
+**狀態：** 已上架 19 張卡片（Snifflo iOS+Android 皆補上正式連結）、即將推出 1 張卡片
 
 ---
 
@@ -63,6 +63,7 @@ python -m http.server 8930
 
 | 版次 | 日期 | 說明 |
 |---|---|---|
+| v3.9 | 2026-08-26 | Snifflo iOS＋Android 皆已是正式版（`asc versions list` 確認 iOS `READY_FOR_DISTRIBUTION`，商店頁面 `apps.apple.com/tw/app/id6790632614` 與 Google Play `play.google.com/store/apps/details?id=com.maxteng.snifflo` 皆實測 200）。卡片從「即將推出」搬到「已上架」，用 `app app-dual` 樣式＋雙平台真連結。「即將推出」區只剩 Scriblo 一張。 |
 | v3.8 | 2026-08-26 | Tracklo iOS 審核通過並發佈正式版（`asc versions list` 確認 `READY_FOR_DISTRIBUTION`，商店頁面 `apps.apple.com/tw/app/id6797240955` 實測 200）。卡片從「即將推出」搬到「已上架」，用 `app app-dual` 樣式＋單一 App Store 徽章（Android 正式版申請被 Google 打回，重跑 14 天封測中，暫無 Google Play 徽章）。 |
 | v3.7 | 2026-08-26 | Readlo iOS 審核通過並發佈正式版（`asc versions list` 確認 `READY_FOR_SALE`／`READY_FOR_DISTRIBUTION`，商店頁面 `apps.apple.com/tw/app/id6798077578` 實測 200）。卡片從「即將推出」搬到「已上架」，用 `app app-dual` 樣式＋單一 App Store 徽章（Android 正式版存取權申請被 Google 打回，尚在重跑 14 天封測，暫無 Google Play 徽章可放）。 |
 | v3.6 | 2026-08-26 | RIP 確認後再拿掉 Dobby Blog 卡片，「網站作品」區剩 8 張：貓知道、RoadGuard 網頁版、SlimDrop、Living Portrait、Ticklo／Cheatlo／Cliplo 網頁版、PlayShot Studio。 |
