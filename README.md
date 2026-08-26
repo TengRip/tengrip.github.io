@@ -4,7 +4,7 @@
 
 **線上網址：** https://tengrip.github.io
 **GitHub repo：** `TengRip/tengrip.github.io`（公開，預設分支 `main`）
-**版次：** v3.10
+**版次：** v3.12
 **日期：** 2026-08-26
 **狀態：** 已上架 19 張卡片、即將推出 1 張卡片
 
