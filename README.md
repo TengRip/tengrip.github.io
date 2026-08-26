@@ -25,7 +25,7 @@ tengrip.github.io/
 - **已上架**區：至少一個平台（Android 或 iOS）已經是「正式版／已通過審核公開可查」才能放進來，用 `apps public view` 或商店頁面實際打開確認，不要只憑記憶判斷。
   - 兩平台都上架 → `app app-dual` 樣式，`store-links` 放兩個真連結（Google Play + App Store）
   - 只有一個平台上架、另一個平台已送審 → 一樣 `app app-dual`，已上架那個放真連結，另一個放 `<span class="store-badge pending">App Store 審核中</span>`
-  - 只有一個平台、且另一個平台完全沒有開發計畫或已放棄（如 Blackjack 因模擬賭博政策被拒且確定不重送）→ 單一 `<a class="app">` 整卡連結，不放對面平台的任何徽章
+  - 只有一個平台、且另一個平台完全沒有開發計畫或已放棄（如 Blackjack 因模擬賭博政策被拒且確定不重送）→ **一律用 `app app-dual` + `store-links` 單一徽章樣式**（Android 用「Google Play」、iOS 用「App Store」），跟雙平台卡片外觀一致；**不要**用整卡可點的 `<a class="app">` + 右側「→」箭頭樣式，那個樣式專門保留給「網站作品」區（非 App Store 商品）用（2026-08-26 v3.10 統一過，之前 Jotlo/Filelo/Cliplo/Blackjack 誤用了箭頭樣式）
 - **即將推出**區：兩個平台都還沒上架，但至少一邊已經送審或在測試中，才值得放卡片。兩邊都完全沒開始動工的 App 不用勉強做卡片。
   - 橘色 `.badge`：Android 狀態，文字依實際情況寫（例如「Android 測試中」），不要固定套用「審核中」
   - 藍灰 `.ios-badge`：iOS「準備中」＝已完成開發但尚未送審；`.ios-badge.review`（多一個 `review` class）＝「iOS 審核中」＝已送出等 Apple 結果，兩者語意不同，別混用
