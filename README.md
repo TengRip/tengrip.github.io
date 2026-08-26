@@ -63,6 +63,7 @@ python -m http.server 8930
 
 | 版次 | 日期 | 說明 |
 |---|---|---|
+| v3.12 | 2026-08-26 | PlayShot Studio 新增 iOS App Store 尺寸支援（iPhone 6.9 吋＋iPad 13 吋），網站作品卡片文案從「Google Play 商店展示圖一鍵生成工具」改成平台中立的「Android／iOS 商店截圖一鍵生成工具」（四語言同步更新）。 |
 | v3.11 | 2026-08-26 | 「網站作品」區的 PlayShot Studio 卡片連結從 `playshot-studio.vercel.app` 換成新接的自訂網域 `playshotstudio.maxteng.org`（該站已完成品牌重新設計＋GA4＋Search Console＋AdSense scaffold）。 |
 | v3.10 | 2026-08-26 | RIP 要求外觀一致性：Android-only 4 張卡片（Jotlo/Filelo/Cliplo/Blackjack Trainer Pro）原本是整卡可點的 `<a class="app">` + 右側「→」箭頭樣式，改成跟其他卡片一樣的 `app app-dual` + `store-links` 單一「Google Play」徽章樣式。純視覺一致性調整，連結網址不變。 |
 | v3.9 | 2026-08-26 | Snifflo iOS＋Android 皆已是正式版（`asc versions list` 確認 iOS `READY_FOR_DISTRIBUTION`，商店頁面 `apps.apple.com/tw/app/id6790632614` 與 Google Play `play.google.com/store/apps/details?id=com.maxteng.snifflo` 皆實測 200）。卡片從「即將推出」搬到「已上架」，用 `app app-dual` 樣式＋雙平台真連結。「即將推出」區只剩 Scriblo 一張。 |
