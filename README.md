@@ -4,7 +4,7 @@
 
 **線上網址：** https://tengrip.github.io
 **GitHub repo：** `TengRip/tengrip.github.io`（公開，預設分支 `main`）
-**版次：** v4.0
+**版次：** v4.1
 **日期：** 2026-08-27
 **狀態：** 已上架 19 張 App 卡片、即將推出 1 張卡片、網站作品 8 張
 
@@ -63,6 +63,7 @@ python -m http.server 8930
 
 | 版次 | 日期 | 說明 |
 |---|---|---|
+| v4.1 | 2026-08-27 | Hero 繁中主標改為「把日常的不便與需求，化成好用的 App 與 Web 工具。」；加入 Noto Serif TC（Hero／章節標題）與 Noto Sans TC（內文／介面）字體組合，並調整中文字距與行高，提升品牌質感與可讀性。 |
 | v4.0 | 2026-08-27 | 首頁重新定位為 MaxTeng 產品工作室：新增主導覽、Hero、精選作品、19 張 App 的四分類篩選、繁中／英文／日文／韓文說明切換、格狀網站作品區與介紹／聯絡區。保留所有既有商店與外部工具連結；同步補齊 title、description、canonical 與 Open Graph 基礎 SEO。 |
 | v3.12 | 2026-08-26 | PlayShot Studio 新增 iOS App Store 尺寸支援（iPhone 6.9 吋＋iPad 13 吋），網站作品卡片文案從「Google Play 商店展示圖一鍵生成工具」改成平台中立的「Android／iOS 商店截圖一鍵生成工具」（四語言同步更新）。 |
 | v3.11 | 2026-08-26 | 「網站作品」區的 PlayShot Studio 卡片連結從 `playshot-studio.vercel.app` 換成新接的自訂網域 `playshotstudio.maxteng.org`（該站已完成品牌重新設計＋GA4＋Search Console＋AdSense scaffold）。 |
