@@ -4,9 +4,9 @@
 
 **線上網址：** https://tengrip.github.io
 **GitHub repo：** `TengRip/tengrip.github.io`（公開，預設分支 `main`）
-**版次：** v3.12
-**日期：** 2026-08-26
-**狀態：** 已上架 19 張卡片、即將推出 1 張卡片
+**版次：** v4.0
+**日期：** 2026-08-27
+**狀態：** 已上架 19 張 App 卡片、即將推出 1 張卡片、網站作品 8 張
 
 ---
 
@@ -29,7 +29,7 @@ tengrip.github.io/
 - **即將推出**區：兩個平台都還沒上架，但至少一邊已經送審或在測試中，才值得放卡片。兩邊都完全沒開始動工的 App 不用勉強做卡片。
   - 橘色 `.badge`：Android 狀態，文字依實際情況寫（例如「Android 測試中」），不要固定套用「審核中」
   - 藍灰 `.ios-badge`：iOS「準備中」＝已完成開發但尚未送審；`.ios-badge.review`（多一個 `review` class）＝「iOS 審核中」＝已送出等 Apple 結果，兩者語意不同，別混用
-- 每張卡片的四語輪播說明（`desc-cycle`）順序固定：繁中 → 英文 → 日文 → 韓文，全形句號 `。` 只用在日文/韓文結尾，繁中/英文用半形句點
+- 每張卡片的四語說明（`desc-cycle`）順序固定：繁中 → 英文 → 日文 → 韓文；由首頁右上角的語言切換器顯示其中一種，不再自動輪播。全形句號 `。` 只用在日文/韓文結尾，繁中/英文用半形句點
 
 ## 查證方式（不要只憑 memory 判斷上架狀態）
 
@@ -63,6 +63,7 @@ python -m http.server 8930
 
 | 版次 | 日期 | 說明 |
 |---|---|---|
+| v4.0 | 2026-08-27 | 首頁重新定位為 MaxTeng 產品工作室：新增主導覽、Hero、精選作品、19 張 App 的四分類篩選、繁中／英文／日文／韓文說明切換、格狀網站作品區與介紹／聯絡區。保留所有既有商店與外部工具連結；同步補齊 title、description、canonical 與 Open Graph 基礎 SEO。 |
 | v3.12 | 2026-08-26 | PlayShot Studio 新增 iOS App Store 尺寸支援（iPhone 6.9 吋＋iPad 13 吋），網站作品卡片文案從「Google Play 商店展示圖一鍵生成工具」改成平台中立的「Android／iOS 商店截圖一鍵生成工具」（四語言同步更新）。 |
 | v3.11 | 2026-08-26 | 「網站作品」區的 PlayShot Studio 卡片連結從 `playshot-studio.vercel.app` 換成新接的自訂網域 `playshotstudio.maxteng.org`（該站已完成品牌重新設計＋GA4＋Search Console＋AdSense scaffold）。 |
 | v3.10 | 2026-08-26 | RIP 要求外觀一致性：Android-only 4 張卡片（Jotlo/Filelo/Cliplo/Blackjack Trainer Pro）原本是整卡可點的 `<a class="app">` + 右側「→」箭頭樣式，改成跟其他卡片一樣的 `app app-dual` + `store-links` 單一「Google Play」徽章樣式。純視覺一致性調整，連結網址不變。 |
