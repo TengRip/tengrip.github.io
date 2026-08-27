@@ -3,20 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trucelo — 隱私政策</title>
+  <title>Chowlo — 隱私政策</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
-      background: #F5F4F0;
-      color: #1A1A1A;
+      background: #D8C7A8;
+      color: #3E2C1C;
       line-height: 1.8;
     }
 
     header {
-      background: linear-gradient(135deg, #F5F4F0 0%, #ebe9e2 100%);
-      border-bottom: 1px solid #2F5D4F33;
+      background: linear-gradient(135deg, #D8C7A8 0%, #cbb896 100%);
+      border-bottom: 2px dashed #3E2C1C55;
       padding: 40px 24px 32px;
       text-align: center;
     }
@@ -27,21 +30,22 @@
     }
 
     header h1 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #2F5D4F;
-      margin-bottom: 4px;
-      letter-spacing: 2px;
+      font-family: "Special Elite", "Noto Sans TC", monospace;
+      font-size: 1.7rem;
+      font-weight: 400;
+      color: #A8382E;
+      margin-bottom: 6px;
+      letter-spacing: 3px;
     }
 
     header p {
       font-size: 0.9rem;
-      color: #6B6B64;
+      color: #7A6952;
     }
 
     nav {
-      background: #ffffff;
-      border-bottom: 1px solid #1A1A1A14;
+      background: #F4EDDD;
+      border-bottom: 1px solid #3E2C1C1f;
       display: flex;
       justify-content: center;
       gap: 0;
@@ -51,7 +55,7 @@
       display: block;
       padding: 14px 36px;
       text-decoration: none;
-      color: #6B6B64;
+      color: #7A6952;
       font-size: 0.95rem;
       font-weight: 500;
       border-bottom: 3px solid transparent;
@@ -60,8 +64,8 @@
 
     nav a.active,
     nav a:hover {
-      color: #2F5D4F;
-      border-bottom-color: #2F5D4F;
+      color: #A8382E;
+      border-bottom-color: #A8382E;
     }
 
     main {
@@ -74,17 +78,26 @@
     .page.active { display: block; }
 
     .section {
-      background: #ffffff;
-      border: 1px solid #1A1A1A14;
-      border-radius: 4px;
+      background: #F4EDDD;
+      border: 1px solid #3E2C1C1f;
+      border-radius: 2px;
       padding: 24px 28px;
       margin-bottom: 16px;
+      position: relative;
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: repeating-linear-gradient(90deg, #3E2C1C33 0, #3E2C1C33 6px, transparent 6px, transparent 12px);
     }
 
     .section h2 {
       font-size: 1.0rem;
       font-weight: 600;
-      color: #2F5D4F;
+      color: #A8382E;
       margin-bottom: 12px;
       display: flex;
       align-items: center;
@@ -96,13 +109,13 @@
       display: inline-block;
       width: 4px;
       height: 18px;
-      background: #2F5D4F;
+      background: #A8382E;
       border-radius: 0;
     }
 
     .section p, .section ul {
       font-size: 0.93rem;
-      color: #6B6B64;
+      color: #7A6952;
       margin-bottom: 10px;
     }
 
@@ -115,7 +128,7 @@
     }
 
     .section a {
-      color: #2F5D4F;
+      color: #A8382E;
       text-decoration: none;
     }
 
@@ -130,39 +143,42 @@
 
     .badge {
       display: inline-block;
-      background: #2F5D4F1a;
-      color: #2F5D4F;
-      font-size: 0.75rem;
+      background: #A8382E1a;
+      color: #A8382E;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
       font-weight: 600;
       padding: 2px 8px;
-      border-radius: 4px;
+      border-radius: 2px;
       margin-left: 8px;
       vertical-align: middle;
+      border: 1px solid #A8382E44;
     }
 
     .updated {
       text-align: center;
-      font-size: 0.82rem;
-      color: #6B6B6488;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      color: #7A695288;
       margin-top: 32px;
     }
 
     footer {
-      background: #eceae3;
-      border-top: 1px solid #1A1A1A14;
-      color: #6B6B64;
+      background: #cbb896;
+      border-top: 1px solid #3E2C1C1f;
+      color: #5c4d38;
       text-align: center;
       padding: 24px;
       font-size: 0.85rem;
     }
 
     footer a {
-      color: #2F5D4F;
+      color: #A8382E;
       text-decoration: none;
     }
 
     @media (max-width: 600px) {
-      header h1 { font-size: 1.3rem; }
+      header h1 { font-size: 1.4rem; }
       nav a { padding: 12px 22px; font-size: 0.88rem; }
       .section { padding: 18px 18px; }
     }
@@ -171,9 +187,9 @@
 <body>
 
 <header>
-  <div class="logo">🐾</div>
-  <h1>TRUCELO</h1>
-  <p>讓貓咪們，好好停戰</p>
+  <div class="logo">🧾</div>
+  <h1>CHOWLO</h1>
+  <p>換糧有計畫，花費有帳本</p>
 </header>
 
 <nav>
@@ -188,9 +204,9 @@
 
     <div class="section">
       <h2>基本原則 <span class="badge">本地優先</span></h2>
-      <p>Trucelo 是一款多貓家庭衝突管理 App，不需要帳號、不需要登入。</p>
+      <p>Chowlo 是一款貓咪換糧輔助＋開銷記帳工具，不需要帳號、不需要登入。</p>
       <ul>
-        <li>資源檢查表、新貓引入排程、衝突觀察記錄、貓咪名單皆僅儲存於您的裝置本地，不會上傳至任何伺服器</li>
+        <li>換糧排程、飼料清單、記帳紀錄皆僅儲存於您的裝置本地，不會上傳至任何伺服器</li>
         <li>不蒐集、不上傳任何個人資料</li>
         <li>不使用相機、麥克風、定位等裝置感測器</li>
       </ul>
@@ -198,7 +214,7 @@
 
     <div class="section">
       <h2>廣告（Google AdMob）</h2>
-      <p>Trucelo 為免費 App，透過 Google AdMob 顯示橫幅廣告維持營運，AdMob 可能蒐集以下資訊以提供廣告：</p>
+      <p>Chowlo 為免費 App，透過 Google AdMob 顯示橫幅廣告維持營運，AdMob 可能蒐集以下資訊以提供廣告：</p>
       <ul>
         <li>廣告識別碼（Advertising ID）</li>
         <li>裝置資訊（型號、作業系統版本）</li>
@@ -209,17 +225,17 @@
 
     <div class="section">
       <h2>應用程式內購買（移除廣告）</h2>
-      <p>Trucelo 提供一次性「移除廣告」買斷購買，購買流程與付款資訊完全由 Apple App Store／Google Play 處理，Trucelo 不會接觸、儲存您的信用卡或付款資料。購買驗證透過 RevenueCat 服務進行，RevenueCat 僅會取得裝置匿名 ID 與購買紀錄以確認購買狀態，詳情請參閱 <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat 隱私政策</a>。</p>
+      <p>Chowlo 提供一次性「移除廣告」買斷購買，購買流程與付款資訊完全由 Apple App Store／Google Play 處理，Chowlo 不會接觸、儲存您的信用卡或付款資料。購買驗證透過 RevenueCat 服務進行，RevenueCat 僅會取得裝置匿名 ID 與購買紀錄以確認購買狀態，詳情請參閱 <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat 隱私政策</a>。</p>
     </div>
 
     <div class="section">
       <h2>內容免責聲明</h2>
-      <p>App 內資源檢查表、新貓引入排程等建議依據 AAFP（American Association of Feline Practitioners）等獸醫行為學公開資料設計，但<strong style="color:#1A1A1A">不能取代專業獸醫或動物行為專家的診斷建議</strong>。若貓咪間衝突嚴重或有肢體傷害，請務必洽詢獸醫。</p>
+      <p>App 內換糧比例建議（標準 7 天／敏感腸胃 14 天漸進表）僅供一般參考，實際換糧速度請以獸醫或飼料廠商指示為準；記帳功能單純記錄您自行輸入的支出，不提供任何財務或投資建議。</p>
     </div>
 
     <div class="section">
       <h2>兒童隱私</h2>
-      <p>Trucelo 適合所有年齡使用。本 App 不蒐集任何可識別個人身份的資料，無論使用者年齡為何。</p>
+      <p>Chowlo 適合所有年齡使用。本 App 不蒐集任何可識別個人身份的資料，無論使用者年齡為何。</p>
     </div>
 
     <div class="section">
@@ -236,20 +252,19 @@
 
     <div class="section">
       <h2>服務說明</h2>
-      <p>Trucelo 提供以下核心功能：</p>
+      <p>Chowlo 提供以下核心功能：</p>
       <ul>
-        <li><strong style="color:#1A1A1A">資源足夠性檢查</strong>：依「貓數＋1」原則檢查貓砂盆等資源是否足夠</li>
-        <li><strong style="color:#1A1A1A">新貓引入排程器</strong>：AAFP 十階段引入流程，依貓咪行為判斷是否進到下一步</li>
-        <li><strong style="color:#1A1A1A">衝突觀察記錄</strong>：記錄多貓間異常反應，找出隱性資源霸凌模式</li>
-        <li><strong style="color:#1A1A1A">貓咪名單管理</strong>：為家中每隻貓命名，方便記錄指名道姓</li>
+        <li><strong style="color:#3E2C1C">換糧排程</strong>：標準 7 天／敏感腸胃 14 天漸進比例表，逐日提醒新舊飼料混合比例</li>
+        <li><strong style="color:#3E2C1C">開銷記帳</strong>：記錄飼料與貓咪用品支出，累計檢視花費</li>
+        <li><strong style="color:#3E2C1C">飼料清單管理</strong>：管理正在使用與備選的飼料項目</li>
       </ul>
     </div>
 
     <div class="section">
       <h2>使用規範</h2>
-      <p>使用 Trucelo 即表示您同意：</p>
+      <p>使用 Chowlo 即表示您同意：</p>
       <ul>
-        <li>App 內容僅供參考，不作為醫療或行為診斷依據</li>
+        <li>App 內容僅供參考，不作為換糧或財務決策的唯一依據</li>
         <li>不嘗試破解、逆向工程或干擾 App 運作</li>
         <li>不將本 App 用於任何違法目的</li>
         <li>遵守 Google Play / App Store 服務條款</li>
@@ -258,7 +273,7 @@
 
     <div class="section">
       <h2>責任限制</h2>
-      <p>在法律允許的最大範圍內，Trucelo 對因使用本 App 內容所產生的任何損失不承擔責任。任何貓咪衝突或健康疑慮，請以獸醫/專業人士實際判斷為準。本條款受中華民國法律管轄。</p>
+      <p>在法律允許的最大範圍內，Chowlo 對因使用本 App 內容所產生的任何損失（包含但不限於貓咪換糧不適、記帳金額誤差）不承擔責任。任何貓咪腸胃狀況疑慮，請以獸醫實際診斷為準。本條款受中華民國法律管轄。</p>
     </div>
 
     <div class="section">
@@ -266,13 +281,13 @@
       <p>如有任何問題，請聯絡：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
     </div>
 
-    <p class="updated">本條款最後更新：2026 年 7 月 30 日</p>
+    <p class="updated">本條款最後更新：2026 年 8 月 27 日</p>
   </div>
 
 </main>
 
 <footer>
-  <p>© 2026 Trucelo · <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+  <p>© 2026 Chowlo · <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
 </footer>
 
 <script>
