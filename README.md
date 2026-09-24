@@ -4,9 +4,9 @@
 
 **線上網址：** https://tengrip.github.io
 **GitHub repo：** `TengRip/tengrip.github.io`（公開，預設分支 `main`）
-**版次：** v4.3
-**日期：** 2026-09-24
-**狀態：** 已上架 19 張 App 卡片、即將推出 1 張卡片、網站作品 8 張
+**版次：** v4.4
+**日期：** 2026-09-25
+**狀態：** 已上架 20 張 App 卡片、即將推出 1 張卡片、網站作品 8 張
 
 ---
 
@@ -63,6 +63,7 @@ python -m http.server 8930
 
 | 版次 | 日期 | 說明 |
 |---|---|---|
+| v4.4 | 2026-09-25 | 新增 Oddlo 卡片（貓咪行為觀察速查）到「已上架」：iOS 1.1.1 通過審核（`asc status` 為 `READY_FOR_DISTRIBUTION`、提交 `COMPLETE`；`apps.apple.com/tw/app/oddlo/id6805944419` 實測 200）。Google Play 商店頁實測 404（Android 尚未正式上架），所以是 iOS-only 單一 App Store 徽章，沿用 Warplo 的 `app app-dual` 單徽章寫法，分類「寵物照護」。icon 由 iOS AppIcon 1024 縮成 180×180（已目視確認非預設圖）。Hero 已上架數 19→20。 |
 | v4.3 | 2026-09-24 | PetSoul iOS 通過 App Store 審核（`asc status` 為 `READY_FOR_DISTRIBUTION`、提交 `COMPLETE`；`apps.apple.com/tw/app/id6790455772` 實測回 200）。卡片右下角「iOS 審核中」徽章換成真實 App Store 連結，變成 Google Play＋App Store 雙平台。 |
 | v4.1 | 2026-08-27 | Hero 繁中主標改為「把日常的不便與需求，化成好用的 App 與 Web 工具。」；加入 Noto Serif TC（Hero／章節標題）與 Noto Sans TC（內文／介面）字體組合，並調整中文字距與行高，提升品牌質感與可讀性。 |
 | v4.0 | 2026-08-27 | 首頁重新定位為 MaxTeng 產品工作室：新增主導覽、Hero、精選作品、19 張 App 的四分類篩選、繁中／英文／日文／韓文說明切換、格狀網站作品區與介紹／聯絡區。保留所有既有商店與外部工具連結；同步補齊 title、description、canonical 與 Open Graph 基礎 SEO。 |
