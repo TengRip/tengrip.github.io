@@ -151,7 +151,6 @@
     .langbar a:hover { opacity: 1; }
     .langbar a.active { opacity: 1; font-weight: 600; border-color: currentColor; }
 </style><noscript><style>.page{display:block !important}.langbar{display:none !important}nav{display:none !important}</style></noscript>
-  
 </head>
 <body>
 <header>
@@ -159,8 +158,6 @@
 <h1>PetSoul</h1>
 <p id="tagline">AI 寵物情緒分析 &amp; 紀念 App</p>
 </header><div aria-label="Language" class="langbar" role="navigation"><a data-lang="zh" href="?lang=zh" onclick="return setLang('zh')">繁體中文</a> <a data-lang="en" href="?lang=en" onclick="return setLang('en')">English</a> <a data-lang="ja" href="?lang=ja" onclick="return setLang('ja')">日本語</a> <a data-lang="ko" href="?lang=ko" onclick="return setLang('ko')">한국어</a> </div>
-
-
 <nav>
 <a class="active" href="#privacy" id="tab-privacy" onclick="showPage('privacy', this)">隱私政策</a>
 <a href="#terms" id="tab-terms" onclick="showPage('terms', this)">服務條款</a>
@@ -172,10 +169,12 @@
 <h2>資料蒐集</h2>
 <p>PetSoul 在您使用時蒐集以下資料：</p>
 <ul>
-<li>您上傳的寵物照片（僅用於 AI 分析，分析完成後不另行儲存至我們的伺服器）</li>
-<li>寵物基本資料（名稱、品種、類型）</li>
-<li>情緒掃描記錄與分析結果</li>
-<li>帳號資訊（Google 登入提供的電子郵件與顯示名稱）</li>
+<li>您上傳或拍攝的寵物照片（用於 AI 分析、寵物頭像與情緒日記；照片會上傳並儲存在我們的雲端空間，直到您刪除該筆紀錄或刪除帳號）</li>
+<li>您錄製的寵物聲音（儲存在您的雲端資料中，供日記與告別報告使用，不會送交 AI 分析）</li>
+<li>寵物基本資料（名稱、品種、類型），以及您在告別報告問卷中填寫的文字</li>
+<li>情緒掃描記錄、AI 分析結果與 AI 生成的心情圖</li>
+<li>帳號資訊（使用 Google 或 Apple 登入時提供的電子郵件與顯示名稱）</li>
+<li>使用量紀錄（每月掃描次數、每日觀看獎勵廣告次數、心情圖與加購張數），用於管理免費額度</li>
 </ul>
 </div>
 <div class="section">
@@ -183,32 +182,50 @@
 <p>您的資料用於：</p>
 <ul>
 <li>提供 AI 情緒分析與品種識別功能</li>
-<li>生成情緒日記、週報、月報與告別報告</li>
-<li>改善 App 功能體驗（匿名統計，不包含個人識別資訊）</li>
+<li>生成情緒日記、週報、月報、告別報告與心情圖</li>
+<li>管理免費額度、訂閱與加購內容</li>
 </ul>
-<p>照片資料將傳送至 Google Gemini 或 OpenAI Vision 進行 AI 分析。AI 服務提供商有其獨立的隱私政策。</p>
+<p>我們不會出售您的個人資料。</p>
+</div>
+<div class="section">
+<h2>第三方 AI 服務</h2>
+<p>為了產生分析結果，您的照片與文字會透過我們自己的伺服器（Vercel）轉送給下列 AI 服務，並依當下可用狀況擇一處理：</p>
+<ul>
+<li>照片分析（情緒掃描、品種識別）：Google Gemini、OpenAI</li>
+<li>週報、月報、告別報告等文字內容：Anthropic Claude、OpenAI、Google Gemini（會送出寵物名稱、類型、統計數據與您填寫的問卷文字）</li>
+<li>心情圖生成：OpenAI（若選擇寫實風格，會一併送出您的原始寵物照片）</li>
+</ul>
+<p>這些 AI 服務提供商有其獨立的隱私政策。</p>
+</div>
+<div class="section">
+<h2>廣告與追蹤</h2>
+<p>免費版提供「觀看獎勵廣告以換取額外次數」的功能，廣告由 Google AdMob 提供，AdMob 可能使用裝置的廣告識別碼來投放廣告。在 iOS 上，App 會先透過系統視窗詢問您是否允許追蹤，您可以選擇拒絕，也可以隨時到「設定 → 隱私權與安全性 → 追蹤」變更。</p>
+</div>
+<div class="section">
+<h2>付款與訂閱</h2>
+<p>訂閱與加購透過 App Store 或 Google Play 處理，我們不會取得也不會儲存您的信用卡資料。為了辨識您的購買狀態，我們使用 RevenueCat 服務，並以您的帳號識別碼（不含姓名與電子郵件）關聯購買紀錄。</p>
 </div>
 <div class="section">
 <h2>資料儲存</h2>
 <p>您的資料儲存於 Google Firebase（Firebase Firestore 與 Firebase Storage），伺服器位於美國。</p>
 <p>您的資料受到以下保護：</p>
 <ul>
-<li>帳號驗證（Google Sign-In）</li>
-<li>Firestore 安全規則（僅您本人可存取自己的資料）</li>
+<li>帳號驗證（Google 或 Apple 登入）</li>
+<li>Firestore 與 Storage 安全規則（僅您本人可存取自己的資料）</li>
 </ul>
 </div>
 <div class="section">
 <h2>資料刪除</h2>
 <p>您可以隨時在「設定 → 我的資料」中匯出完整資料。</p>
-<p>如需刪除帳號及所有相關資料，請聯絡我們：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
-<p>刪除後，您的寵物資料、掃描記錄、告別報告將無法復原。</p>
+<p>您也可以隨時在「設定 → 刪除帳號」中永久刪除帳號，我們會一併刪除您的寵物資料、掃描記錄、照片、錄音、告別報告與使用量紀錄，並刪除登入帳號。刪除後無法復原。</p>
+<p>購買紀錄由 Apple、Google 與 RevenueCat 依其規定保存，不在我們可刪除的範圍內。如有其他需求，也可以聯絡我們：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
 </div>
 <div class="section">
 <h2>聯絡方式</h2>
 <p>如有隱私相關問題，請聯絡：</p>
 <p>電子郵件：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
 </div>
-<p class="updated">本政策最後更新：2026 年 5 月 26 日</p>
+<p class="updated">本政策最後更新：2026 年 9 月 25 日</p>
 </div>
 <!-- ── 服務條款 ── -->
 <div class="page" id="terms">
@@ -219,6 +236,7 @@
 <li>照片情緒掃描（分析寵物當下的情緒狀態）</li>
 <li>品種識別</li>
 <li>情緒日記與趨勢報告</li>
+<li>AI 生成的心情圖</li>
 <li>AI 告別報告（身後紀念功能）</li>
 </ul>
 </div>
@@ -229,7 +247,7 @@
 <li>僅上傳您有權使用的照片</li>
 <li>不將本 App 用於任何違法目的</li>
 <li>不嘗試破解、逆向工程或干擾服務運作</li>
-<li>遵守 Google Play 服務條款（Android 版本）</li>
+<li>遵守 App Store（iOS 版本）與 Google Play（Android 版本）的服務條款</li>
 </ul>
 </div>
 <div class="section">
@@ -238,17 +256,18 @@
 <ul>
 <li>分析結果僅供參考，不代表寵物實際的醫療狀況</li>
 <li>AI 可能因照片角度、光線等因素產生誤判</li>
+<li>AI 生成的心情圖是藝術化的呈現，不代表寵物實際的外觀或狀態</li>
 <li>本 App 不能替代獸醫的專業診斷</li>
 </ul>
 <p>若您的寵物出現異常行為或健康問題，請諮詢專業獸醫。</p>
 </div>
 <div class="section">
-<h2>訂閱與付款</h2>
+<h2>訂閱、加購與廣告</h2>
 <ul>
-<li>免費版每月提供有限次數的情緒掃描</li>
-<li>Pro 訂閱方案透過 Google Play 計費管理</li>
+<li>免費版每月提供有限次數的情緒掃描，也可以觀看獎勵廣告換取額外次數</li>
+<li>Pro 訂閱與單次加購（例如寵物名額、心情圖張數、告別報告）透過 App Store（iOS）或 Google Play（Android）計費管理</li>
 <li>訂閱費用將在每個計費週期自動續扣</li>
-<li>您可以隨時在 Google Play 設定中取消訂閱</li>
+<li>您可以隨時取消訂閱：iOS 請到 Apple ID 的「訂閱項目」，Android 請到 Google Play 設定</li>
 <li>已扣款的期間不予退款（法律另有規定者除外）</li>
 </ul>
 </div>
@@ -257,18 +276,19 @@
 <p>在法律允許的最大範圍內，PetSoul 對因使用本 App 所產生的任何直接或間接損失不承擔責任，包括但不限於資料遺失、決策失誤或情感損害。</p>
 <p>本條款受中華民國法律管轄。</p>
 </div>
-<p class="updated">本條款最後更新：2026 年 5 月 26 日</p>
+<p class="updated">本條款最後更新：2026 年 9 月 25 日</p>
 </div>
-
-  <div class="page" id="privacy-en" lang="en">
+<div class="page" id="privacy-en" lang="en">
 <div class="section">
 <h2>Data Collection</h2>
 <p>PetSoul collects the following data when you use it:</p>
 <ul>
-<li>Pet photos you upload (used only for AI analysis; not separately stored on our servers after analysis is complete)</li>
-<li>Basic pet information (name, breed, type)</li>
-<li>Emotion scan records and analysis results</li>
-<li>Account information (email and display name provided by Google sign-in)</li>
+<li>Pet photos you upload or take (used for AI analysis, pet avatars and emotion diaries; photos are uploaded and stored in our cloud storage until you delete the record or your account)</li>
+<li>Pet sounds you record (stored in your cloud data for diaries and farewell reports; they are not sent to AI for analysis)</li>
+<li>Basic pet information (name, breed, type), and the text you enter in the farewell report questionnaire</li>
+<li>Emotion scan records, AI analysis results, and AI-generated mood images</li>
+<li>Account information (email and display name provided when you sign in with Google or Apple)</li>
+<li>Usage records (monthly scan count, daily rewarded-ad views, and mood image and add-on counts), used to manage the free quota</li>
 </ul>
 </div>
 <div class="section">
@@ -276,35 +296,52 @@
 <p>Your data is used to:</p>
 <ul>
 <li>Provide AI emotion analysis and breed identification</li>
-<li>Generate emotion diaries, weekly reports, monthly reports, and farewell reports</li>
-<li>Improve the app experience (anonymous statistics that contain no personally identifiable information)</li>
+<li>Generate emotion diaries, weekly reports, monthly reports, farewell reports and mood images</li>
+<li>Manage the free quota, subscriptions and add-on purchases</li>
 </ul>
-<p>Photos are sent to Google Gemini or OpenAI Vision for AI analysis. These AI service providers have their own separate privacy policies.</p>
+<p>We do not sell your personal data.</p>
+</div>
+<div class="section">
+<h2>Third-Party AI Services</h2>
+<p>To produce results, your photos and text are relayed through our own server (Vercel) to the AI services below, and handled by whichever is available at the time:</p>
+<ul>
+<li>Photo analysis (emotion scan, breed identification): Google Gemini, OpenAI</li>
+<li>Text such as weekly reports, monthly reports and farewell reports: Anthropic Claude, OpenAI, Google Gemini (pet name, type, statistics and the questionnaire text you entered are sent)</li>
+<li>Mood image generation: OpenAI (if you choose the realistic style, your original pet photo is sent as well)</li>
+</ul>
+<p>These AI service providers have their own independent privacy policies.</p>
+</div>
+<div class="section">
+<h2>Ads and Tracking</h2>
+<p>The free version lets you watch a rewarded ad to earn extra uses. Ads are provided by Google AdMob, which may use your device's advertising identifier to serve ads. On iOS, the app first asks through a system prompt whether you allow tracking. You can decline, and you can change this at any time under Settings → Privacy &amp; Security → Tracking.</p>
+</div>
+<div class="section">
+<h2>Payments and Subscriptions</h2>
+<p>Subscriptions and add-on purchases are processed by the App Store or Google Play. We do not receive or store your card details. To recognize your purchase status, we use RevenueCat and link purchase records to your account identifier (not your name or email).</p>
 </div>
 <div class="section">
 <h2>Data Storage</h2>
 <p>Your data is stored on Google Firebase (Firebase Firestore and Firebase Storage), with servers located in the United States.</p>
 <p>Your data is protected by:</p>
 <ul>
-<li>Account authentication (Google Sign-In)</li>
-<li>Firestore security rules (only you can access your own data)</li>
+<li>Account authentication (Google or Apple sign-in)</li>
+<li>Firestore and Storage security rules (only you can access your own data)</li>
 </ul>
 </div>
 <div class="section">
 <h2>Data Deletion</h2>
-<p>You can export your full data at any time under “Settings → My Data”.</p>
-<p>To delete your account and all related data, please contact us: <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
-<p>After deletion, your pet data, scan records, and farewell reports cannot be recovered.</p>
+<p>You can export your complete data at any time under Settings → My Data.</p>
+<p>You can also permanently delete your account at any time under Settings → Delete Account. We will delete your pet data, scan records, photos, recordings, farewell reports and usage records, as well as your sign-in account. This cannot be undone.</p>
+<p>Purchase records are kept by Apple, Google and RevenueCat under their own policies and are outside what we can delete. For any other request, you can also contact us: <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
 </div>
 <div class="section">
 <h2>Contact</h2>
-<p>If you have any privacy-related questions, please contact:</p>
+<p>If you have privacy-related questions, please contact:</p>
 <p>Email: <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
 </div>
-<p class="updated">Policy last updated: May 26, 2026</p>
+<p class="updated">Policy last updated: September 25, 2026</p>
 </div>
-
-  <div class="page" id="terms-en" lang="en">
+<div class="page" id="terms-en" lang="en">
 <div class="section">
 <h2>Description of Service</h2>
 <p>PetSoul is an AI pet emotion analysis app that provides the following features:</p>
@@ -312,231 +349,273 @@
 <li>Photo emotion scan (analyzes your pet's current emotional state)</li>
 <li>Breed identification</li>
 <li>Emotion diary and trend reports</li>
-<li>AI farewell report (memorial feature for a pet that has passed away)</li>
+<li>AI-generated mood images</li>
+<li>AI farewell report (memorial feature)</li>
 </ul>
 </div>
 <div class="section">
 <h2>Acceptable Use</h2>
-<p>By using PetSoul, you agree to the following:</p>
+<p>By using PetSoul, you agree to:</p>
 <ul>
-<li>Upload only photos you have the right to use</li>
-<li>Do not use this app for any unlawful purpose</li>
-<li>Do not attempt to hack, reverse engineer, or interfere with the operation of the service</li>
-<li>Comply with the Google Play terms of service (Android version)</li>
+<li>Only upload photos you have the right to use</li>
+<li>Not use this app for any unlawful purpose</li>
+<li>Not attempt to hack, reverse engineer or interfere with the service</li>
+<li>Comply with the terms of service of the App Store (iOS version) and Google Play (Android version)</li>
 </ul>
 </div>
 <div class="section">
 <h2>AI Analysis Disclaimer</h2>
-<p>PetSoul's emotion analysis and breed identification are both based on AI technology and have the following limitations:</p>
+<p>PetSoul's emotion analysis and breed identification are based on AI technology and have the following limitations:</p>
 <ul>
 <li>Results are for reference only and do not represent your pet's actual medical condition</li>
-<li>AI may misjudge because of factors such as photo angle or lighting</li>
-<li>This app cannot replace a veterinarian's professional diagnosis</li>
+<li>AI may misjudge because of photo angle, lighting and other factors</li>
+<li>AI-generated mood images are artistic renditions and do not represent your pet's actual appearance or state</li>
+<li>This app is not a substitute for a veterinarian's professional diagnosis</li>
 </ul>
-<p>If your pet shows abnormal behavior or health problems, please consult a professional veterinarian.</p>
+<p>If your pet shows unusual behavior or health problems, please consult a professional veterinarian.</p>
 </div>
 <div class="section">
-<h2>Subscription and Payment</h2>
+<h2>Subscriptions, Add-ons and Ads</h2>
 <ul>
-<li>The free version provides a limited number of emotion scans per month</li>
-<li>The Pro subscription plan is billed and managed through Google Play</li>
-<li>Subscription fees are automatically charged at the start of each billing period</li>
-<li>You can cancel your subscription at any time in Google Play settings</li>
-<li>No refunds are given for periods already charged (except where otherwise required by law)</li>
+<li>The free version provides a limited number of emotion scans each month, and you can watch rewarded ads to earn extra uses</li>
+<li>The Pro subscription and one-time add-on purchases (such as pet slots, mood image packs and farewell reports) are billed through the App Store (iOS) or Google Play (Android)</li>
+<li>Subscription fees renew automatically each billing period</li>
+<li>You can cancel at any time: on iOS, in your Apple ID "Subscriptions" settings; on Android, in Google Play settings</li>
+<li>Periods already charged are non-refundable (except where required by law)</li>
 </ul>
 </div>
 <div class="section">
 <h2>Limitation of Liability</h2>
-<p>To the maximum extent permitted by law, PetSoul is not liable for any direct or indirect loss arising from the use of this app, including but not limited to data loss, poor decisions, or emotional distress.</p>
+<p>To the maximum extent permitted by law, PetSoul is not liable for any direct or indirect loss arising from the use of this app, including but not limited to data loss, poor decisions or emotional distress.</p>
 <p>These terms are governed by the laws of the Republic of China (Taiwan).</p>
 </div>
-<p class="updated">Terms last updated: May 26, 2026</p>
+<p class="updated">Terms last updated: September 25, 2026</p>
 </div>
-
-  <div class="page" id="privacy-ja" lang="ja">
+<div class="page" id="privacy-ja" lang="ja">
 <div class="section">
 <h2>収集するデータ</h2>
-<p>PetSoul は、ご利用時に次のデータを収集します：</p>
+<p>PetSoul はご利用時に次のデータを収集します：</p>
 <ul>
-<li>アップロードされたペットの写真（AI分析にのみ使用し、分析完了後に当方のサーバーへ別途保存することはありません）</li>
-<li>ペットの基本情報（名前、品種、種類）</li>
-<li>感情スキャンの記録と分析結果</li>
-<li>アカウント情報（Google ログインで提供されるメールアドレスと表示名）</li>
+<li>アップロードまたは撮影したペットの写真（AI 分析、ペットのアイコン、感情日記に使用します。写真はクラウドストレージにアップロードして保存し、その記録またはアカウントを削除するまで保持します）</li>
+<li>録音したペットの声（日記とお別れレポートのため、お客様のクラウドデータに保存します。AI 分析には送信しません）</li>
+<li>ペットの基本情報（名前、品種、種類）、およびお別れレポートのアンケートに入力したテキスト</li>
+<li>感情スキャンの記録、AI の分析結果、AI が生成したムード画像</li>
+<li>アカウント情報（Google または Apple でログインした際に提供されるメールアドレスと表示名）</li>
+<li>利用状況の記録（月間スキャン回数、1 日のリワード広告視聴回数、ムード画像と追加購入の枚数）。無料枠の管理に使用します</li>
 </ul>
 </div>
 <div class="section">
 <h2>データの利用目的</h2>
 <p>お客様のデータは次の目的で利用します：</p>
 <ul>
-<li>AIによる感情分析と品種判別の提供</li>
-<li>感情日記、週次レポート、月次レポート、お別れレポートの作成</li>
-<li>アプリの使い勝手の改善（個人を特定できる情報を含まない匿名の統計）</li>
+<li>AI による感情分析と品種識別の提供</li>
+<li>感情日記、週報、月報、お別れレポート、ムード画像の生成</li>
+<li>無料枠、サブスクリプション、追加購入の管理</li>
 </ul>
-<p>写真はAI分析のために Google Gemini または OpenAI Vision に送信されます。これらのAIサービス提供事業者には、それぞれ独自のプライバシーポリシーがあります。</p>
+<p>お客様の個人データを販売することはありません。</p>
+</div>
+<div class="section">
+<h2>第三者の AI サービス</h2>
+<p>結果を生成するため、写真とテキストは当社のサーバー（Vercel）を経由して次の AI サービスに転送され、その時点で利用可能なものが処理します：</p>
+<ul>
+<li>写真の分析（感情スキャン、品種識別）：Google Gemini、OpenAI</li>
+<li>週報、月報、お別れレポートなどのテキスト：Anthropic Claude、OpenAI、Google Gemini（ペットの名前、種類、統計、入力したアンケートのテキストを送信します）</li>
+<li>ムード画像の生成：OpenAI（リアル調を選んだ場合は、元のペット写真も一緒に送信します）</li>
+</ul>
+<p>これらの AI サービス提供者には、それぞれ独自のプライバシーポリシーがあります。</p>
+</div>
+<div class="section">
+<h2>広告とトラッキング</h2>
+<p>無料版では「リワード広告を視聴して追加回数を獲得する」機能を提供しています。広告は Google AdMob が配信し、AdMob は端末の広告 ID を使って広告を表示することがあります。iOS では、まずシステムのダイアログでトラッキングを許可するかどうかをお尋ねします。拒否することもでき、「設定 → プライバシーとセキュリティ → トラッキング」からいつでも変更できます。</p>
+</div>
+<div class="section">
+<h2>お支払いとサブスクリプション</h2>
+<p>サブスクリプションと追加購入は App Store または Google Play で処理され、当社がカード情報を取得・保存することはありません。購入状況を確認するため RevenueCat を利用し、購入記録をアカウント識別子（氏名やメールアドレスは含みません）に関連付けます。</p>
 </div>
 <div class="section">
 <h2>データの保存</h2>
 <p>お客様のデータは Google Firebase（Firebase Firestore と Firebase Storage）に保存され、サーバーは米国にあります。</p>
-<p>お客様のデータは次の方法で保護されます：</p>
+<p>お客様のデータは次の方法で保護されています：</p>
 <ul>
-<li>アカウント認証（Google Sign-In）</li>
-<li>Firestore のセキュリティルール（ご本人のみが自分のデータにアクセス可能）</li>
+<li>アカウント認証（Google または Apple でのログイン）</li>
+<li>Firestore と Storage のセキュリティルール（ご本人のみが自分のデータにアクセスできます）</li>
 </ul>
 </div>
 <div class="section">
 <h2>データの削除</h2>
-<p>「設定 → マイデータ」から、いつでもすべてのデータを書き出せます。</p>
-<p>アカウントと関連するすべてのデータの削除をご希望の場合は、こちらまでご連絡ください：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
-<p>削除後は、ペットのデータ、スキャン記録、お別れレポートを復元することはできません。</p>
+<p>「設定 → マイデータ」から、いつでもすべてのデータをエクスポートできます。</p>
+<p>「設定 → アカウント削除」から、いつでもアカウントを完全に削除できます。ペットのデータ、スキャン記録、写真、録音、お別れレポート、利用状況の記録、ログインアカウントをまとめて削除します。削除後は元に戻せません。</p>
+<p>購入記録は Apple、Google、RevenueCat がそれぞれの規定に従って保管しており、当社が削除できる範囲外です。その他のご要望は、こちらまでご連絡ください：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
 </div>
 <div class="section">
 <h2>お問い合わせ</h2>
-<p>プライバシーに関するご質問は、次の連絡先までお寄せください：</p>
+<p>プライバシーに関するご質問は、こちらまでご連絡ください：</p>
 <p>メール：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
 </div>
-<p class="updated">本ポリシーの最終更新日：2026年5月26日</p>
+<p class="updated">本ポリシーの最終更新日：2026年9月25日</p>
 </div>
-
-  <div class="page" id="terms-ja" lang="ja">
+<div class="page" id="terms-ja" lang="ja">
 <div class="section">
 <h2>サービスの内容</h2>
-<p>PetSoul は、AIでペットの感情を分析するアプリで、次の機能を提供します：</p>
+<p>PetSoul は AI によるペットの感情分析アプリで、次の機能を提供します：</p>
 <ul>
 <li>写真による感情スキャン（ペットの今の感情状態を分析）</li>
-<li>品種判別</li>
+<li>品種識別</li>
 <li>感情日記とトレンドレポート</li>
-<li>AIお別れレポート（ペットを見送った後のメモリアル機能）</li>
+<li>AI が生成するムード画像</li>
+<li>AI お別れレポート（メモリアル機能）</li>
 </ul>
 </div>
 <div class="section">
 <h2>ご利用上のルール</h2>
 <p>PetSoul をご利用になることで、次の事項に同意したものとみなされます：</p>
 <ul>
-<li>利用する権利のある写真のみをアップロードすること</li>
+<li>ご自身に使用する権利のある写真のみをアップロードすること</li>
 <li>本アプリを違法な目的に使用しないこと</li>
-<li>サービスの解析（ハッキングやリバースエンジニアリング）や運営の妨害を試みないこと</li>
-<li>Google Play の利用規約を遵守すること（Android版）</li>
+<li>サービスの解析（ハッキングやリバースエンジニアリング）や動作の妨害を試みないこと</li>
+<li>App Store（iOS 版）および Google Play（Android 版）の利用規約を遵守すること</li>
 </ul>
 </div>
 <div class="section">
-<h2>AI分析に関する免責事項</h2>
-<p>PetSoul の感情分析と品種判別はいずれもAI技術に基づいており、次のような制限があります：</p>
+<h2>AI 分析に関する免責事項</h2>
+<p>PetSoul の感情分析と品種識別は AI 技術に基づいており、次の制限があります：</p>
 <ul>
 <li>分析結果は参考情報であり、ペットの実際の医療上の状態を示すものではありません</li>
-<li>写真の角度や照明などの要因により、AIが誤って判断する場合があります</li>
-<li>本アプリは獣医師による専門的な診断に代わるものではありません</li>
+<li>写真の角度や明るさなどにより、AI が誤って判断することがあります</li>
+<li>AI が生成するムード画像は芸術的な表現であり、ペットの実際の外見や状態を示すものではありません</li>
+<li>本アプリは獣医師による専門的な診断の代わりにはなりません</li>
 </ul>
-<p>ペットに気になる行動や健康上の問題が見られる場合は、専門の獣医師にご相談ください。</p>
+<p>ペットに普段と違う行動や健康上の問題が見られる場合は、専門の獣医師にご相談ください。</p>
 </div>
 <div class="section">
-<h2>サブスクリプションとお支払い</h2>
+<h2>サブスクリプション、追加購入、広告</h2>
 <ul>
-<li>無料版では、感情スキャンを毎月限られた回数ご利用いただけます</li>
-<li>Proサブスクリプションプランの課金と管理は Google Play を通じて行われます</li>
-<li>サブスクリプション料金は、各請求期間ごとに自動的に請求されます</li>
-<li>サブスクリプションは、Google Play の設定からいつでも解約できます</li>
-<li>請求済みの期間について返金は行いません（法律で別途定められている場合を除きます）</li>
+<li>無料版では毎月一定回数の感情スキャンを利用でき、リワード広告を視聴して追加回数を獲得することもできます</li>
+<li>Pro サブスクリプションと単発の追加購入（ペット枠、ムード画像パック、お別れレポートなど）は、App Store（iOS）または Google Play（Android）で課金・管理されます</li>
+<li>サブスクリプション料金は、請求期間ごとに自動的に更新されます</li>
+<li>いつでも解約できます。iOS は Apple ID の「サブスクリプション」設定、Android は Google Play の設定から行ってください</li>
+<li>すでに請求された期間分は返金されません（法令で別途定められている場合を除きます）</li>
 </ul>
 </div>
 <div class="section">
 <h2>責任の制限</h2>
-<p>法律で認められる最大限の範囲において、PetSoul は、本アプリの利用によって生じたいかなる直接的または間接的な損害（データの消失、判断の誤り、精神的苦痛を含みますが、これらに限りません）についても責任を負いません。</p>
+<p>法令で認められる最大限の範囲で、PetSoul は本アプリの利用によって生じたいかなる直接的・間接的な損失（データの消失、判断の誤り、精神的損害を含みますが、これらに限りません）についても責任を負いません。</p>
 <p>本規約は中華民国（台湾）の法律に準拠します。</p>
 </div>
-<p class="updated">本規約の最終更新日：2026年5月26日</p>
+<p class="updated">本規約の最終更新日：2026年9月25日</p>
 </div>
-
-  <div class="page" id="privacy-ko" lang="ko">
+<div class="page" id="privacy-ko" lang="ko">
 <div class="section">
 <h2>데이터 수집</h2>
-<p>PetSoul은(는) 사용 중에 다음 데이터를 수집합니다:</p>
+<p>PetSoul은 이용 시 다음 데이터를 수집합니다:</p>
 <ul>
-<li>업로드한 반려동물 사진(AI 분석에만 사용되며, 분석 완료 후 당사 서버에 별도로 저장되지 않습니다)</li>
-<li>반려동물 기본 정보(이름, 품종, 종류)</li>
-<li>감정 스캔 기록 및 분석 결과</li>
-<li>계정 정보(Google 로그인으로 제공되는 이메일과 표시 이름)</li>
+<li>업로드하거나 촬영한 반려동물 사진(AI 분석, 반려동물 프로필 사진, 감정 일기에 사용됩니다. 사진은 클라우드 저장소에 업로드되어 해당 기록 또는 계정을 삭제할 때까지 보관됩니다)</li>
+<li>녹음한 반려동물 소리(일기와 이별 리포트에 사용되도록 회원님의 클라우드 데이터에 저장되며, AI 분석으로는 전송되지 않습니다)</li>
+<li>반려동물 기본 정보(이름, 품종, 종류) 및 이별 리포트 설문에 입력한 텍스트</li>
+<li>감정 스캔 기록, AI 분석 결과, AI가 생성한 무드 이미지</li>
+<li>계정 정보(Google 또는 Apple로 로그인할 때 제공되는 이메일과 표시 이름)</li>
+<li>이용량 기록(월간 스캔 횟수, 일일 보상형 광고 시청 횟수, 무드 이미지 및 추가 구매 수량). 무료 이용 한도를 관리하는 데 사용됩니다</li>
 </ul>
 </div>
 <div class="section">
 <h2>데이터 이용</h2>
-<p>귀하의 데이터는 다음 목적으로 사용됩니다:</p>
+<p>회원님의 데이터는 다음 목적으로 이용됩니다:</p>
 <ul>
 <li>AI 감정 분석 및 품종 식별 기능 제공</li>
-<li>감정 일기, 주간 리포트, 월간 리포트 및 이별 리포트 생성</li>
-<li>앱 사용 경험 개선(개인을 식별할 수 있는 정보가 없는 익명 통계)</li>
+<li>감정 일기, 주간 리포트, 월간 리포트, 이별 리포트, 무드 이미지 생성</li>
+<li>무료 이용 한도, 구독, 추가 구매 관리</li>
 </ul>
-<p>사진은 AI 분석을 위해 Google Gemini 또는 OpenAI Vision으로 전송됩니다. 이 AI 서비스 제공업체는 각자 별도의 개인정보 처리방침을 가지고 있습니다.</p>
+<p>회원님의 개인 데이터를 판매하지 않습니다.</p>
+</div>
+<div class="section">
+<h2>제3자 AI 서비스</h2>
+<p>결과를 만들기 위해 사진과 텍스트는 당사 서버(Vercel)를 거쳐 아래 AI 서비스로 전달되며, 그 시점에 이용 가능한 서비스가 처리합니다:</p>
+<ul>
+<li>사진 분석(감정 스캔, 품종 식별): Google Gemini, OpenAI</li>
+<li>주간 리포트, 월간 리포트, 이별 리포트 등의 텍스트: Anthropic Claude, OpenAI, Google Gemini(반려동물 이름, 종류, 통계, 입력한 설문 텍스트가 전송됩니다)</li>
+<li>무드 이미지 생성: OpenAI(사실적 스타일을 선택하면 원본 반려동물 사진도 함께 전송됩니다)</li>
+</ul>
+<p>이들 AI 서비스 제공업체는 각자 독립된 개인정보 처리방침을 가지고 있습니다.</p>
+</div>
+<div class="section">
+<h2>광고 및 추적</h2>
+<p>무료 버전에서는 보상형 광고를 시청하고 추가 이용 횟수를 받을 수 있습니다. 광고는 Google AdMob에서 제공하며, AdMob은 기기의 광고 식별자를 사용해 광고를 표시할 수 있습니다. iOS에서는 먼저 시스템 창으로 추적을 허용할지 묻습니다. 거부할 수 있으며, 「설정 → 개인정보 보호 및 보안 → 추적」에서 언제든지 변경할 수 있습니다.</p>
+</div>
+<div class="section">
+<h2>결제 및 구독</h2>
+<p>구독과 추가 구매는 App Store 또는 Google Play를 통해 처리되며, 당사는 카드 정보를 받거나 저장하지 않습니다. 구매 상태를 확인하기 위해 RevenueCat을 사용하며, 구매 기록은 계정 식별자(이름과 이메일은 포함되지 않음)와 연결됩니다.</p>
 </div>
 <div class="section">
 <h2>데이터 저장</h2>
-<p>귀하의 데이터는 Google Firebase(Firebase Firestore 및 Firebase Storage)에 저장되며 서버는 미국에 있습니다.</p>
-<p>귀하의 데이터는 다음 방법으로 보호됩니다:</p>
+<p>회원님의 데이터는 Google Firebase(Firebase Firestore 및 Firebase Storage)에 저장되며, 서버는 미국에 있습니다.</p>
+<p>회원님의 데이터는 다음과 같이 보호됩니다:</p>
 <ul>
-<li>계정 인증(Google Sign-In)</li>
-<li>Firestore 보안 규칙(본인만 자신의 데이터에 접근 가능)</li>
+<li>계정 인증(Google 또는 Apple 로그인)</li>
+<li>Firestore 및 Storage 보안 규칙(본인만 자신의 데이터에 접근할 수 있음)</li>
 </ul>
 </div>
 <div class="section">
 <h2>데이터 삭제</h2>
-<p>‘설정 → 내 데이터’에서 언제든지 전체 데이터를 내보낼 수 있습니다.</p>
-<p>계정과 관련 데이터를 모두 삭제하려면 저희에게 연락해 주세요: <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
-<p>삭제 후에는 반려동물 데이터, 스캔 기록, 이별 리포트를 복구할 수 없습니다.</p>
+<p>「설정 → 내 데이터」에서 언제든지 전체 데이터를 내보낼 수 있습니다.</p>
+<p>「설정 → 계정 삭제」에서 언제든지 계정을 영구 삭제할 수 있습니다. 반려동물 데이터, 스캔 기록, 사진, 녹음, 이별 리포트, 이용량 기록과 로그인 계정이 함께 삭제되며, 삭제 후에는 복구할 수 없습니다.</p>
+<p>구매 기록은 Apple, Google, RevenueCat이 각자의 규정에 따라 보관하므로 당사가 삭제할 수 있는 범위가 아닙니다. 그 밖의 요청은 다음으로 문의해 주세요: <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
 </div>
 <div class="section">
 <h2>문의</h2>
 <p>개인정보 관련 문의는 아래로 연락해 주세요:</p>
 <p>이메일: <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
 </div>
-<p class="updated">본 방침 최종 업데이트: 2026년 5월 26일</p>
+<p class="updated">본 방침 최종 업데이트: 2026년 9월 25일</p>
 </div>
-
-  <div class="page" id="terms-ko" lang="ko">
+<div class="page" id="terms-ko" lang="ko">
 <div class="section">
 <h2>서비스 설명</h2>
-<p>PetSoul은(는) AI 반려동물 감정 분석 앱으로, 다음 기능을 제공합니다:</p>
+<p>PetSoul은 AI 반려동물 감정 분석 앱으로, 다음 기능을 제공합니다:</p>
 <ul>
 <li>사진 감정 스캔(반려동물의 현재 감정 상태 분석)</li>
 <li>품종 식별</li>
-<li>감정 일기 및 추세 리포트</li>
-<li>AI 이별 리포트(반려동물을 떠나보낸 후의 추모 기능)</li>
+<li>감정 일기 및 추이 리포트</li>
+<li>AI가 생성한 무드 이미지</li>
+<li>AI 이별 리포트(추모 기능)</li>
 </ul>
 </div>
 <div class="section">
 <h2>이용 규정</h2>
-<p>PetSoul을(를) 사용하면 다음 사항에 동의하는 것으로 간주됩니다:</p>
+<p>PetSoul을 이용하면 다음 사항에 동의하는 것으로 간주됩니다:</p>
 <ul>
-<li>사용할 권리가 있는 사진만 업로드합니다</li>
-<li>이 앱을 불법적인 목적으로 사용하지 않습니다</li>
-<li>서비스를 해킹하거나 리버스 엔지니어링하거나 서비스 운영을 방해하려고 시도하지 않습니다</li>
-<li>Google Play 서비스 약관을 준수합니다(Android 버전)</li>
+<li>사용 권한이 있는 사진만 업로드할 것</li>
+<li>본 앱을 불법적인 목적으로 사용하지 않을 것</li>
+<li>서비스를 해킹하거나 리버스 엔지니어링하거나 운영을 방해하지 않을 것</li>
+<li>App Store(iOS 버전)와 Google Play(Android 버전)의 서비스 약관을 준수할 것</li>
 </ul>
 </div>
 <div class="section">
 <h2>AI 분석 면책 조항</h2>
-<p>PetSoul의 감정 분석과 품종 식별은 모두 AI 기술을 기반으로 하며 다음과 같은 한계가 있습니다:</p>
+<p>PetSoul의 감정 분석과 품종 식별은 AI 기술에 기반하며 다음과 같은 한계가 있습니다:</p>
 <ul>
 <li>분석 결과는 참고용이며 반려동물의 실제 의학적 상태를 나타내지 않습니다</li>
-<li>사진 각도나 조명 등의 요인으로 AI가 잘못 판단할 수 있습니다</li>
-<li>이 앱은 수의사의 전문적인 진단을 대신할 수 없습니다</li>
+<li>사진 각도, 조명 등의 요인으로 AI가 잘못 판단할 수 있습니다</li>
+<li>AI가 생성한 무드 이미지는 예술적으로 표현한 것이며 반려동물의 실제 모습이나 상태를 나타내지 않습니다</li>
+<li>본 앱은 수의사의 전문 진단을 대체할 수 없습니다</li>
 </ul>
-<p>반려동물에게 이상 행동이나 건강 문제가 나타나면 전문 수의사와 상담하세요.</p>
+<p>반려동물에게 이상 행동이나 건강 문제가 나타나면 전문 수의사와 상담해 주세요.</p>
 </div>
 <div class="section">
-<h2>구독 및 결제</h2>
+<h2>구독, 추가 구매 및 광고</h2>
 <ul>
-<li>무료 버전에서는 매월 제한된 횟수의 감정 스캔을 제공합니다</li>
-<li>Pro 구독 플랜은 Google Play를 통해 결제 및 관리됩니다</li>
-<li>구독 요금은 각 결제 주기마다 자동으로 청구됩니다</li>
-<li>Google Play 설정에서 언제든지 구독을 취소할 수 있습니다</li>
-<li>이미 결제된 기간에 대해서는 환불되지 않습니다(법률에 달리 정한 경우는 예외)</li>
+<li>무료 버전은 매월 제한된 횟수의 감정 스캔을 제공하며, 보상형 광고를 시청하고 추가 횟수를 받을 수도 있습니다</li>
+<li>Pro 구독과 단건 추가 구매(반려동물 슬롯, 무드 이미지 팩, 이별 리포트 등)는 App Store(iOS) 또는 Google Play(Android)를 통해 결제 및 관리됩니다</li>
+<li>구독 요금은 매 결제 주기마다 자동으로 갱신됩니다</li>
+<li>언제든지 구독을 취소할 수 있습니다. iOS는 Apple ID의 「구독」 설정에서, Android는 Google Play 설정에서 취소하세요</li>
+<li>이미 결제된 기간에 대해서는 환불되지 않습니다(법률에 별도 규정이 있는 경우 제외)</li>
 </ul>
 </div>
 <div class="section">
 <h2>책임의 제한</h2>
-<p>법률이 허용하는 최대 범위 내에서, PetSoul은(는) 이 앱의 이용으로 발생한 직접적 또는 간접적 손실(데이터 손실, 잘못된 판단, 정서적 피해를 포함하되 이에 한정되지 않음)에 대해 책임을 지지 않습니다.</p>
+<p>법률이 허용하는 최대 범위 내에서, PetSoul은 본 앱 이용으로 발생한 직접적 또는 간접적 손실(데이터 손실, 잘못된 판단, 정서적 피해를 포함하되 이에 국한되지 않음)에 대해 책임을 지지 않습니다.</p>
 <p>본 약관은 중화민국(대만) 법률의 적용을 받습니다.</p>
 </div>
-<p class="updated">본 약관 최종 업데이트: 2026년 5월 26일</p>
+<p class="updated">본 약관 최종 업데이트: 2026년 9월 25일</p>
 </div>
 </main>
 <footer>
