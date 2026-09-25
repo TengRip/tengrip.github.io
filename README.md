@@ -4,7 +4,7 @@
 
 **線上網址：** https://tengrip.github.io
 **GitHub repo：** `TengRip/tengrip.github.io`（公開，預設分支 `main`）
-**版次：** v4.7
+**版次：** v4.8
 **日期：** 2026-09-25
 **狀態：** 已上架 20 張 App 卡片、即將推出 1 張卡片、網站作品 8 張
 
@@ -71,6 +71,7 @@ python -m http.server 8930
 
 | 版次 | 日期 | 說明 |
 |---|---|---|
+| v4.8 | 2026-09-25 | 新增 **Peeklo 公開隱私政策頁**（`privacy/peeklo/`，網址 `https://tengrip.github.io/privacy/peeklo/`，App 內「設定與隱私」已連結此網址，ASC 建立紀錄後可直接填入）。頁面初稿 2026-08-28 撰寫但一直未 commit／公開，這次照 Peeklo `1.2.4+8` 程式碼逐項核對後發佈。**修正 3 處不實**：AdMob（UMP 同意 → iOS 追蹤授權 → `MobileAds.initialize()`）與 RevenueCat（`Purchases.configure()`）都在 App **啟動時**於背景初始化，並非「選擇觀看廣告／購買才處理」，只有載入與顯示廣告才是使用者主動；另補暫存檔說明、更新日改 2026-09-25。核對屬實的項目：沒有內容上傳伺服器、沒有分析／崩潰回報 SDK、最多一份本機草稿與「刪除最近草稿」、廣告隱私選項。目前僅繁中＋英文摘要（Peeklo 商店目前只有繁中，等擴語系再補四語版）。**已知待查（尚未處理）**：iOS `PrivacyInfo.xcprivacy` 為 `NSPrivacyTracking=false`、未列收集資料類型，但 App 會顯示 ATT 並使用 AdMob，可能與 ASC 隱私問卷不一致；Peeklo 多數功能（語音留言、X 長按揭密、塗鴉、前後對比）尚未完成真機驗證，商店文案等驗證完再寫。 |
 | v4.7 | 2026-09-25 | Talklo 隱私政策（`privacy/talklo/`）更新，網址不變、ASC 沒動：稿子的語音合成服務由「Microsoft Edge TTS」改列 **Google（Gemini）為主、Microsoft 為備援**（配合 Talklo 1.2.0 新語音引擎；App 內確認視窗的揭露文字同步改為同樣寫法）；補上原本漏寫的「翻譯成配音語言」開關（OpenAI 為主、無法使用時改由 Google Gemini，照 `talklo-ai-proxy` 的 `translate.js` 實際行為核對）；資料儲存段落的「不經過 Google」改為「不儲存在 Google」，避免跟新的揭露互相矛盾；隱私政策更新日改為 2026-09-25（服務條款日期不動）。僅繁中版（該頁原本就只有繁中，未擴大範圍）。**尚未 push＝尚未公開；建議在 Talklo 切換 Gemini 上線前先 push**，讓政策先於行為。 |
 | v4.6 | 2026-09-25 | PetSoul 隱私政策／服務條款（`privacy/petsoul/`，繁中＋英日韓）內容改寫，網址不變。**修正不實說法**：舊文寫照片「分析後不另行儲存至我們的伺服器」，但程式碼（`pet_repository.dart`）確認照片、錄音、AI 心情圖都存在 Firebase Storage；並補上 Apple 登入、第三方 AI 明細（照片：Gemini／OpenAI；文字報告：Claude／OpenAI／Gemini；心情圖：OpenAI，寫實風會送原照片，皆經自家 Vercel proxy）、AdMob 獎勵廣告與 iOS ATT、RevenueCat、App 內「設定 → 刪除帳號」、條款補 App Store 計費與單次加購。更新日 2026-09-25。App 內隱私頁同步改寫（PetSoul repo commit 1978e8e，版號 1.0.6+37，**尚未打包送審**，等下次更新）。英日韓翻譯由 Claude 產生、未經母語者審閱。 |
 | v4.5 | 2026-09-25 | 六個 App 隱私權頁面（`privacy/chowlo`、`growlo`、`oddlo`、`petsoul`、`sagelo`、`trucelo`）補上 English／日本語／한국어，**網址完全不變、ASC 沒動**。做法：同一個 `index.html` 內放四種語言區塊（繁中維持原文、預設語言），頁首加語言切換列；載入時依「`?lang=xx` → 上次選擇（localStorage）→ 瀏覽器語言」決定顯示語言，沒有 JavaScript 時（noscript）四種語言全部展開。隱私政策／服務條款兩個分頁各有四語版，共 133 句獨立句子，App 名稱、日期、粗體、連結、Support 信箱皆保留原樣。**翻譯由 Claude 產生，尚未經母語者審閱**。同時修正兩頁中文事實：**Growlo** 補上「成長冊（PDF）與播放」段落、完整版說明加入「成長冊完整匯出」、條款功能列表新增兩項（隱私／條款更新日 → 2026-09-25）；**Oddlo** 把「橫幅與插頁廣告」改成「橫幅廣告」（實際只有橫幅，更新日 → 2026-09-25）。PetSoul 隱私內容與現況有出入的部分已於 v4.6 處理。 |
