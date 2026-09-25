@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chowlo — 隱私政策</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chowlo — 隱私政策</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -182,130 +183,369 @@
       nav a { padding: 12px 22px; font-size: 0.88rem; }
       .section { padding: 18px 18px; }
     }
-  </style>
+
+    /* ── 語言切換列（多語系）── */
+    .langbar { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 10px; padding: 12px 16px 4px; font-size: 0.82rem; }
+    .langbar a { color: inherit; opacity: 0.72; text-decoration: none; padding: 3px 12px; border-radius: 14px; border: 1px solid transparent; }
+    .langbar a:hover { opacity: 1; }
+    .langbar a.active { opacity: 1; font-weight: 600; border-color: currentColor; }
+</style><noscript><style>.page{display:block !important}.langbar{display:none !important}nav{display:none !important}</style></noscript>
+  
 </head>
 <body>
-
 <header>
-  <div class="logo">🧾</div>
-  <h1>CHOWLO</h1>
-  <p>換糧有計畫，花費有帳本</p>
-</header>
+<div class="logo">🧾</div>
+<h1>CHOWLO</h1>
+<p id="tagline">換糧有計畫，花費有帳本</p>
+</header><div aria-label="Language" class="langbar" role="navigation"><a data-lang="zh" href="?lang=zh" onclick="return setLang('zh')">繁體中文</a> <a data-lang="en" href="?lang=en" onclick="return setLang('en')">English</a> <a data-lang="ja" href="?lang=ja" onclick="return setLang('ja')">日本語</a> <a data-lang="ko" href="?lang=ko" onclick="return setLang('ko')">한국어</a> </div>
+
 
 <nav>
-  <a href="#privacy" class="active" onclick="return showPage('privacy', this)">隱私政策</a>
-  <a href="#terms" onclick="return showPage('terms', this)">服務條款</a>
+<a class="active" href="#privacy" id="tab-privacy" onclick="return showPage('privacy', this)">隱私政策</a>
+<a href="#terms" id="tab-terms" onclick="return showPage('terms', this)">服務條款</a>
 </nav>
-
 <main>
+<!-- ── 隱私政策 ── -->
+<div class="page active" id="privacy">
+<div class="section">
+<h2>基本原則 <span class="badge">本地優先</span></h2>
+<p>Chowlo 是一款貓咪換糧輔助＋開銷記帳工具，不需要帳號、不需要登入。</p>
+<ul>
+<li>換糧排程、飼料清單、記帳紀錄皆僅儲存於您的裝置本地，不會上傳至任何伺服器</li>
+<li>不蒐集、不上傳任何個人資料</li>
+<li>不使用相機、麥克風、定位等裝置感測器</li>
+</ul>
+</div>
+<div class="section">
+<h2>廣告（Google AdMob）</h2>
+<p>Chowlo 為免費 App，透過 Google AdMob 顯示橫幅廣告維持營運，AdMob 可能蒐集以下資訊以提供廣告：</p>
+<ul>
+<li>廣告識別碼（Advertising ID）</li>
+<li>裝置資訊（型號、作業系統版本）</li>
+<li>大略位置（根據 IP 位址）</li>
+</ul>
+<p>詳情請參閱 <a href="https://policies.google.com/privacy" target="_blank">Google 隱私政策</a>。</p>
+</div>
+<div class="section">
+<h2>應用程式內購買（移除廣告）</h2>
+<p>Chowlo 提供一次性「移除廣告」買斷購買，購買流程與付款資訊完全由 Apple App Store／Google Play 處理，Chowlo 不會接觸、儲存您的信用卡或付款資料。購買驗證透過 RevenueCat 服務進行，RevenueCat 僅會取得裝置匿名 ID 與購買紀錄以確認購買狀態，詳情請參閱 <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat 隱私政策</a>。</p>
+</div>
+<div class="section">
+<h2>內容免責聲明</h2>
+<p>App 內換糧比例建議（標準 7 天／敏感腸胃 14 天漸進表）僅供一般參考，實際換糧速度請以獸醫或飼料廠商指示為準；記帳功能單純記錄您自行輸入的支出，不提供任何財務或投資建議。</p>
+</div>
+<div class="section">
+<h2>兒童隱私</h2>
+<p>Chowlo 適合所有年齡使用。本 App 不蒐集任何可識別個人身份的資料，無論使用者年齡為何。</p>
+</div>
+<div class="section">
+<h2>聯絡方式</h2>
+<p>如有隱私相關問題，請聯絡：</p>
+<p>電子郵件：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+</div>
+<p class="updated">本政策最後更新：2026 年 8 月 27 日</p>
+</div>
+<!-- ── 服務條款 ── -->
+<div class="page" id="terms">
+<div class="section">
+<h2>服務說明</h2>
+<p>Chowlo 提供以下核心功能：</p>
+<ul>
+<li><strong style="color:#3E2C1C">換糧排程</strong>：標準 7 天／敏感腸胃 14 天漸進比例表，逐日提醒新舊飼料混合比例</li>
+<li><strong style="color:#3E2C1C">開銷記帳</strong>：記錄飼料與貓咪用品支出，累計檢視花費</li>
+<li><strong style="color:#3E2C1C">飼料清單管理</strong>：管理正在使用與備選的飼料項目</li>
+</ul>
+</div>
+<div class="section">
+<h2>使用規範</h2>
+<p>使用 Chowlo 即表示您同意：</p>
+<ul>
+<li>App 內容僅供參考，不作為換糧或財務決策的唯一依據</li>
+<li>不嘗試破解、逆向工程或干擾 App 運作</li>
+<li>不將本 App 用於任何違法目的</li>
+<li>遵守 Google Play / App Store 服務條款</li>
+</ul>
+</div>
+<div class="section">
+<h2>責任限制</h2>
+<p>在法律允許的最大範圍內，Chowlo 對因使用本 App 內容所產生的任何損失（包含但不限於貓咪換糧不適、記帳金額誤差）不承擔責任。任何貓咪腸胃狀況疑慮，請以獸醫實際診斷為準。本條款受中華民國法律管轄。</p>
+</div>
+<div class="section">
+<h2>聯絡方式</h2>
+<p>如有任何問題，請聯絡：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+</div>
+<p class="updated">本條款最後更新：2026 年 8 月 27 日</p>
+</div>
 
-  <!-- ── 隱私政策 ── -->
-  <div id="privacy" class="page active">
+  <div class="page" id="privacy-en" lang="en">
+<div class="section">
+<h2>Core Principles <span class="badge">Local-first</span></h2>
+<p>Chowlo is a cat food transition helper and expense tracker. No account or login is required.</p>
+<ul>
+<li>Your food transition schedules, food lists, and expense records are stored only on your device and are never uploaded to any server</li>
+<li>We do not collect or upload any personal data</li>
+<li>We do not use device sensors such as the camera, microphone, or location services</li>
+</ul>
+</div>
+<div class="section">
+<h2>Advertising (Google AdMob)</h2>
+<p>Chowlo is a free app that shows banner ads through Google AdMob to support its operation. AdMob may collect the following information to serve ads:</p>
+<ul>
+<li>Advertising identifier (Advertising ID)</li>
+<li>Device information (model, operating system version)</li>
+<li>Approximate location (based on IP address)</li>
+</ul>
+<p>For details, see the <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</p>
+</div>
+<div class="section">
+<h2>In-App Purchase (Remove Ads)</h2>
+<p>Chowlo offers a one-time “Remove Ads” purchase. The purchase process and payment information are handled entirely by the Apple App Store / Google Play, and Chowlo never accesses or stores your credit card or payment details. Purchases are verified through the RevenueCat service; RevenueCat only receives an anonymous device ID and purchase records to confirm your purchase status. For details, see the <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat Privacy Policy</a>.</p>
+</div>
+<div class="section">
+<h2>Content Disclaimer</h2>
+<p>The food transition ratios in the app (standard 7-day / sensitive-stomach 14-day gradual schedules) are for general reference only; please follow your veterinarian's or the food manufacturer's instructions for the actual transition pace. The expense tracker simply records the expenses you enter yourself and does not provide any financial or investment advice.</p>
+</div>
+<div class="section">
+<h2>Children's Privacy</h2>
+<p>Chowlo is suitable for all ages. This app does not collect any personally identifiable information, regardless of the user's age.</p>
+</div>
+<div class="section">
+<h2>Contact</h2>
+<p>If you have any privacy-related questions, please contact:</p>
+<p>Email: <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+</div>
+<p class="updated">Policy last updated: August 27, 2026</p>
+</div>
 
-    <div class="section">
-      <h2>基本原則 <span class="badge">本地優先</span></h2>
-      <p>Chowlo 是一款貓咪換糧輔助＋開銷記帳工具，不需要帳號、不需要登入。</p>
-      <ul>
-        <li>換糧排程、飼料清單、記帳紀錄皆僅儲存於您的裝置本地，不會上傳至任何伺服器</li>
-        <li>不蒐集、不上傳任何個人資料</li>
-        <li>不使用相機、麥克風、定位等裝置感測器</li>
-      </ul>
-    </div>
+  <div class="page" id="terms-en" lang="en">
+<div class="section">
+<h2>Description of Service</h2>
+<p>Chowlo provides the following core features:</p>
+<ul>
+<li><strong style="color:#3E2C1C">Food transition schedule</strong>: standard 7-day / sensitive-stomach 14-day gradual ratio tables, with a daily reminder of the old/new food mixing ratio</li>
+<li><strong style="color:#3E2C1C">Expense tracking</strong>: record spending on food and cat supplies and review the running total</li>
+<li><strong style="color:#3E2C1C">Food list management</strong>: manage the foods you are currently using and candidate foods</li>
+</ul>
+</div>
+<div class="section">
+<h2>Acceptable Use</h2>
+<p>By using Chowlo, you agree to the following:</p>
+<ul>
+<li>App content is for reference only and should not be the sole basis for food transition or financial decisions</li>
+<li>Do not attempt to hack, reverse engineer, or interfere with the operation of the app</li>
+<li>Do not use this app for any unlawful purpose</li>
+<li>Comply with the Google Play / App Store terms of service</li>
+</ul>
+</div>
+<div class="section">
+<h2>Limitation of Liability</h2>
+<p>To the maximum extent permitted by law, Chowlo is not liable for any loss arising from the use of this app's content (including but not limited to digestive upset from a food transition or errors in recorded amounts). For any concern about your cat's digestive health, please rely on your veterinarian's actual diagnosis. These terms are governed by the laws of the Republic of China (Taiwan).</p>
+</div>
+<div class="section">
+<h2>Contact</h2>
+<p>If you have any questions, please contact: <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+</div>
+<p class="updated">Terms last updated: August 27, 2026</p>
+</div>
 
-    <div class="section">
-      <h2>廣告（Google AdMob）</h2>
-      <p>Chowlo 為免費 App，透過 Google AdMob 顯示橫幅廣告維持營運，AdMob 可能蒐集以下資訊以提供廣告：</p>
-      <ul>
-        <li>廣告識別碼（Advertising ID）</li>
-        <li>裝置資訊（型號、作業系統版本）</li>
-        <li>大略位置（根據 IP 位址）</li>
-      </ul>
-      <p>詳情請參閱 <a href="https://policies.google.com/privacy" target="_blank">Google 隱私政策</a>。</p>
-    </div>
+  <div class="page" id="privacy-ja" lang="ja">
+<div class="section">
+<h2>基本方針 <span class="badge">ローカル優先</span></h2>
+<p>Chowlo は、猫のフード切り替えをサポートし、支出を記録できるツールです。アカウント登録やログインは不要です。</p>
+<ul>
+<li>フード切り替えのスケジュール、フードリスト、支出の記録は、お使いのデバイス内にのみ保存され、サーバーにアップロードされることはありません</li>
+<li>個人データの収集・アップロードは一切行いません</li>
+<li>カメラ、マイク、位置情報などのデバイスセンサーは使用しません</li>
+</ul>
+</div>
+<div class="section">
+<h2>広告（Google AdMob）</h2>
+<p>Chowlo は無料アプリで、運営を維持するために Google AdMob を通じてバナー広告を表示します。AdMob は、広告を配信するために次の情報を収集する場合があります：</p>
+<ul>
+<li>広告識別子（Advertising ID）</li>
+<li>デバイス情報（機種、OSのバージョン）</li>
+<li>おおよその位置情報（IPアドレスに基づく）</li>
+</ul>
+<p>詳しくは <a href="https://policies.google.com/privacy" target="_blank">Google プライバシーポリシー</a> をご覧ください。</p>
+</div>
+<div class="section">
+<h2>アプリ内課金（広告の削除）</h2>
+<p>Chowlo では、1回限りの「広告の削除」買い切り課金をご用意しています。購入手続きと支払い情報はすべて Apple App Store／Google Play が処理し、Chowlo がクレジットカードや支払いに関する情報に触れたり保存したりすることはありません。購入の確認には RevenueCat のサービスを利用しており、RevenueCat は購入状況を確認するために、デバイスの匿名IDと購入履歴のみを取得します。詳しくは <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat プライバシーポリシー</a> をご覧ください。</p>
+</div>
+<div class="section">
+<h2>コンテンツに関する免責事項</h2>
+<p>アプリ内のフード切り替え比率の目安（標準7日間／お腹が敏感な猫向け14日間の段階的スケジュール）は一般的な参考情報です。実際の切り替えペースは、獣医師またはフードメーカーの指示に従ってください。家計簿機能は、ご自身が入力した支出を記録するだけで、金融や投資に関する助言は一切行いません。</p>
+</div>
+<div class="section">
+<h2>お子様のプライバシー</h2>
+<p>Chowlo はすべての年齢の方にご利用いただけます。本アプリは、ユーザーの年齢にかかわらず、個人を特定できる情報を一切収集しません。</p>
+</div>
+<div class="section">
+<h2>お問い合わせ</h2>
+<p>プライバシーに関するご質問は、次の連絡先までお寄せください：</p>
+<p>メール：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+</div>
+<p class="updated">本ポリシーの最終更新日：2026年8月27日</p>
+</div>
 
-    <div class="section">
-      <h2>應用程式內購買（移除廣告）</h2>
-      <p>Chowlo 提供一次性「移除廣告」買斷購買，購買流程與付款資訊完全由 Apple App Store／Google Play 處理，Chowlo 不會接觸、儲存您的信用卡或付款資料。購買驗證透過 RevenueCat 服務進行，RevenueCat 僅會取得裝置匿名 ID 與購買紀錄以確認購買狀態，詳情請參閱 <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat 隱私政策</a>。</p>
-    </div>
+  <div class="page" id="terms-ja" lang="ja">
+<div class="section">
+<h2>サービスの内容</h2>
+<p>Chowlo は次の主な機能を提供します：</p>
+<ul>
+<li><strong style="color:#3E2C1C">フード切り替えスケジュール</strong>：標準7日間／お腹が敏感な猫向け14日間の段階的な比率表で、新旧フードの混合比率を毎日お知らせします</li>
+<li><strong style="color:#3E2C1C">支出の記録</strong>：フードや猫用品の支出を記録し、累計を確認できます</li>
+<li><strong style="color:#3E2C1C">フードリスト管理</strong>：使用中のフードや候補のフードを管理できます</li>
+</ul>
+</div>
+<div class="section">
+<h2>ご利用上のルール</h2>
+<p>Chowlo をご利用になることで、次の事項に同意したものとみなされます：</p>
+<ul>
+<li>アプリの内容は参考情報であり、フードの切り替えや金銭面の判断の唯一の根拠としないこと</li>
+<li>アプリの解析（ハッキングやリバースエンジニアリング）や動作の妨害を試みないこと</li>
+<li>本アプリを違法な目的に使用しないこと</li>
+<li>Google Play／App Store の利用規約を遵守すること</li>
+</ul>
+</div>
+<div class="section">
+<h2>責任の制限</h2>
+<p>法律で認められる最大限の範囲において、Chowlo は、本アプリの内容の利用によって生じたいかなる損害（フード切り替え時の体調不良や記録金額の誤差などを含みますが、これらに限りません）についても責任を負いません。猫の消化器の状態に関するご心配がある場合は、獣医師による実際の診断に従ってください。本規約は中華民国（台湾）の法律に準拠します。</p>
+</div>
+<div class="section">
+<h2>お問い合わせ</h2>
+<p>ご不明な点がございましたら、次の連絡先までお問い合わせください：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+</div>
+<p class="updated">本規約の最終更新日：2026年8月27日</p>
+</div>
 
-    <div class="section">
-      <h2>內容免責聲明</h2>
-      <p>App 內換糧比例建議（標準 7 天／敏感腸胃 14 天漸進表）僅供一般參考，實際換糧速度請以獸醫或飼料廠商指示為準；記帳功能單純記錄您自行輸入的支出，不提供任何財務或投資建議。</p>
-    </div>
+  <div class="page" id="privacy-ko" lang="ko">
+<div class="section">
+<h2>기본 원칙 <span class="badge">로컬 우선</span></h2>
+<p>Chowlo은(는) 고양이 사료 전환을 돕고 지출을 기록하는 도구입니다. 계정이나 로그인이 필요하지 않습니다.</p>
+<ul>
+<li>사료 전환 일정, 사료 목록, 지출 기록은 기기에만 저장되며 어떤 서버에도 업로드되지 않습니다</li>
+<li>개인정보를 수집하거나 업로드하지 않습니다</li>
+<li>카메라, 마이크, 위치 정보 등 기기 센서를 사용하지 않습니다</li>
+</ul>
+</div>
+<div class="section">
+<h2>광고(Google AdMob)</h2>
+<p>Chowlo은(는) 무료 앱이며, 운영을 위해 Google AdMob을 통해 배너 광고를 표시합니다. AdMob은 광고를 제공하기 위해 다음 정보를 수집할 수 있습니다:</p>
+<ul>
+<li>광고 식별자(Advertising ID)</li>
+<li>기기 정보(모델, 운영체제 버전)</li>
+<li>대략적인 위치(IP 주소 기반)</li>
+</ul>
+<p>자세한 내용은 <a href="https://policies.google.com/privacy" target="_blank">Google 개인정보 처리방침</a>을 참고하세요.</p>
+</div>
+<div class="section">
+<h2>앱 내 구매(광고 제거)</h2>
+<p>Chowlo은(는) 1회성 ‘광고 제거’ 구매를 제공합니다. 구매 과정과 결제 정보는 Apple App Store／Google Play에서 전적으로 처리하며, Chowlo은(는) 신용카드나 결제 정보에 접근하거나 저장하지 않습니다. 구매 확인은 RevenueCat 서비스를 통해 이루어지며, RevenueCat은 구매 상태를 확인하기 위해 기기의 익명 ID와 구매 기록만 수집합니다. 자세한 내용은 <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat 개인정보 처리방침</a>을 참고하세요.</p>
+</div>
+<div class="section">
+<h2>콘텐츠 면책 조항</h2>
+<p>앱 내 사료 전환 비율 안내(표준 7일／민감한 장을 가진 고양이용 14일 점진 일정)는 일반적인 참고용이며, 실제 전환 속도는 수의사 또는 사료 제조사의 지침을 따르세요. 가계부 기능은 사용자가 직접 입력한 지출을 기록할 뿐이며, 어떠한 재무 또는 투자 조언도 제공하지 않습니다.</p>
+</div>
+<div class="section">
+<h2>아동 개인정보 보호</h2>
+<p>Chowlo은(는) 모든 연령대가 사용할 수 있습니다. 이 앱은 사용자의 연령과 관계없이 개인을 식별할 수 있는 정보를 수집하지 않습니다.</p>
+</div>
+<div class="section">
+<h2>문의</h2>
+<p>개인정보 관련 문의는 아래로 연락해 주세요:</p>
+<p>이메일: <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+</div>
+<p class="updated">본 방침 최종 업데이트: 2026년 8월 27일</p>
+</div>
 
-    <div class="section">
-      <h2>兒童隱私</h2>
-      <p>Chowlo 適合所有年齡使用。本 App 不蒐集任何可識別個人身份的資料，無論使用者年齡為何。</p>
-    </div>
-
-    <div class="section">
-      <h2>聯絡方式</h2>
-      <p>如有隱私相關問題，請聯絡：</p>
-      <p>電子郵件：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
-    </div>
-
-    <p class="updated">本政策最後更新：2026 年 8 月 27 日</p>
-  </div>
-
-  <!-- ── 服務條款 ── -->
-  <div id="terms" class="page">
-
-    <div class="section">
-      <h2>服務說明</h2>
-      <p>Chowlo 提供以下核心功能：</p>
-      <ul>
-        <li><strong style="color:#3E2C1C">換糧排程</strong>：標準 7 天／敏感腸胃 14 天漸進比例表，逐日提醒新舊飼料混合比例</li>
-        <li><strong style="color:#3E2C1C">開銷記帳</strong>：記錄飼料與貓咪用品支出，累計檢視花費</li>
-        <li><strong style="color:#3E2C1C">飼料清單管理</strong>：管理正在使用與備選的飼料項目</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>使用規範</h2>
-      <p>使用 Chowlo 即表示您同意：</p>
-      <ul>
-        <li>App 內容僅供參考，不作為換糧或財務決策的唯一依據</li>
-        <li>不嘗試破解、逆向工程或干擾 App 運作</li>
-        <li>不將本 App 用於任何違法目的</li>
-        <li>遵守 Google Play / App Store 服務條款</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>責任限制</h2>
-      <p>在法律允許的最大範圍內，Chowlo 對因使用本 App 內容所產生的任何損失（包含但不限於貓咪換糧不適、記帳金額誤差）不承擔責任。任何貓咪腸胃狀況疑慮，請以獸醫實際診斷為準。本條款受中華民國法律管轄。</p>
-    </div>
-
-    <div class="section">
-      <h2>聯絡方式</h2>
-      <p>如有任何問題，請聯絡：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
-    </div>
-
-    <p class="updated">本條款最後更新：2026 年 8 月 27 日</p>
-  </div>
-
+  <div class="page" id="terms-ko" lang="ko">
+<div class="section">
+<h2>서비스 설명</h2>
+<p>Chowlo은(는) 다음과 같은 핵심 기능을 제공합니다:</p>
+<ul>
+<li><strong style="color:#3E2C1C">사료 전환 일정</strong>: 표준 7일／민감한 장용 14일 점진 비율표로, 기존 사료와 새 사료의 혼합 비율을 매일 안내합니다</li>
+<li><strong style="color:#3E2C1C">지출 기록</strong>: 사료와 고양이 용품 지출을 기록하고 누적 금액을 확인합니다</li>
+<li><strong style="color:#3E2C1C">사료 목록 관리</strong>: 현재 사용 중인 사료와 후보 사료를 관리합니다</li>
+</ul>
+</div>
+<div class="section">
+<h2>이용 규정</h2>
+<p>Chowlo을(를) 사용하면 다음 사항에 동의하는 것으로 간주됩니다:</p>
+<ul>
+<li>앱 내용은 참고용이며 사료 전환이나 재무 결정의 유일한 근거로 삼지 않습니다</li>
+<li>앱을 해킹하거나 리버스 엔지니어링하거나 앱 운영을 방해하려고 시도하지 않습니다</li>
+<li>이 앱을 불법적인 목적으로 사용하지 않습니다</li>
+<li>Google Play／App Store 서비스 약관을 준수합니다</li>
+</ul>
+</div>
+<div class="section">
+<h2>책임의 제한</h2>
+<p>법률이 허용하는 최대 범위 내에서, Chowlo은(는) 이 앱의 내용을 이용하여 발생한 어떠한 손실(사료 전환 시의 고양이 컨디션 저하, 기록 금액의 오차 등을 포함하되 이에 한정되지 않음)에 대해서도 책임을 지지 않습니다. 고양이의 소화기 건강에 대한 우려가 있는 경우 수의사의 실제 진단을 따르세요. 본 약관은 중화민국(대만) 법률의 적용을 받습니다.</p>
+</div>
+<div class="section">
+<h2>문의</h2>
+<p>문의 사항이 있으시면 다음으로 연락해 주세요: <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+</div>
+<p class="updated">본 약관 최종 업데이트: 2026년 8월 27일</p>
+</div>
 </main>
-
 <footer>
-  <p>© 2026 Chowlo · <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+<p>© 2026 Chowlo · <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
 </footer>
-
 <script>
-  function showPage(id, el) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-    el.classList.add('active');
+  /* 多語系：繁中（預設，原文）／English／日本語／한국어。網址不變，可用 ?lang=en 指定語言 */
+  var I18N = {"zh": {"priv": "隱私政策", "terms": "服務條款", "tagline": "換糧有計畫，花費有帳本", "title": "Chowlo — 隱私政策", "htmlLang": "zh-TW"}, "en": {"priv": "Privacy Policy", "terms": "Terms of Service", "tagline": "A planned food switch, a tracked budget", "title": "Chowlo — Privacy Policy", "htmlLang": "en"}, "ja": {"priv": "プライバシーポリシー", "terms": "利用規約", "tagline": "計画的なフード切り替え、きちんと家計簿", "title": "Chowlo — プライバシーポリシー", "htmlLang": "ja"}, "ko": {"priv": "개인정보 처리방침", "terms": "이용약관", "tagline": "계획적인 사료 전환, 꼼꼼한 가계부", "title": "Chowlo — 개인정보 처리방침", "htmlLang": "ko"}};
+  var LANGS = ['zh', 'en', 'ja', 'ko'];
+  var state = { lang: 'zh', tab: 'privacy' };
+
+  function pid(lang, tab) { return lang === 'zh' ? tab : tab + '-' + lang; }
+
+  function render() {
+    document.querySelectorAll('.page').forEach(function (p) { p.classList.remove('active'); });
+    var el = document.getElementById(pid(state.lang, state.tab));
+    if (el) el.classList.add('active');
+    var t = I18N[state.lang];
+    document.getElementById('tab-privacy').textContent = t.priv;
+    document.getElementById('tab-terms').textContent = t.terms;
+    document.querySelectorAll('nav a').forEach(function (a) { a.classList.toggle('active', a.id === 'tab-' + state.tab); });
+    document.querySelectorAll('.langbar a').forEach(function (a) { a.classList.toggle('active', a.getAttribute('data-lang') === state.lang); });
+    var tg = document.getElementById('tagline');
+    if (tg) tg.textContent = t.tagline;
+    document.title = t.title;
+    document.documentElement.lang = t.htmlLang;
+  }
+
+  function showPage(tab, el) { state.tab = tab; render(); return false; }
+
+  function setLang(lang) {
+    state.lang = lang;
+    try { localStorage.setItem('privacy_lang', lang); } catch (e) {}
+    try { history.replaceState(null, '', '?lang=' + lang + '#' + state.tab); } catch (e) {}
+    render();
     return false;
   }
 
-  window.addEventListener('DOMContentLoaded', () => {
-    const hash = location.hash.replace('#', '');
-    if (hash === 'terms') {
-      showPage('terms', document.querySelector('nav a[href="#terms"]'));
+  function detectLang() {
+    var q = (location.search.match(/[?&]lang=([a-z]{2})/) || [])[1];
+    if (LANGS.indexOf(q) >= 0) return q;
+    try { var s = localStorage.getItem('privacy_lang'); if (LANGS.indexOf(s) >= 0) return s; } catch (e) {}
+    var list = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || 'en'];
+    for (var i = 0; i < list.length; i++) {
+      var l = String(list[i]).toLowerCase();
+      if (l.indexOf('zh') === 0) return 'zh';
+      if (l.indexOf('ja') === 0) return 'ja';
+      if (l.indexOf('ko') === 0) return 'ko';
+      if (l.indexOf('en') === 0) return 'en';
     }
+    return 'en';
+  }
+
+  window.addEventListener('DOMContentLoaded', function () {
+    state.lang = detectLang();
+    state.tab = location.hash.replace('#', '') === 'terms' ? 'terms' : 'privacy';
+    render();
   });
 </script>
-
 </body>
 </html>

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Growlo — 隱私政策</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Growlo — 隱私政策</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -183,136 +184,385 @@
       nav a { padding: 12px 22px; font-size: 0.88rem; }
       .section { padding: 18px 18px; }
     }
-  </style>
+
+    /* ── 語言切換列（多語系）── */
+    .langbar { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 10px; padding: 12px 16px 4px; font-size: 0.82rem; }
+    .langbar a { color: inherit; opacity: 0.72; text-decoration: none; padding: 3px 12px; border-radius: 14px; border: 1px solid transparent; }
+    .langbar a:hover { opacity: 1; }
+    .langbar a.active { opacity: 1; font-weight: 600; border-color: currentColor; }
+</style><noscript><style>.page{display:block !important}.langbar{display:none !important}nav{display:none !important}</style></noscript>
+  
 </head>
 <body>
-
 <header>
-  <div class="logo">📷</div>
-  <h1>Growlo</h1>
-  <p>記錄牠長大的每一步</p>
-</header>
+<div class="logo">📷</div>
+<h1>Growlo</h1>
+<p id="tagline">記錄牠長大的每一步</p>
+</header><div aria-label="Language" class="langbar" role="navigation"><a data-lang="zh" href="?lang=zh" onclick="return setLang('zh')">繁體中文</a> <a data-lang="en" href="?lang=en" onclick="return setLang('en')">English</a> <a data-lang="ja" href="?lang=ja" onclick="return setLang('ja')">日本語</a> <a data-lang="ko" href="?lang=ko" onclick="return setLang('ko')">한국어</a> </div>
+
 
 <nav>
-  <a href="#privacy" class="active" onclick="return showPage('privacy', this)">隱私政策</a>
-  <a href="#terms" onclick="return showPage('terms', this)">服務條款</a>
+<a class="active" href="#privacy" id="tab-privacy" onclick="return showPage('privacy', this)">隱私政策</a>
+<a href="#terms" id="tab-terms" onclick="return showPage('terms', this)">服務條款</a>
 </nav>
-
 <main>
+<!-- ── 隱私政策 ── -->
+<div class="page active" id="privacy">
+<div class="section">
+<h2>基本原則 <span class="badge">本地優先</span></h2>
+<p>Growlo 是一款貓咪成長時光機＋行蹤地圖 App，不需要帳號、不需要登入。</p>
+<ul>
+<li>您拍攝的照片、房間格局、行蹤記錄、提醒設定，全部僅儲存在您的裝置本地儲存空間，不會上傳至任何伺服器</li>
+<li>不蒐集、不上傳任何個人資料</li>
+<li>不使用定位（GPS）功能，「行蹤地圖」是您自行繪製的抽象房間配置圖，不是真實地理位置</li>
+</ul>
+</div>
+<div class="section">
+<h2>相機權限</h2>
+<p>「成長時光機」的對位拍照功能會請求您裝置的相機權限，僅在您主動點擊拍照按鈕時才會啟用鏡頭，不會在背景擷取畫面。拍攝完成的照片只會儲存在您的裝置本機，Growlo 不會讀取、上傳或存取您相簿中其他既有的照片。</p>
+</div>
+<div class="section">
+<h2>通知權限</h2>
+<p>Growlo 會請求裝置的通知權限，用於在您設定的時間送出「該拍照囉」的定期提醒，這些提醒完全在裝置本機排程與發送，不會傳送任何資料出去。</p>
+</div>
+<div class="section">
+<h2>匯出與分享</h2>
+<p>「分享」功能會在您的裝置上把照片重新排版成拍立得樣式的圖片（加上白框與日期），存成暫存檔後開啟系統原生的分享面板，由您自行選擇要傳給誰。整個製圖過程都在裝置本機完成，Growlo 不會上傳照片，也不會知道您分享給了誰。</p>
+<p>免費版匯出的圖片右下角會有小小的 Growlo 字樣，付費解鎖後不再顯示。</p>
+</div>
+<div class="section">
+<h2>成長冊（PDF）與播放</h2><p>「成長冊」功能會在您的裝置上，把您選擇的照片排版成 PDF 檔（封面、拍立得內頁與封底），存成暫存檔後開啟系統原生的分享面板，由您自行選擇存檔、分享或列印。整個製作過程都在裝置本機完成，Growlo 不會上傳照片或 PDF，也不會知道您分享給了誰。</p><p>「播放」功能僅在您的裝置上，依拍攝時間順序連續播放您選擇的照片，不會傳送任何資料。</p><p>免費版的成長冊在照片超過 4 張時，只會匯出封面與第一頁；解鎖完整版後可匯出整本。</p><h2>無廣告 / 應用程式內購買</h2>
+<p>Growlo <strong style="color:#4A3728">不含任何廣告</strong>——這是回憶記錄類 App，翻看貓咪成長照片時跳廣告會破壞體驗。</p>
+<p>提供一次性「解鎖完整版」買斷購買（成長冊完整匯出、移除匯出浮水印、房間數量不限；拍照張數免費版就沒有上限）。購買流程與付款資訊完全由 Apple App Store／Google Play 處理，Growlo 不會接觸、儲存您的信用卡或付款資料。購買驗證透過 RevenueCat 服務進行，RevenueCat 僅會取得裝置匿名 ID 與購買紀錄以確認購買狀態，詳情請參閱 <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat 隱私政策</a>。</p>
+</div>
+<div class="section">
+<h2>照片保存提醒</h2>
+<p>由於照片僅儲存在裝置本機，若您刪除 App、清除資料或更換裝置且未事先備份，照片將無法復原。建議您定期將重要照片另外匯出保存。</p>
+</div>
+<div class="section">
+<h2>兒童隱私</h2>
+<p>Growlo 適合所有年齡使用。本 App 不蒐集任何可識別個人身份的資料，無論使用者年齡為何。</p>
+</div>
+<div class="section">
+<h2>聯絡方式</h2>
+<p>如有隱私相關問題，請聯絡：</p>
+<p>電子郵件：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+</div>
+<p class="updated">本政策最後更新：2026 年 9 月 25 日</p>
+</div>
+<!-- ── 服務條款 ── -->
+<div class="page" id="terms">
+<div class="section">
+<h2>服務說明</h2>
+<p>Growlo 提供以下核心功能：</p>
+<ul>
+<li><strong style="color:#4A3728">成長時光機</strong>：半透明疊圖對位拍照，搭配拍立得風格時間軸畫廊，記錄貓咪成長歷程</li>
+<li><strong style="color:#4A3728">行蹤地圖</strong>：手繪風格的房間格局編輯器，一鍵記錄貓咪出沒位置，並以時間軸呈現</li>
+<li><strong style="color:#4A3728">拍立得匯出分享</strong>：把單張照片輸出成帶白框與日期的拍立得圖片，透過系統分享面板傳給他人</li><li><strong style="color:#4A3728">成長冊 PDF</strong>：把選擇的照片排成 A4 成長冊 PDF（封面、每頁 4 張拍立得、標註第幾天），可存檔、分享或列印</li><li><strong style="color:#4A3728">播放成長過程</strong>：把選擇的照片依時間順序連續播放，提供快、中、慢三段速度</li>
+</ul>
+</div>
+<div class="section">
+<h2>使用規範</h2>
+<p>使用 Growlo 即表示您同意：</p>
+<ul>
+<li>妥善保管您拍攝的照片內容，Growlo 不對本機儲存的資料遺失負責</li>
+<li>不嘗試破解、逆向工程或干擾 App 運作</li>
+<li>不將本 App 用於任何違法目的</li>
+<li>遵守 Google Play / App Store 服務條款</li>
+</ul>
+</div>
+<div class="section">
+<h2>責任限制</h2>
+<p>在法律允許的最大範圍內，Growlo 對因裝置遺失、App 移除或資料清除所導致的照片與記錄遺失不承擔責任。本條款受中華民國法律管轄。</p>
+</div>
+<div class="section">
+<h2>聯絡方式</h2>
+<p>如有任何問題，請聯絡：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+</div>
+<p class="updated">本條款最後更新：2026 年 9 月 25 日</p>
+</div>
 
-  <!-- ── 隱私政策 ── -->
-  <div id="privacy" class="page active">
+  <div class="page" id="privacy-en" lang="en">
+<div class="section">
+<h2>Core Principles <span class="badge">Local-first</span></h2>
+<p>Growlo is a cat growth time machine and roaming map app. No account or login is required.</p>
+<ul>
+<li>The photos you take, room layouts, roaming logs, and reminder settings are stored only in your device's local storage and are never uploaded to any server</li>
+<li>We do not collect or upload any personal data</li>
+<li>We do not use location (GPS) features; the “Roaming Map” is an abstract room layout you draw yourself, not a real geographic location</li>
+</ul>
+</div>
+<div class="section">
+<h2>Camera Permission</h2>
+<p>The aligned-photo feature of the “Growth Time Machine” asks for your device's camera permission. The camera is activated only when you tap the shutter button and never captures images in the background. Photos you take are stored only on your device, and Growlo does not read, upload, or access any other existing photos in your photo library.</p>
+</div>
+<div class="section">
+<h2>Notification Permission</h2>
+<p>Growlo asks for notification permission to send periodic “time to take a photo” reminders at the times you set. These reminders are scheduled and delivered entirely on your device and no data is sent out.</p>
+</div>
+<div class="section">
+<h2>Export and Sharing</h2>
+<p>The “Share” feature re-lays out a photo on your device as a polaroid-style image (with a white frame and date), saves it as a temporary file, and opens the system's native share sheet so you can choose who to send it to. The entire image-creation process is done locally on your device; Growlo does not upload the photo and does not know who you share it with.</p>
+<p>Images exported with the free version carry a small “Growlo” mark in the bottom-right corner; it is no longer shown after the paid unlock.</p>
+</div>
+<div class="section">
+<h2>Growth Book (PDF) and Playback</h2><p>The “Growth Book” feature lays out the photos you select into a PDF on your device (cover, polaroid-style inner pages, and back cover), saves it as a temporary file, and opens the system's native share sheet so you can choose to save, share, or print it. The entire process is done locally on your device; Growlo does not upload your photos or the PDF and does not know who you share it with.</p><p>The “Playback” feature only plays the photos you select in sequence, in order of capture time, on your device; no data is transmitted.</p><p>With the free version, a growth book with more than 4 photos exports only the cover and the first page; unlock the full version to export the whole book.</p><h2>No Ads / In-App Purchase</h2>
+<p>Growlo <strong style="color:#4A3728">contains no ads at all</strong>—this is a memory-keeping app, and showing ads while you browse your cat's growth photos would ruin the experience.</p>
+<p>A one-time “Unlock Full Version” purchase is available (full growth book export, no watermark on exported images, unlimited rooms; the free version has no limit on the number of photos you can take). The purchase process and payment information are handled entirely by the Apple App Store / Google Play, and Growlo never accesses or stores your credit card or payment details. Purchases are verified through the RevenueCat service; RevenueCat only receives an anonymous device ID and purchase records to confirm your purchase status. For details, see the <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat Privacy Policy</a>.</p>
+</div>
+<div class="section">
+<h2>Photo Storage Reminder</h2>
+<p>Because photos are stored only on your device, they cannot be recovered if you delete the app, clear its data, or switch devices without backing up first. We recommend exporting and saving important photos regularly.</p>
+</div>
+<div class="section">
+<h2>Children's Privacy</h2>
+<p>Growlo is suitable for all ages. This app does not collect any personally identifiable information, regardless of the user's age.</p>
+</div>
+<div class="section">
+<h2>Contact</h2>
+<p>If you have any privacy-related questions, please contact:</p>
+<p>Email: <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+</div>
+<p class="updated">Policy last updated: September 25, 2026</p>
+</div>
 
-    <div class="section">
-      <h2>基本原則 <span class="badge">本地優先</span></h2>
-      <p>Growlo 是一款貓咪成長時光機＋行蹤地圖 App，不需要帳號、不需要登入。</p>
-      <ul>
-        <li>您拍攝的照片、房間格局、行蹤記錄、提醒設定，全部僅儲存在您的裝置本地儲存空間，不會上傳至任何伺服器</li>
-        <li>不蒐集、不上傳任何個人資料</li>
-        <li>不使用定位（GPS）功能，「行蹤地圖」是您自行繪製的抽象房間配置圖，不是真實地理位置</li>
-      </ul>
-    </div>
+  <div class="page" id="terms-en" lang="en">
+<div class="section">
+<h2>Description of Service</h2>
+<p>Growlo provides the following core features:</p>
+<ul>
+<li><strong style="color:#4A3728">Growth Time Machine</strong>: semi-transparent overlay to align each new photo with the last one, shown in a polaroid-style timeline gallery to record your cat's growth</li>
+<li><strong style="color:#4A3728">Roaming Map</strong>: a hand-drawn-style room layout editor where you log where your cat has been with one tap and view it on a timeline</li>
+<li><strong style="color:#4A3728">Polaroid export and sharing</strong>: turn a single photo into a polaroid-style image with a white frame and date, and send it to others through the system share sheet</li><li><strong style="color:#4A3728">Growth Book PDF</strong>: lay out your selected photos into an A4 growth book PDF (cover, four polaroids per page, with the day number), which you can save, share, or print</li><li><strong style="color:#4A3728">Growth Playback</strong>: play your selected photos in order of capture time, with three speeds (fast, medium, slow)</li>
+</ul>
+</div>
+<div class="section">
+<h2>Acceptable Use</h2>
+<p>By using Growlo, you agree to the following:</p>
+<ul>
+<li>Keep the photos you take safe; Growlo is not responsible for the loss of data stored locally on your device</li>
+<li>Do not attempt to hack, reverse engineer, or interfere with the operation of the app</li>
+<li>Do not use this app for any unlawful purpose</li>
+<li>Comply with the Google Play / App Store terms of service</li>
+</ul>
+</div>
+<div class="section">
+<h2>Limitation of Liability</h2>
+<p>To the maximum extent permitted by law, Growlo is not liable for the loss of photos and records caused by device loss, app removal, or data clearing. These terms are governed by the laws of the Republic of China (Taiwan).</p>
+</div>
+<div class="section">
+<h2>Contact</h2>
+<p>If you have any questions, please contact: <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+</div>
+<p class="updated">Terms last updated: September 25, 2026</p>
+</div>
 
-    <div class="section">
-      <h2>相機權限</h2>
-      <p>「成長時光機」的對位拍照功能會請求您裝置的相機權限，僅在您主動點擊拍照按鈕時才會啟用鏡頭，不會在背景擷取畫面。拍攝完成的照片只會儲存在您的裝置本機，Growlo 不會讀取、上傳或存取您相簿中其他既有的照片。</p>
-    </div>
+  <div class="page" id="privacy-ja" lang="ja">
+<div class="section">
+<h2>基本方針 <span class="badge">ローカル優先</span></h2>
+<p>Growlo は、猫の成長タイムマシンと行動マップを備えたアプリです。アカウント登録やログインは不要です。</p>
+<ul>
+<li>撮影した写真、部屋の間取り、行動記録、リマインダー設定は、すべてお使いのデバイスのローカルストレージにのみ保存され、サーバーにアップロードされることはありません</li>
+<li>個人データの収集・アップロードは一切行いません</li>
+<li>位置情報（GPS）機能は使用しません。「行動マップ」はご自身で描く抽象的な部屋の配置図であり、実際の地理的な位置ではありません</li>
+</ul>
+</div>
+<div class="section">
+<h2>カメラの権限</h2>
+<p>「成長タイムマシン」の位置合わせ撮影機能では、デバイスのカメラの使用許可を求めます。カメラは、撮影ボタンをタップしたときにのみ起動し、バックグラウンドで映像を取得することはありません。撮影した写真はデバイス内にのみ保存され、Growlo が写真ライブラリ内のその他の既存の写真を読み取ったり、アップロードしたり、アクセスしたりすることはありません。</p>
+</div>
+<div class="section">
+<h2>通知の権限</h2>
+<p>Growlo は、設定した時刻に「撮影の時間です」という定期リマインダーを送るために、通知の権限を求めます。これらのリマインダーはすべてデバイス内でスケジュール・送信され、データが外部に送信されることはありません。</p>
+</div>
+<div class="section">
+<h2>書き出しと共有</h2>
+<p>「共有」機能は、お使いのデバイス上で写真をポラロイド風の画像（白いフレームと日付付き）にレイアウトし直し、一時ファイルとして保存したうえで、OS標準の共有シートを開きます。送信先はご自身で選択します。画像の作成はすべてデバイス内で完結し、Growlo が写真をアップロードすることも、共有先を把握することもありません。</p>
+<p>無料版で書き出した画像の右下には小さく「Growlo」の文字が入ります。有料のロック解除後は表示されなくなります。</p>
+</div>
+<div class="section">
+<h2>成長アルバム（PDF）と再生</h2><p>「成長アルバム」機能は、お使いのデバイス上で、選択した写真をPDF（表紙、ポラロイド風の内ページ、裏表紙）にレイアウトし、一時ファイルとして保存したうえで、OS標準の共有シートを開きます。保存・共有・印刷はご自身でお選びいただけます。作成はすべてデバイス内で完結し、Growlo が写真やPDFをアップロードすることも、共有先を把握することもありません。</p><p>「再生」機能は、お使いのデバイス上で、選択した写真を撮影日時の順に連続で再生するだけで、データが送信されることはありません。</p><p>無料版では、写真が5枚以上の成長アルバムは表紙と最初のページのみ書き出せます。完全版を解除すると、アルバム全体を書き出せます。</p><h2>広告なし／アプリ内課金</h2>
+<p>Growlo には<strong style="color:#4A3728">広告が一切ありません</strong>。思い出を記録するアプリで、猫の成長写真を見ているときに広告が出ると体験が損なわれるためです。</p>
+<p>1回限りの「完全版の解除」買い切り課金を提供しています（成長アルバムの全ページ書き出し、書き出し画像の透かし削除、部屋数の無制限化。撮影枚数は無料版でも無制限です）。購入手続きと支払い情報はすべて Apple App Store／Google Play が処理し、Growlo がクレジットカードや支払いに関する情報に触れたり保存したりすることはありません。購入の確認には RevenueCat のサービスを利用しており、RevenueCat は購入状況を確認するために、デバイスの匿名IDと購入履歴のみを取得します。詳しくは <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat プライバシーポリシー</a> をご覧ください。</p>
+</div>
+<div class="section">
+<h2>写真の保存に関するお知らせ</h2>
+<p>写真はデバイス内にのみ保存されるため、アプリを削除したり、データを消去したり、バックアップなしで機種変更したりすると、写真を復元できません。大切な写真は定期的に書き出して保存しておくことをおすすめします。</p>
+</div>
+<div class="section">
+<h2>お子様のプライバシー</h2>
+<p>Growlo はすべての年齢の方にご利用いただけます。本アプリは、ユーザーの年齢にかかわらず、個人を特定できる情報を一切収集しません。</p>
+</div>
+<div class="section">
+<h2>お問い合わせ</h2>
+<p>プライバシーに関するご質問は、次の連絡先までお寄せください：</p>
+<p>メール：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+</div>
+<p class="updated">本ポリシーの最終更新日：2026年9月25日</p>
+</div>
 
-    <div class="section">
-      <h2>通知權限</h2>
-      <p>Growlo 會請求裝置的通知權限，用於在您設定的時間送出「該拍照囉」的定期提醒，這些提醒完全在裝置本機排程與發送，不會傳送任何資料出去。</p>
-    </div>
+  <div class="page" id="terms-ja" lang="ja">
+<div class="section">
+<h2>サービスの内容</h2>
+<p>Growlo は次の主な機能を提供します：</p>
+<ul>
+<li><strong style="color:#4A3728">成長タイムマシン</strong>：半透明のオーバーレイで前回の写真と位置を合わせて撮影でき、ポラロイド風のタイムラインギャラリーで猫の成長の記録を残せます</li>
+<li><strong style="color:#4A3728">行動マップ</strong>：手描き風の部屋レイアウトエディタで、猫がいた場所をワンタップで記録し、タイムラインで振り返れます</li>
+<li><strong style="color:#4A3728">ポラロイド風の書き出しと共有</strong>：1枚の写真を、白いフレームと日付付きのポラロイド風画像として書き出し、OS標準の共有シートから送れます</li><li><strong style="color:#4A3728">成長アルバムPDF</strong>：選択した写真をA4サイズの成長アルバムPDF（表紙、1ページ4枚のポラロイド、何日目かの表示付き）にまとめ、保存・共有・印刷できます</li><li><strong style="color:#4A3728">成長の再生</strong>：選択した写真を撮影日時の順に連続再生し、速い・ふつう・ゆっくりの3段階の速度を選べます</li>
+</ul>
+</div>
+<div class="section">
+<h2>ご利用上のルール</h2>
+<p>Growlo をご利用になることで、次の事項に同意したものとみなされます：</p>
+<ul>
+<li>撮影した写真の内容はご自身で適切に管理してください。デバイス内に保存されたデータの消失について、Growlo は責任を負いません</li>
+<li>アプリの解析（ハッキングやリバースエンジニアリング）や動作の妨害を試みないこと</li>
+<li>本アプリを違法な目的に使用しないこと</li>
+<li>Google Play／App Store の利用規約を遵守すること</li>
+</ul>
+</div>
+<div class="section">
+<h2>責任の制限</h2>
+<p>法律で認められる最大限の範囲において、Growlo は、デバイスの紛失、アプリの削除、データの消去によって生じた写真や記録の消失について責任を負いません。本規約は中華民国（台湾）の法律に準拠します。</p>
+</div>
+<div class="section">
+<h2>お問い合わせ</h2>
+<p>ご不明な点がございましたら、次の連絡先までお問い合わせください：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+</div>
+<p class="updated">本規約の最終更新日：2026年9月25日</p>
+</div>
 
-    <div class="section">
-      <h2>匯出與分享</h2>
-      <p>「分享」功能會在您的裝置上把照片重新排版成拍立得樣式的圖片（加上白框與日期），存成暫存檔後開啟系統原生的分享面板，由您自行選擇要傳給誰。整個製圖過程都在裝置本機完成，Growlo 不會上傳照片，也不會知道您分享給了誰。</p>
-      <p>免費版匯出的圖片右下角會有小小的 Growlo 字樣，付費解鎖後不再顯示。</p>
-    </div>
+  <div class="page" id="privacy-ko" lang="ko">
+<div class="section">
+<h2>기본 원칙 <span class="badge">로컬 우선</span></h2>
+<p>Growlo은(는) 고양이 성장 타임머신과 동선 지도를 제공하는 앱입니다. 계정이나 로그인이 필요하지 않습니다.</p>
+<ul>
+<li>촬영한 사진, 방 구조, 동선 기록, 알림 설정은 모두 기기의 로컬 저장소에만 저장되며 어떤 서버에도 업로드되지 않습니다</li>
+<li>개인정보를 수집하거나 업로드하지 않습니다</li>
+<li>위치(GPS) 기능을 사용하지 않습니다. ‘동선 지도’는 사용자가 직접 그리는 추상적인 방 배치도이며 실제 지리적 위치가 아닙니다</li>
+</ul>
+</div>
+<div class="section">
+<h2>카메라 권한</h2>
+<p>‘성장 타임머신’의 위치 맞춤 촬영 기능은 기기의 카메라 권한을 요청합니다. 카메라는 사용자가 촬영 버튼을 누를 때만 작동하며 백그라운드에서 화면을 캡처하지 않습니다. 촬영한 사진은 기기에만 저장되며, Growlo은(는) 사진 보관함에 있는 다른 기존 사진을 읽거나 업로드하거나 접근하지 않습니다.</p>
+</div>
+<div class="section">
+<h2>알림 권한</h2>
+<p>Growlo은(는) 사용자가 설정한 시간에 ‘사진 찍을 시간이에요’ 정기 알림을 보내기 위해 알림 권한을 요청합니다. 이 알림은 전적으로 기기 내에서 예약·전송되며 어떤 데이터도 외부로 전송되지 않습니다.</p>
+</div>
+<div class="section">
+<h2>내보내기 및 공유</h2>
+<p>‘공유’ 기능은 기기에서 사진을 폴라로이드 스타일 이미지(흰색 프레임과 날짜 포함)로 다시 구성하고, 임시 파일로 저장한 뒤 시스템 기본 공유 시트를 엽니다. 누구에게 보낼지는 사용자가 직접 선택합니다. 이미지 제작 과정은 모두 기기 내에서 이루어지며, Growlo은(는) 사진을 업로드하지 않고 누구와 공유했는지도 알지 못합니다.</p>
+<p>무료 버전으로 내보낸 이미지의 오른쪽 아래에는 작은 ‘Growlo’ 문구가 표시되며, 유료 잠금 해제 후에는 표시되지 않습니다.</p>
+</div>
+<div class="section">
+<h2>성장 앨범(PDF) 및 재생</h2><p>‘성장 앨범’ 기능은 기기에서 선택한 사진을 PDF(표지, 폴라로이드 스타일 내지, 뒤표지)로 구성하고, 임시 파일로 저장한 뒤 시스템 기본 공유 시트를 엽니다. 저장, 공유 또는 인쇄는 사용자가 직접 선택합니다. 제작 과정은 모두 기기 내에서 이루어지며, Growlo은(는) 사진이나 PDF를 업로드하지 않고 누구와 공유했는지도 알지 못합니다.</p><p>‘재생’ 기능은 기기에서 선택한 사진을 촬영 시간 순서대로 연속 재생할 뿐이며 어떤 데이터도 전송하지 않습니다.</p><p>무료 버전에서는 사진이 4장을 초과하는 성장 앨범의 경우 표지와 첫 페이지만 내보낼 수 있으며, 전체 버전을 잠금 해제하면 앨범 전체를 내보낼 수 있습니다.</p><h2>광고 없음 / 앱 내 구매</h2>
+<p>Growlo에는 <strong style="color:#4A3728">광고가 전혀 없습니다</strong>. 추억을 기록하는 앱이라 고양이의 성장 사진을 보는 중에 광고가 나오면 경험을 해치기 때문입니다.</p>
+<p>1회성 ‘전체 버전 잠금 해제’ 구매를 제공합니다(성장 앨범 전체 내보내기, 내보낸 이미지의 워터마크 제거, 방 개수 무제한. 촬영 장수는 무료 버전에서도 제한이 없습니다). 구매 과정과 결제 정보는 Apple App Store／Google Play에서 전적으로 처리하며, Growlo은(는) 신용카드나 결제 정보에 접근하거나 저장하지 않습니다. 구매 확인은 RevenueCat 서비스를 통해 이루어지며, RevenueCat은 구매 상태를 확인하기 위해 기기의 익명 ID와 구매 기록만 수집합니다. 자세한 내용은 <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat 개인정보 처리방침</a>을 참고하세요.</p>
+</div>
+<div class="section">
+<h2>사진 보관 안내</h2>
+<p>사진은 기기에만 저장되므로, 앱을 삭제하거나 데이터를 지우거나 사전 백업 없이 기기를 바꾸면 사진을 복구할 수 없습니다. 중요한 사진은 정기적으로 내보내어 따로 보관하시기 바랍니다.</p>
+</div>
+<div class="section">
+<h2>아동 개인정보 보호</h2>
+<p>Growlo은(는) 모든 연령대가 사용할 수 있습니다. 이 앱은 사용자의 연령과 관계없이 개인을 식별할 수 있는 정보를 수집하지 않습니다.</p>
+</div>
+<div class="section">
+<h2>문의</h2>
+<p>개인정보 관련 문의는 아래로 연락해 주세요:</p>
+<p>이메일: <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+</div>
+<p class="updated">본 방침 최종 업데이트: 2026년 9월 25일</p>
+</div>
 
-    <div class="section">
-      <h2>無廣告 / 應用程式內購買</h2>
-      <p>Growlo <strong style="color:#4A3728">不含任何廣告</strong>——這是回憶記錄類 App，翻看貓咪成長照片時跳廣告會破壞體驗。</p>
-      <p>提供一次性「解鎖完整版」買斷購買（移除匯出浮水印、房間數量不限；拍照張數免費版就沒有上限）。購買流程與付款資訊完全由 Apple App Store／Google Play 處理，Growlo 不會接觸、儲存您的信用卡或付款資料。購買驗證透過 RevenueCat 服務進行，RevenueCat 僅會取得裝置匿名 ID 與購買紀錄以確認購買狀態，詳情請參閱 <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat 隱私政策</a>。</p>
-    </div>
-
-    <div class="section">
-      <h2>照片保存提醒</h2>
-      <p>由於照片僅儲存在裝置本機，若您刪除 App、清除資料或更換裝置且未事先備份，照片將無法復原。建議您定期將重要照片另外匯出保存。</p>
-    </div>
-
-    <div class="section">
-      <h2>兒童隱私</h2>
-      <p>Growlo 適合所有年齡使用。本 App 不蒐集任何可識別個人身份的資料，無論使用者年齡為何。</p>
-    </div>
-
-    <div class="section">
-      <h2>聯絡方式</h2>
-      <p>如有隱私相關問題，請聯絡：</p>
-      <p>電子郵件：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
-    </div>
-
-    <p class="updated">本政策最後更新：2026 年 8 月 28 日</p>
-  </div>
-
-  <!-- ── 服務條款 ── -->
-  <div id="terms" class="page">
-
-    <div class="section">
-      <h2>服務說明</h2>
-      <p>Growlo 提供以下核心功能：</p>
-      <ul>
-        <li><strong style="color:#4A3728">成長時光機</strong>：半透明疊圖對位拍照，搭配拍立得風格時間軸畫廊，記錄貓咪成長歷程</li>
-        <li><strong style="color:#4A3728">行蹤地圖</strong>：手繪風格的房間格局編輯器，一鍵記錄貓咪出沒位置，並以時間軸呈現</li>
-        <li><strong style="color:#4A3728">拍立得匯出分享</strong>：把單張照片輸出成帶白框與日期的拍立得圖片，透過系統分享面板傳給他人</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>使用規範</h2>
-      <p>使用 Growlo 即表示您同意：</p>
-      <ul>
-        <li>妥善保管您拍攝的照片內容，Growlo 不對本機儲存的資料遺失負責</li>
-        <li>不嘗試破解、逆向工程或干擾 App 運作</li>
-        <li>不將本 App 用於任何違法目的</li>
-        <li>遵守 Google Play / App Store 服務條款</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>責任限制</h2>
-      <p>在法律允許的最大範圍內，Growlo 對因裝置遺失、App 移除或資料清除所導致的照片與記錄遺失不承擔責任。本條款受中華民國法律管轄。</p>
-    </div>
-
-    <div class="section">
-      <h2>聯絡方式</h2>
-      <p>如有任何問題，請聯絡：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
-    </div>
-
-    <p class="updated">本條款最後更新：2026 年 8 月 28 日</p>
-  </div>
-
+  <div class="page" id="terms-ko" lang="ko">
+<div class="section">
+<h2>서비스 설명</h2>
+<p>Growlo은(는) 다음과 같은 핵심 기능을 제공합니다:</p>
+<ul>
+<li><strong style="color:#4A3728">성장 타임머신</strong>: 반투명 오버레이로 이전 사진과 위치를 맞춰 촬영하고, 폴라로이드 스타일 타임라인 갤러리로 고양이의 성장 과정을 기록합니다</li>
+<li><strong style="color:#4A3728">동선 지도</strong>: 손그림 스타일의 방 구조 편집기로, 고양이가 있던 곳을 한 번 탭해 기록하고 타임라인으로 확인합니다</li>
+<li><strong style="color:#4A3728">폴라로이드 내보내기 및 공유</strong>: 사진 한 장을 흰색 프레임과 날짜가 있는 폴라로이드 스타일 이미지로 만들어 시스템 공유 시트를 통해 다른 사람에게 보냅니다</li><li><strong style="color:#4A3728">성장 앨범 PDF</strong>: 선택한 사진을 A4 크기의 성장 앨범 PDF(표지, 페이지당 폴라로이드 4장, 며칠째인지 표시 포함)로 구성해 저장, 공유 또는 인쇄할 수 있습니다</li><li><strong style="color:#4A3728">성장 재생</strong>: 선택한 사진을 촬영 시간 순서대로 연속 재생하며, 빠르게·보통·느리게 세 단계 속도를 제공합니다</li>
+</ul>
+</div>
+<div class="section">
+<h2>이용 규정</h2>
+<p>Growlo을(를) 사용하면 다음 사항에 동의하는 것으로 간주됩니다:</p>
+<ul>
+<li>촬영한 사진을 스스로 잘 보관해 주세요. 기기에 저장된 데이터의 손실에 대해 Growlo은(는) 책임을 지지 않습니다</li>
+<li>앱을 해킹하거나 리버스 엔지니어링하거나 앱 운영을 방해하려고 시도하지 않습니다</li>
+<li>이 앱을 불법적인 목적으로 사용하지 않습니다</li>
+<li>Google Play／App Store 서비스 약관을 준수합니다</li>
+</ul>
+</div>
+<div class="section">
+<h2>책임의 제한</h2>
+<p>법률이 허용하는 최대 범위 내에서, Growlo은(는) 기기 분실, 앱 삭제 또는 데이터 삭제로 인한 사진 및 기록의 손실에 대해 책임을 지지 않습니다. 본 약관은 중화민국(대만) 법률의 적용을 받습니다.</p>
+</div>
+<div class="section">
+<h2>문의</h2>
+<p>문의 사항이 있으시면 다음으로 연락해 주세요: <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+</div>
+<p class="updated">본 약관 최종 업데이트: 2026년 9월 25일</p>
+</div>
 </main>
-
 <footer>
-  <p>© 2026 Growlo · <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
+<p>© 2026 Growlo · <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
 </footer>
-
 <script>
-  function showPage(id, el) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-    el.classList.add('active');
+  /* 多語系：繁中（預設，原文）／English／日本語／한국어。網址不變，可用 ?lang=en 指定語言 */
+  var I18N = {"zh": {"priv": "隱私政策", "terms": "服務條款", "tagline": "記錄牠長大的每一步", "title": "Growlo — 隱私政策", "htmlLang": "zh-TW"}, "en": {"priv": "Privacy Policy", "terms": "Terms of Service", "tagline": "Every step of their growing up, recorded", "title": "Growlo — Privacy Policy", "htmlLang": "en"}, "ja": {"priv": "プライバシーポリシー", "terms": "利用規約", "tagline": "成長のひとつひとつを記録", "title": "Growlo — プライバシーポリシー", "htmlLang": "ja"}, "ko": {"priv": "개인정보 처리방침", "terms": "이용약관", "tagline": "자라는 모든 순간을 기록해요", "title": "Growlo — 개인정보 처리방침", "htmlLang": "ko"}};
+  var LANGS = ['zh', 'en', 'ja', 'ko'];
+  var state = { lang: 'zh', tab: 'privacy' };
+
+  function pid(lang, tab) { return lang === 'zh' ? tab : tab + '-' + lang; }
+
+  function render() {
+    document.querySelectorAll('.page').forEach(function (p) { p.classList.remove('active'); });
+    var el = document.getElementById(pid(state.lang, state.tab));
+    if (el) el.classList.add('active');
+    var t = I18N[state.lang];
+    document.getElementById('tab-privacy').textContent = t.priv;
+    document.getElementById('tab-terms').textContent = t.terms;
+    document.querySelectorAll('nav a').forEach(function (a) { a.classList.toggle('active', a.id === 'tab-' + state.tab); });
+    document.querySelectorAll('.langbar a').forEach(function (a) { a.classList.toggle('active', a.getAttribute('data-lang') === state.lang); });
+    var tg = document.getElementById('tagline');
+    if (tg) tg.textContent = t.tagline;
+    document.title = t.title;
+    document.documentElement.lang = t.htmlLang;
+  }
+
+  function showPage(tab, el) { state.tab = tab; render(); return false; }
+
+  function setLang(lang) {
+    state.lang = lang;
+    try { localStorage.setItem('privacy_lang', lang); } catch (e) {}
+    try { history.replaceState(null, '', '?lang=' + lang + '#' + state.tab); } catch (e) {}
+    render();
     return false;
   }
 
-  window.addEventListener('DOMContentLoaded', () => {
-    const hash = location.hash.replace('#', '');
-    if (hash === 'terms') {
-      showPage('terms', document.querySelector('nav a[href="#terms"]'));
+  function detectLang() {
+    var q = (location.search.match(/[?&]lang=([a-z]{2})/) || [])[1];
+    if (LANGS.indexOf(q) >= 0) return q;
+    try { var s = localStorage.getItem('privacy_lang'); if (LANGS.indexOf(s) >= 0) return s; } catch (e) {}
+    var list = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || 'en'];
+    for (var i = 0; i < list.length; i++) {
+      var l = String(list[i]).toLowerCase();
+      if (l.indexOf('zh') === 0) return 'zh';
+      if (l.indexOf('ja') === 0) return 'ja';
+      if (l.indexOf('ko') === 0) return 'ko';
+      if (l.indexOf('en') === 0) return 'en';
     }
+    return 'en';
+  }
+
+  window.addEventListener('DOMContentLoaded', function () {
+    state.lang = detectLang();
+    state.tab = location.hash.replace('#', '') === 'terms' ? 'terms' : 'privacy';
+    render();
   });
 </script>
-
 </body>
 </html>

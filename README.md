@@ -61,7 +61,7 @@ python -m http.server 8930
 
 ## 待辦與觀察
 
-### 2026-09-25：各 App 隱私權頁面目前只有繁體中文（不影響送審，長期建議補多語）
+### 2026-09-25：各 App 隱私權頁面目前只有繁體中文（不影響送審，長期建議補多語）→ 同日已完成，見 v4.5
 
 - **現況**（實際抓網頁檢查）：`privacy/chowlo/`、`growlo/`、`oddlo/`、`petsoul/`、`sagelo/`、`trucelo/` 六頁 HTML `lang="zh-TW"`，內容皆為繁體中文，沒有其他語言也沒有語言切換（頁面裡的英文單字只是 AdMob、RevenueCat 等服務名稱）。ASC 各語系（繁中／英／日／韓）填的隱私政策網址是同一個中文頁面
 - **評估**：不影響送審。Apple 要求的是 ASC 有隱私政策網址、App 內找得到，沒有強制每個語系都要翻譯；Oddlo、PetSoul 商店有英日韓語系卻同樣用中文頁面而順利過審。但**不是零風險**：極少數審核員會要求政策語言與介面語言一致；且 App 在 175 個國家或地區上架、有英日韓介面，非中文使用者讀不到政策內容，對有 AdMob 廣告（Chowlo／Oddlo／Sagelo／Trucelo）的 App 尤其敏感（歐盟等地區）
@@ -71,6 +71,7 @@ python -m http.server 8930
 
 | 版次 | 日期 | 說明 |
 |---|---|---|
+| v4.5 | 2026-09-25 | 六個 App 隱私權頁面（`privacy/chowlo`、`growlo`、`oddlo`、`petsoul`、`sagelo`、`trucelo`）補上 English／日本語／한국어，**網址完全不變、ASC 沒動**。做法：同一個 `index.html` 內放四種語言區塊（繁中維持原文、預設語言），頁首加語言切換列；載入時依「`?lang=xx` → 上次選擇（localStorage）→ 瀏覽器語言」決定顯示語言，沒有 JavaScript 時（noscript）四種語言全部展開。隱私政策／服務條款兩個分頁各有四語版，共 133 句獨立句子，App 名稱、日期、粗體、連結、Support 信箱皆保留原樣。**翻譯由 Claude 產生，尚未經母語者審閱**。同時修正兩頁中文事實：**Growlo** 補上「成長冊（PDF）與播放」段落、完整版說明加入「成長冊完整匯出」、條款功能列表新增兩項（隱私／條款更新日 → 2026-09-25）；**Oddlo** 把「橫幅與插頁廣告」改成「橫幅廣告」（實際只有橫幅，更新日 → 2026-09-25）。**待決定**：PetSoul 隱私內容與現況有出入（未動內容，只加了翻譯）。 |
 | v4.4 | 2026-09-25 | 新增 Oddlo 卡片（貓咪行為觀察速查）到「已上架」：iOS 1.1.1 通過審核（`asc status` 為 `READY_FOR_DISTRIBUTION`、提交 `COMPLETE`；`apps.apple.com/tw/app/oddlo/id6805944419` 實測 200）。Google Play 商店頁實測 404（Android 尚未正式上架），所以是 iOS-only 單一 App Store 徽章，沿用 Warplo 的 `app app-dual` 單徽章寫法，分類「寵物照護」。icon 由 iOS AppIcon 1024 縮成 180×180（已目視確認非預設圖）。Hero 已上架數 19→20。 |
 | v4.3 | 2026-09-24 | PetSoul iOS 通過 App Store 審核（`asc status` 為 `READY_FOR_DISTRIBUTION`、提交 `COMPLETE`；`apps.apple.com/tw/app/id6790455772` 實測回 200）。卡片右下角「iOS 審核中」徽章換成真實 App Store 連結，變成 Google Play＋App Store 雙平台。 |
 | v4.1 | 2026-08-27 | Hero 繁中主標改為「把日常的不便與需求，化成好用的 App 與 Web 工具。」；加入 Noto Serif TC（Hero／章節標題）與 Noto Sans TC（內文／介面）字體組合，並調整中文字距與行高，提升品牌質感與可讀性。 |
