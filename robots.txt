@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tengrip.github.io/sitemap.xml

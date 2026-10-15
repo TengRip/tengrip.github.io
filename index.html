@@ -14,946 +14,929 @@
 <meta property="og:title" content="MaxTeng — 獨立 App 與 Web 開發者">
 <meta property="og:description" content="探索 MaxTeng 的 Android、iOS App 與 Web 工具。">
 <meta property="og:url" content="https://tengrip.github.io/">
-<style>
-  :root{
-    --bg:#f5f7fb;--surface:#ffffff;--surface-soft:#edf2fa;--text:#162033;--muted:#64748b;
-    --line:#dce3ef;--accent:#6d5dfc;--accent-deep:#5042d7;--accent-soft:#eeecff;
-    --hero:#101828;--hero-muted:#bac5d7;--ios-bg:#edf1fa;--ios-text:#4a5e8c;
-    --ios-bg-strong:#e0e8f9;--ios-text-strong:#334a7a;--shadow:0 16px 36px rgba(37,53,84,.08);
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0;font-family:"Noto Sans TC",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    background:var(--bg);color:var(--text);line-height:1.5;
-  }
-  .wrap{max-width:1200px;width:100%;margin:0 auto;padding:20px 28px 56px}
-  a{color:inherit}
-  button{font:inherit}
-  :focus-visible{outline:3px solid #a79fff;outline-offset:3px}
-  .site-header{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:8px 0 28px}
-  .brand{font-size:18px;font-weight:800;letter-spacing:-.4px;text-decoration:none}
-  .brand-mark{color:var(--accent)}
-  .site-nav{display:flex;align-items:center;gap:22px;font-size:14px;color:var(--muted)}
-  .site-nav a{text-decoration:none}.site-nav a:hover{color:var(--accent-deep)}
-  .language-switcher{display:flex;gap:4px;padding:4px;background:var(--surface-soft);border-radius:10px}
-  .language-button{border:0;border-radius:7px;background:transparent;color:var(--muted);cursor:pointer;font-size:12px;font-weight:700;line-height:1;padding:7px}
-  .language-button[aria-pressed="true"]{background:var(--surface);box-shadow:0 1px 4px rgba(31,48,79,.14);color:var(--accent-deep)}
-  .hero{position:relative;overflow:hidden;isolation:isolate;background:var(--hero);color:#fff;border-radius:28px;padding:clamp(34px,7vw,76px);margin-bottom:62px}
-  .hero::before,.hero::after{content:"";position:absolute;border-radius:50%;z-index:-1;filter:blur(2px)}
-  .hero::before{width:460px;height:460px;background:rgba(109,93,252,.34);right:-170px;top:-230px}
-  .hero::after{width:280px;height:280px;background:rgba(44,191,198,.18);left:34%;bottom:-210px}
-  .eyebrow{margin:0 0 14px;color:#c8c3ff;font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase}
-  h1,h2{font-family:"Noto Serif TC","Noto Serif CJK TC",serif;font-weight:700}
-  h1{max-width:790px;margin:0;font-size:clamp(40px,6vw,72px);line-height:1.18;letter-spacing:.01em}
-  .hero-copy{max-width:580px;margin:20px 0 0;color:var(--hero-muted);font-size:17px;line-height:1.75}
-  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-  .button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 18px;border-radius:12px;font-size:14px;font-weight:800;text-decoration:none;transition:transform .15s,background .15s}
-  .button:hover{transform:translateY(-2px)}
-  .button-primary{background:#fff;color:var(--hero)}.button-primary:hover{background:#e9e7ff}
-  .button-secondary{border:1px solid rgba(255,255,255,.28);color:#fff}.button-secondary:hover{background:rgba(255,255,255,.1)}
-  .hero-stats{display:flex;flex-wrap:wrap;gap:28px;margin:42px 0 0;padding:22px 0 0;border-top:1px solid rgba(255,255,255,.15)}
-  .hero-stat strong{display:block;font-size:21px;letter-spacing:-.5px}.hero-stat span{font-size:12px;color:var(--hero-muted)}
-  .section{scroll-margin-top:24px;margin-top:72px}
-  .section-heading{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:22px}
-  .section-kicker{margin:0 0 5px;color:var(--accent-deep);font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
-  h2{margin:0;font-size:clamp(26px,3vw,34px);letter-spacing:.01em;line-height:1.3}
-  .section-description{max-width:390px;margin:0;color:var(--muted);font-size:14px;text-align:right}
-  .featured-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .featured-card{display:flex;align-items:center;gap:14px;padding:18px;background:var(--surface);border:1px solid var(--line);border-radius:18px;text-decoration:none;box-shadow:0 6px 16px rgba(37,53,84,.04);transition:transform .15s,box-shadow .15s}
-  .featured-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-  .featured-card img{width:52px;height:52px;border-radius:14px;box-shadow:0 3px 10px rgba(18,28,47,.16)}
-  .featured-card strong,.featured-card span{display:block}.featured-card strong{font-size:15px}.featured-card span{margin-top:2px;color:var(--muted);font-size:12px}
-  .filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
-  .filter-button{border:1px solid var(--line);border-radius:999px;background:var(--surface);padding:8px 12px;color:var(--muted);font-size:13px;font-weight:700;cursor:pointer;transition:all .15s}
-  .filter-button:hover,.filter-button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent);color:#fff}
-  .app-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-  .app{
-    display:flex;flex-direction:column;align-items:flex-start;min-height:246px;
-    background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;
-    text-decoration:none;color:var(--text);transition:transform .15s,box-shadow .15s,border-color .15s;
-    box-shadow:0 6px 16px rgba(37,53,84,.04);
-  }
-  .app:hover{transform:translateY(-3px);border-color:#c5bfef;box-shadow:var(--shadow)}
-  .app[hidden]{display:none}
-  .app-icon{
-    width:60px;height:60px;border-radius:16px;object-fit:cover;flex-shrink:0;
-    margin:0 0 16px;box-shadow:0 3px 10px rgba(18,28,47,.16);background:#eee;
-  }
-  .app-body{flex:1;min-width:0;}
-  .app-name{font-size:16px;font-weight:800;line-height:1.35;margin:0;letter-spacing:-.25px}
-  .arrow{color:var(--accent);font-size:20px;margin-top:auto}
-
-  /* iOS 狀態徽章：跟 Google Play 橘色系刻意區分成藍灰系 */
-  .ios-badge{
-    font-size:10.5px;font-weight:700;color:var(--ios-text);background:var(--ios-bg);
-    border-radius:6px;padding:3px 8px;white-space:nowrap;letter-spacing:.2px;flex-shrink:0;
-  }
-  .ios-badge.review{color:var(--ios-text-strong);background:var(--ios-bg-strong);}
-
-  /* 語言切換：初始顯示繁中，JavaScript 只改變可見語言。 */
-  .desc-cycle{min-height:58px;margin-top:9px;overflow:hidden}
-  .desc-cycle span{
-    display:none;font-size:13px;color:var(--muted);line-height:1.55;
-  }
-  .desc-cycle span:first-child,.desc-cycle span.is-active{display:block}
-  html[data-language-ready="true"] .desc-cycle span:first-child:not(.is-active){display:none}
-  .divider{border:0;border-top:1px solid var(--line);margin:0}
-
-  .app-coming{
-    display:flex;align-items:center;max-width:560px;
-    background:var(--surface);border:1px dashed #b8c4d6;border-radius:18px;padding:20px;
-    color:var(--text);box-shadow:0 6px 16px rgba(37,53,84,.03);
-  }
-  .app-coming .app-icon{opacity:.85;margin:0 16px 0 0}
-  .badge{
-    font-size:11px;font-weight:800;color:var(--accent-deep);background:var(--accent-soft);
-    border-radius:6px;padding:4px 9px;white-space:nowrap;letter-spacing:0.3px;
-  }
-  .badge-group{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;margin-left:12px;}
-
-  .app-dual{justify-content:flex-start}
-  .store-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-  .store-badge{
-    font-size:11px;font-weight:800;color:var(--accent-deep);background:var(--accent-soft);
-    border-radius:8px;padding:8px 10px;text-decoration:none;white-space:nowrap;
-    transition:background .15s,transform .15s;
-  }
-  .store-badge:hover{background:#ddd9ff;transform:translateY(-1px)}
-  .store-badge.pending{
-    color:var(--ios-text-strong);background:var(--ios-bg-strong);cursor:default;
-  }
-  .store-badge.pending:hover{background:var(--ios-bg-strong);}
-
-  .web-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-  .web-grid .app{min-height:214px}
-  .site-icon{
-    width:60px;height:60px;border-radius:16px;flex-shrink:0;
-    margin:0 0 16px;display:flex;align-items:center;justify-content:center;
-    font-size:27px;background:var(--accent-soft);
-  }
-  .about{display:grid;grid-template-columns:1.4fr .6fr;gap:28px;padding:32px;background:var(--surface);border:1px solid var(--line);border-radius:24px}
-  .about p{max-width:650px;margin:16px 0 0;color:var(--muted);line-height:1.8}
-  .about-contact{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:10px;padding:22px;background:var(--surface-soft);border-radius:16px}
-  .about-contact strong{font-size:15px}.about-contact a{color:var(--accent-deep);font-weight:800;text-decoration:none}
-  footer{display:flex;justify-content:space-between;gap:16px;margin-top:42px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
-  footer a{color:var(--accent-deep);text-decoration:none}
-  @media (max-width:900px){.app-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.web-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.featured-grid{grid-template-columns:1fr}.about{grid-template-columns:1fr}}
-  @media (max-width:640px){.wrap{padding:16px 16px 36px}.site-header{padding-bottom:20px}.site-nav{display:none}.hero{border-radius:22px;padding:34px 25px;margin-bottom:48px}h1{letter-spacing:-1.8px}.hero-stats{gap:18px}.section{margin-top:54px}.section-heading{align-items:start;flex-direction:column}.section-description{text-align:left}.app-grid,.web-grid{grid-template-columns:1fr}.app{min-height:0}.app-coming{align-items:flex-start}.badge-group{margin-left:auto}.language-switcher{margin-left:auto}.about{padding:25px}.hero-copy{font-size:16px}footer{flex-direction:column}}
-</style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:image" content="https://tengrip.github.io/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MaxTeng — Small problems. Useful tools.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tengrip.github.io/assets/og-cover.png">
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/site.js" defer>
+</script>
 </head>
-<body>
-  <div class="wrap">
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="MaxTeng 首頁">Max<span class="brand-mark">Teng</span></a>
-      <nav class="site-nav" aria-label="主要導覽">
-        <a href="#apps" data-i18n="navApps">Apps</a>
-        <a href="#web-projects" data-i18n="navWeb">Web 工具</a>
-        <a href="#about" data-i18n="navAbout">關於我</a>
-        <a href="#contact" data-i18n="navContact">聯絡</a>
-      </nav>
-      <div class="language-switcher" aria-label="選擇語言">
-        <button class="language-button" type="button" data-language="zh" aria-pressed="true">繁</button>
-        <button class="language-button" type="button" data-language="en" aria-pressed="false">EN</button>
-        <button class="language-button" type="button" data-language="ja" aria-pressed="false">日</button>
-        <button class="language-button" type="button" data-language="ko" aria-pressed="false">한</button>
-      </div>
-    </header>
-
-    <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <p class="eyebrow" data-i18n="heroEyebrow">獨立開發者 · 台灣</p>
-        <h1 id="hero-title" data-i18n="heroTitle">把日常的不便與需求，化成好用的 App 與 Web 工具。</h1>
-        <p class="hero-copy" data-i18n="heroCopy">MaxTeng 專注打造容易上手、能解決真實問題的 Android、iOS App 與 Web 工具。</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#apps" data-i18n="heroPrimary">探索所有作品</a>
-          <a class="button button-secondary" href="mailto:ripteng@gmail.com" data-i18n="heroSecondary">聯絡我</a>
-        </div>
-        <div class="hero-stats" aria-label="作品統計">
-          <div class="hero-stat"><strong>25</strong><span data-i18n="statApps">已上架 App</span></div>
-          <div class="hero-stat"><strong>12</strong><span data-i18n="statWeb">Web 工具</span></div>
-          <div class="hero-stat"><strong>Android · iOS</strong><span data-i18n="statPlatforms">跨平台產品</span></div>
-        </div>
-      </section>
-
-      <section class="section" aria-labelledby="featured-title">
-        <div class="section-heading">
-          <div>
-            <p class="section-kicker" data-i18n="featuredKicker">精選作品</p>
-            <h2 id="featured-title" data-i18n="featuredTitle">從一個小麻煩開始</h2>
-          </div>
-          <p class="section-description" data-i18n="featuredDescription">三個最能代表 MaxTeng 產品方向的實用 App。</p>
-        </div>
-        <div class="featured-grid">
-          <a class="featured-card" href="#roadguard">
-            <img src="assets/icons/roadguard.png" alt="" width="180" height="180">
-            <div><strong>RoadGuard</strong><span data-i18n="featureRoadGuard">行車蒐證，精準留住關鍵畫面</span></div>
-          </a>
-          <a class="featured-card" href="#pixzap">
-            <img src="assets/icons/pixzap.png" alt="" width="180" height="180">
-            <div><strong>PixZap</strong><span data-i18n="featurePixZap">一站完成照片處理與 AI 修復</span></div>
-          </a>
-          <a class="featured-card" href="#snifflo">
-            <img src="assets/icons/snifflo.png" alt="" width="180" height="180">
-            <div><strong>Snifflo</strong><span data-i18n="featureSnifflo">掃描成分，照顧毛孩更安心</span></div>
-          </a>
-        </div>
-      </section>
-
-      <section class="section" id="apps" aria-labelledby="apps-title">
-        <div class="section-heading">
-          <div>
-            <p class="section-kicker" data-i18n="appsKicker">App Portfolio</p>
-            <h2 id="apps-title" data-i18n="appsTitle">已上架的 App</h2>
-          </div>
-          <p class="section-description" data-i18n="appsDescription">用分類快速探索影像、寵物、生活工具與娛樂作品。</p>
-        </div>
-        <div class="filter-bar" aria-label="作品分類">
-          <button class="filter-button" type="button" data-filter="all" aria-pressed="true" data-i18n="filterAll">全部</button>
-          <button class="filter-button" type="button" data-filter="media" aria-pressed="false" data-i18n="filterMedia">影像與 AI</button>
-          <button class="filter-button" type="button" data-filter="pets" aria-pressed="false" data-i18n="filterPets">寵物照護</button>
-          <button class="filter-button" type="button" data-filter="tools" aria-pressed="false" data-i18n="filterTools">生活工具</button>
-          <button class="filter-button" type="button" data-filter="play" aria-pressed="false" data-i18n="filterPlay">音樂與遊戲</button>
-        </div>
-        <div class="app-grid">
-
-    <div class="app app-dual" id="roadguard" data-category="media tools">
-      <img class="app-icon" src="assets/icons/roadguard.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">RoadGuard — 行車蒐證工具</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">行車影片放大截圖，自動疊加時間戳，輕鬆蒐證違規。</span>
-          <span style="--d:3s">Zoom dashcam footage & screenshot with auto timestamp.</span>
-          <span style="--d:6s">ドラレコ映像を拡大・スクリーンショット、証拠保存。</span>
-          <span style="--d:9s">블랙박스 영상 확대·스크린샷으로 교통위반 증거 수집。</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.roadguard" target="_blank" rel="noopener">Google Play</a>
-        <a class="store-badge" href="https://apps.apple.com/tw/app/roadguard-行車蒐證/id6790757795" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="media play">
-      <img class="app-icon" src="assets/icons/snappuzzle.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">SnapPuzzle — 照片拼圖大冒險</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">把照片變成拼圖，傳給朋友比快、藏入祕密訊息！</span>
-          <span style="--d:3s">Turn photos into puzzles. Challenge friends & hide messages!</span>
-          <span style="--d:6s">写真をパズルに！友達に挑戦状を、秘密のメッセージも。</span>
-          <span style="--d:9s">사진을 퍼즐로! 친구에게 도전장·비밀 메시지 숨기기。</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.snap_puzzle" target="_blank" rel="noopener">Google Play</a>
-        <a class="store-badge" href="https://apps.apple.com/tw/app/snappuzzle-jigsaw-master/id6790626144" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="play">
-      <img class="app-icon" src="assets/icons/singlo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">唱歌囉 Singlo — AI 卡拉 OK 神器</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">跟著歌詞唱歌，AI 幫你即時打分，人人都能開演唱會。</span>
-          <span style="--d:3s">Sing along with real-time AI scoring. Karaoke anywhere.</span>
-          <span style="--d:6s">歌詞に合わせて歌うとAIが即採点。どこでもカラオケ。</span>
-          <span style="--d:9s">가사 따라 부르면 AI가 실시간 채점. 어디서나 노래방。</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.singlo" target="_blank" rel="noopener">Google Play</a>
-        <a class="store-badge" href="https://apps.apple.com/tw/app/id6791690079" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" id="pixzap" data-category="media">
-      <img class="app-icon" src="assets/icons/pixzap.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">PixZap — 全能照片編輯器</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">壓縮、GIF、AI 修復，一個 App 搞定所有圖片需求。</span>
-          <span style="--d:3s">Compress, GIF, AI style — all-in-one photo toolkit. Free!</span>
-          <span style="--d:6s">圧縮・GIF・AI修復、1つのアプリで写真のすべて。</span>
-          <span style="--d:9s">압축·GIF·AI복원, 사진 모든 것이 하나의 앱에!</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.pixzap" target="_blank" rel="noopener">Google Play</a>
-        <a class="store-badge" href="https://apps.apple.com/tw/app/id6796897369" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="pets media">
-      <img class="app-icon" src="assets/icons/petsoul.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">PetSoul — 寵物情緒 AI 日記</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">拍一張照，AI 讀懂牠的心情，記錄毛孩的每一天。</span>
-          <span style="--d:3s">AI reads your pet's mood from a photo. Art & diary.</span>
-          <span style="--d:6s">写真1枚でAIがペットの感情を読み取り毎日記録。</span>
-          <span style="--d:9s">사진으로 AI가 반려동물 감정 분석·무드 아트 생성。</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.petsoul" target="_blank" rel="noopener">Google Play</a>
-        <a class="store-badge" href="https://apps.apple.com/tw/app/id6790455772" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="pets">
-      <img class="app-icon" src="assets/icons/vitalo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Chronlo — 貓狗慢性病照護百科</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">幫慢性病毛孩記錄體重、用藥與回診，照護不遺漏。</span>
-          <span style="--d:3s">Track weight, meds & vet visits for chronic-illness pets.</span>
-          <span style="--d:6s">持病のあるペットの体重・投薬・通院を記録、見守りを万全に。</span>
-          <span style="--d:9s">만성질환 반려동물의 체중·투약·통원을 기록, 꼼꼼한 케어。</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.vitalo" target="_blank" rel="noopener">Google Play</a>
-        <a class="store-badge" href="https://apps.apple.com/tw/app/id6790975397" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="pets">
-      <img class="app-icon" src="assets/icons/oddlo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Oddlo — 貓咪行為觀察速查</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">貓咪最近怪怪的？一問一答整理成觀察重點，方便跟獸醫討論。</span>
-          <span style="--d:3s">Quick cat behavior check-ups — turn "something's off" into vet-ready notes.</span>
-          <span style="--d:6s">「猫の様子、変かも？」を整理して、獣医さんに伝える観察ポイントに。</span>
-          <span style="--d:9s">고양이가 좀 이상해요? 수의사와 상담할 관찰 포인트로 정리。</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.oddlo" target="_blank" rel="noopener">Google Play</a>
-        <a class="store-badge" href="https://apps.apple.com/tw/app/oddlo/id6805944419" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="pets">
-      <img class="app-icon" src="assets/icons/chowlo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Chowlo — 貓咪換糧排程與記帳</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">換糧照比例慢慢來，飼料與用品花費也一起記好。</span>
-          <span style="--d:3s">Gradual cat food switching plan plus a simple pet expense log.</span>
-          <span style="--d:6s">猫フードの段階的な切り替えと、フード・グッズの支出記録をひとつに。</span>
-          <span style="--d:9s">고양이 사료를 천천히 바꾸는 일정과 지출 기록을 한 번에.</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.chowlo" target="_blank" rel="noopener">Google Play</a>
-        <a class="store-badge" href="https://apps.apple.com/tw/app/id6805944828" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="pets">
-      <img class="app-icon" src="assets/icons/growlo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Growlo — 貓咪成長紀錄相簿</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">對位拍照做成長時光機，再用手繪地圖記下牠的探索足跡。</span>
-          <span style="--d:3s">Aligned photos become a growth time machine, plus a hand-drawn roaming map.</span>
-          <span style="--d:6s">位置合わせ撮影で成長タイムマシン、手描きマップで家の中の足跡も記録。</span>
-          <span style="--d:9s">위치 맞춤 촬영으로 성장 타임머신, 손그림 지도로 집 안 발자취도 기록.</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.growlo" target="_blank" rel="noopener">Google Play</a>
-        <a class="store-badge" href="https://apps.apple.com/tw/app/id6805945657" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-
-        <div class="app app-dual" data-category="pets">
-      <img class="app-icon" src="assets/icons/sagelo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Sagelo — 老貓認知觀察日記</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">記錄熟齡貓的日常變化，整理成獸醫看得懂的摘要。</span>
-          <span style="--d:3s">A senior cat observation diary with a vet-ready summary export.</span>
-          <span style="--d:6s">シニア猫の日々の変化を記録し、獣医に伝わる要約に。</span>
-          <span style="--d:9s">노령묘의 일상 변화를 기록하고 수의사용 요약으로 정리.</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.sagelo" target="_blank" rel="noopener">Google Play</a>
-        <span class="store-badge pending">App Store 審核中</span>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="pets">
-      <img class="app-icon" src="assets/icons/trucelo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Trucelo — 多貓家庭相處管理</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">資源檢查表加上新貓引入排程，讓貓咪們好好停戰。</span>
-          <span style="--d:3s">Resource checklist and new-cat introduction schedule for multi-cat homes.</span>
-          <span style="--d:6s">資源チェックと新入り猫の導入スケジュールで、多頭飼いの平和を。</span>
-          <span style="--d:9s">자원 체크리스트와 합사 일정으로 다묘가정의 평화를.</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.trucelo" target="_blank" rel="noopener">Google Play</a>
-        <span class="store-badge pending">App Store 審核中</span>
-      </div>
-    </div>
-
-<div class="app app-dual" data-category="play tools">
-      <img class="app-icon" src="assets/icons/ticklo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Ticklo — 節拍器調音器練習計時器三器合一</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">節拍器、調音器、練習計時器三合一，樂手練習好夥伴。</span>
-          <span style="--d:3s">Metronome + tuner + practice timer, all in one app.</span>
-          <span style="--d:6s">メトロノーム・チューナー・練習タイマーを1つに。</span>
-          <span style="--d:9s">메트로놈·튜너·연습 타이머를 하나로, 연주자의 필수 앱。</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.ticklo" target="_blank" rel="noopener">Google Play</a>
-        <a class="store-badge" href="https://apps.apple.com/tw/app/ticklo-%E5%B0%88%E6%A5%AD%E7%AF%80%E6%8B%8D%E5%99%A8%E8%88%87%E8%AA%BF%E9%9F%B3%E8%A8%88%E6%99%82%E5%99%A8/id6791945683" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="tools">
-      <img class="app-icon" src="assets/icons/spendlo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Spendlo — 日韓購物退稅助手</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">拍收據，AI 幫你判斷退稅資格，海外購物不吃虧。</span>
-          <span style="--d:3s">Scan your receipt. AI checks tax-refund eligibility instantly.</span>
-          <span style="--d:6s">レシートを撮るだけ、AIが免税対象かすぐ判定。</span>
-          <span style="--d:9s">영수증만 찍으면 AI가 세금 환급 자격을 바로 판별。</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://apps.apple.com/tw/app/spendlo/id6790820199" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="media">
-      <img class="app-icon" src="assets/icons/talklo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Talklo — 讓寵物與動漫角色開口說話</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">上傳照片、輸入稿子，AI 幫寵物或動漫角色生成說話短影片。</span>
-          <span style="--d:3s">Upload a photo, AI brings your pet or character to life, talking.</span>
-          <span style="--d:6s">写真をアップするだけ、AIがペットやキャラを喋らせる。</span>
-          <span style="--d:9s">사진만 올리면 AI가 반려동물·캐릭터를 말하게 해줘요。</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.talklo" target="_blank" rel="noopener">Google Play</a>
-        <a class="store-badge" href="https://apps.apple.com/tw/app/talklo/id6791154789" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="play">
-      <img class="app-icon" src="assets/icons/cheatlo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Cheatlo — 遊戲金手指百科</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">收錄 15 萬組金手指，自動匯出模擬器格式！</span>
-          <span style="--d:3s">159,510 retro cheats · Auto emulator format export.</span>
-          <span style="--d:6s">レトロゲームのチート15万件、エミュレータ形式自動変換。</span>
-          <span style="--d:9s">레트로 게임 치트 159,510개, 에뮬레이터 형식 자동 변환。</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.cheatlo" target="_blank" rel="noopener">Google Play</a>
-        <a class="store-badge" href="https://apps.apple.com/tw/app/cheatlo-retro-cheat-codes/id6790375458" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="media">
-      <img class="app-icon" src="assets/icons/memorlo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Memorlo — 老照片修復與故事</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">修復、上色、讓老照片動起來，再用 AI 寫下那段回憶。</span>
-          <span style="--d:3s">Restore, colorize & animate old photos. AI tells the story.</span>
-          <span style="--d:6s">古い写真を修復・着色・動かして、AIが思い出を綴る。</span>
-          <span style="--d:9s">오래된 사진 복원·채색·움직이기, AI가 그 추억의 이야기를.</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.memorlo" target="_blank" rel="noopener">Google Play</a>
-        <a class="store-badge" href="https://apps.apple.com/tw/app/memorlo-%E8%80%81%E7%85%A7%E7%89%87%E4%BF%AE%E5%BE%A9%E4%B8%8A%E8%89%B2%E5%8B%95%E7%95%AB/id6790839918" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="media">
-      <img class="app-icon" src="assets/icons/warplo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Warplo — 慢動作快動作攝影機</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">一開啟就能選快動作或慢動作錄影，不用再進內建相機找模式。</span>
-          <span style="--d:3s">Open the app and pick fast or slow motion — no digging through camera modes.</span>
-          <span style="--d:6s">起動してすぐ早送り・スローモーション録画を選べる。</span>
-          <span style="--d:9s">앱 열자마자 고속·슬로우 모션 촬영 선택。</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://apps.apple.com/tw/app/id6793407669" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="tools">
-      <img class="app-icon" src="assets/icons/readlo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Readlo — 樂透彩券拍照對獎</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">拍照辨識彩券號碼，自動查開獎結果並對獎。</span>
-          <span style="--d:3s">Photograph your lottery ticket — auto-checks if you won.</span>
-          <span style="--d:6s">宝くじ券を撮影するだけ、当選番号を自動照合。</span>
-          <span style="--d:9s">복권을 찍으면 당첨 번호를 자동으로 확인해줘요。</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://apps.apple.com/tw/app/id6798077578" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="tools">
-      <img class="app-icon" src="assets/icons/tracklo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Tracklo — 超商寄件貨態查詢</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">拍照辨識超商寄件收據，一鍵開啟官方查詢頁，免翻找代碼。</span>
-          <span style="--d:3s">Snap your shipping receipt — one tap opens the official tracking page.</span>
-          <span style="--d:6s">レシートを撮るだけ、公式追跡ページへワンタップ。</span>
-          <span style="--d:9s">영수증만 찍으면 공식 배송 조회 페이지로 한 번에 이동。</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://apps.apple.com/tw/app/id6797240955" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="tools">
-      <img class="app-icon" src="assets/icons/preplo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Preplo — 防災生存教學</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">地震、瓦斯外洩、CPR 等 19 則情境速查卡，離線也能查。</span>
-          <span style="--d:3s">Disaster & first-aid quick-check cards that work offline.</span>
-          <span style="--d:6s">地震・ガス漏れ・CPRなど19の状況別カード、オフラインでも確認できます。</span>
-          <span style="--d:9s">지진·가스누출·CPR 등 19가지 상황별 카드, 오프라인에서도 확인 가능.</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.preplo" target="_blank" rel="noopener">Google Play</a>
-        <a class="store-badge" href="https://apps.apple.com/tw/app/id6805942785" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" id="snifflo" data-category="pets">
-      <img class="app-icon" src="assets/icons/snifflo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Snifflo — 寵物食品成分掃描</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">拍一下標籤，立刻知道哪些成分對你的貓狗有害。</span>
-          <span style="--d:3s">Scan pet food labels. Know what's safe for your pet.</span>
-          <span style="--d:6s">ラベルをスキャンするだけ、ペットに危険な成分がわかる。</span>
-          <span style="--d:9s">라벨을 찍으면 끝. 반려동물에게 위험한 성분 즉시 확인。</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.snifflo" target="_blank" rel="noopener">Google Play</a>
-        <a class="store-badge" href="https://apps.apple.com/tw/app/id6790632614" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="tools">
-      <img class="app-icon" src="assets/icons/jotlo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Jotlo — 會 AI 的筆記本</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">拍照讓 AI 整理，用 Markdown 優雅寫作。</span>
-          <span style="--d:3s">Photo → AI organizes it. Write beautifully in Markdown.</span>
-          <span style="--d:6s">写真を撮ればAIが整理。Markdownで美しく書ける。</span>
-          <span style="--d:9s">사진 찍으면 AI가 정리. Markdown으로 깔끔하게 작성。</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.jotlo" target="_blank" rel="noopener">Google Play</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="tools">
-      <img class="app-icon" src="assets/icons/filelo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Filelo — 智能檔案整理器</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">一鍵整理任何資料夾！智慧分類圖片、影片、文件，60秒讓手機變乾淨。</span>
-          <span style="--d:3s">Clean any folder in 60 seconds! Smart sorting for photos, videos & docs.</span>
-          <span style="--d:6s">どのフォルダも60秒でスッキリ！写真・動画・書類を自動整理。</span>
-          <span style="--d:9s">어떤 폴더든 60초 정리! 사진·동영상·문서 자동 분류 앱。</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.filelo" target="_blank" rel="noopener">Google Play</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="tools">
-      <img class="app-icon" src="assets/icons/cliplo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Cliplo — 剪貼簿與 QR 掃描</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">複製自動記錄、QR 隨手掃、一鍵翻譯，內建片語庫，再也不用到處找。</span>
-          <span style="--d:3s">Auto-saves everything you copy or scan. Translate, organize, one tap away.</span>
-          <span style="--d:6s">コピーもQRスキャンも自動記録。ワンタップ翻訳、定型文管理も内蔵。</span>
-          <span style="--d:9s">복사와 QR 스캔을 자동 저장. 원탭 번역과 문구 관리까지 한 번에。</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.cliplo" target="_blank" rel="noopener">Google Play</a>
-      </div>
-    </div>
-
-    <div class="app app-dual" data-category="play">
-      <img class="app-icon" src="assets/icons/blackjackpro.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Blackjack Trainer Pro — 21點專業訓練</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">真實賭場規則的 21 點訓練，內建 Hi-Lo 算牌系統。</span>
-          <span style="--d:3s">Real casino rules. Hi-Lo card counting. Basic strategy.</span>
-          <span style="--d:6s">本物のルールで学ぶ21点。Hi-Loカードカウント搭載。</span>
-          <span style="--d:9s">실제 카지노 규칙 블랙잭 훈련. Hi-Lo 카드 카운팅。</span>
-        </div>
-      </div>
-      <div class="store-links">
-        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.blackjackpro" target="_blank" rel="noopener">Google Play</a>
-      </div>
-    </div>
-        </div>
-      </section>
-
-      <section class="section" id="upcoming" aria-labelledby="upcoming-title">
-        <div class="section-heading">
-          <div>
-            <p class="section-kicker" data-i18n="upcomingKicker">Coming next</p>
-            <h2 id="upcoming-title" data-i18n="upcomingTitle">即將推出</h2>
-          </div>
-          <p class="section-description" data-i18n="upcomingDescription">還在打磨中的作品；上架後會在這裡第一時間更新。</p>
-        </div>
-        <div class="app-coming">
-      <img class="app-icon" src="assets/icons/scriblo.png" alt="" loading="lazy" width="180" height="180">
-      <div class="app-body">
-        <p class="app-name">Scriblo — 螢幕錄影標註工具</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">錄螢幕的同時直接畫線圈選、寫字標記，重點一次到位。</span>
-          <span style="--d:3s">Draw, circle & annotate on your screen while recording.</span>
-          <span style="--d:6s">画面録画しながら丸で囲んだり書き込んだり、そのまま強調表示。</span>
-          <span style="--d:9s">화면 녹화하면서 바로 동그라미·메모로 강조 표시。</span>
-        </div>
-      </div>
-      <div class="badge-group">
-        <span class="badge">Android 測試中</span>
-        <span class="ios-badge review">iOS 審核中</span>
-      </div>
-    </div>
-    </section>
-
-      <section class="section" id="web-projects" aria-labelledby="web-projects-title">
-        <div class="section-heading">
-          <div>
-            <p class="section-kicker" data-i18n="webKicker">Web Portfolio</p>
-            <h2 id="web-projects-title" data-i18n="webTitle">網站工具與實驗作品</h2>
-          </div>
-          <p class="section-description" data-i18n="webDescription">不只行動 App，也把好點子做成即開即用的網頁工具。</p>
-        </div>
-        <div class="web-grid">
-    <a class="app" href="https://maozhidao.maxteng.org" target="_blank" rel="noopener">
-      <div class="site-icon">🐾</div>
-      <div class="app-body">
-        <p class="app-name">貓知道 — 貓咪寵物百科</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">寵物百科網站，收錄百種常見疾病與症狀懶人包。</span>
-          <span style="--d:3s">Pet health encyclopedia with symptom guides for common conditions.</span>
-          <span style="--d:6s">ペットの症状と病気をまとめた百科事典サイト。</span>
-          <span style="--d:9s">반려동물 질환·증상 백과사전 웹사이트。</span>
-        </div>
-      </div>
-      <span class="arrow">→</span>
-    </a>
-
-    <a class="app" href="https://roadguard.maxteng.org" target="_blank" rel="noopener">
-      <div class="site-icon">🚗</div>
-      <div class="app-body">
-        <p class="app-name">RoadGuard 網頁版</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">行車記錄器違規查詢工具，App 同款功能網頁版。</span>
-          <span style="--d:3s">Web version of the dashcam violation-report lookup tool.</span>
-          <span style="--d:6s">ドライブレコーダー違反照会ツールのWeb版。</span>
-          <span style="--d:9s">블랙박스 위반 조회 도구의 웹 버전。</span>
-        </div>
-      </div>
-      <span class="arrow">→</span>
-    </a>
-
-    <a class="app" href="https://slimdrop.maxteng.org" target="_blank" rel="noopener">
-      <div class="site-icon">📦</div>
-      <div class="app-body">
-        <p class="app-name">SlimDrop — 線上檔案壓縮</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">線上檔案壓縮工具，支援 PPTX／圖片／影片一鍵瘦身。</span>
-          <span style="--d:3s">Online file compressor for PPTX, images, and videos.</span>
-          <span style="--d:6s">PPTX・画像・動画をワンクリックで圧縮するツール。</span>
-          <span style="--d:9s">PPTX·이미지·동영상을 한 번에 압축하는 도구。</span>
-        </div>
-      </div>
-      <span class="arrow">→</span>
-    </a>
-
-    <a class="app" href="https://livingportrait.maxteng.org" target="_blank" rel="noopener">
-      <div class="site-icon">✨</div>
-      <div class="app-body">
-        <p class="app-name">Living Portrait — 讓照片動起來</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">照片動起來效果展示，AI 景深分層動畫，8 種模式任你切換。</span>
-          <span style="--d:3s">AI depth-animation demo — 8 motion modes for photos that move.</span>
-          <span style="--d:6s">写真を動かすAIエフェクトのデモ、8種類のモードを体験。</span>
-          <span style="--d:9s">사진을 움직이게 하는 AI 데모, 8가지 모드 체험。</span>
-        </div>
-      </div>
-      <span class="arrow">→</span>
-    </a>
-
-    <a class="app" href="https://ticklo.maxteng.org" target="_blank" rel="noopener">
-      <div class="site-icon">🎵</div>
-      <div class="app-body">
-        <p class="app-name">Ticklo 網頁版</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">節拍器／調音器 App 的配套網頁工具。</span>
-          <span style="--d:3s">Companion web tool for the Ticklo metronome &amp; tuner app.</span>
-          <span style="--d:6s">メトロノーム・チューナーアプリの補助Webツール。</span>
-          <span style="--d:9s">메트로놈·튜너 앱의 보조 웹 도구。</span>
-        </div>
-      </div>
-      <span class="arrow">→</span>
-    </a>
-
-    <a class="app" href="https://cheatlo.maxteng.org" target="_blank" rel="noopener">
-      <div class="site-icon">🕹️</div>
-      <div class="app-body">
-        <p class="app-name">Cheatlo 網頁版 — 遊戲金手指資料庫</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">15 萬組復古遊戲金手指查詢資料庫。</span>
-          <span style="--d:3s">Database of 150,000+ retro game cheat codes.</span>
-          <span style="--d:6s">レトロゲームのチートコード15万件のデータベース。</span>
-          <span style="--d:9s">레트로 게임 치트 코드 15만 개 데이터베이스。</span>
-        </div>
-      </div>
-      <span class="arrow">→</span>
-    </a>
-
-    <a class="app" href="https://cliplo.maxteng.org" target="_blank" rel="noopener">
-      <div class="site-icon">📋</div>
-      <div class="app-body">
-        <p class="app-name">Cliplo 網頁版</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">剪貼簿與 QR 掃描 App 的配套網頁工具。</span>
-          <span style="--d:3s">Companion web tool for the Cliplo clipboard &amp; QR app.</span>
-          <span style="--d:6s">クリップボード・QRアプリの補助Webツール。</span>
-          <span style="--d:9s">클립보드·QR 앱의 보조 웹 도구。</span>
-        </div>
-      </div>
-      <span class="arrow">→</span>
-    </a>
-
-    <a class="app" href="https://playshotstudio.maxteng.org" target="_blank" rel="noopener">
-      <div class="site-icon">🖼️</div>
-      <div class="app-body">
-        <p class="app-name">PlayShot Studio</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">Android／iOS 商店截圖一鍵生成工具。</span>
-          <span style="--d:3s">One-click Android/iOS app store screenshot generator.</span>
-          <span style="--d:6s">Android／iOSストア画像をワンクリック生成するツール。</span>
-          <span style="--d:9s">Android/iOS 스토어 이미지를 한 번에 생성하는 도구。</span>
-        </div>
-      </div>
-      <span class="arrow">→</span>
-    </a>
-
-    <a class="app" href="https://jptax.maxteng.org" target="_blank" rel="noopener">
-      <div class="site-icon">💴</div>
-      <div class="app-body">
-        <p class="app-name">日本退稅通 — 新制退稅試算</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">日本 2026/11/1 免稅新制退稅金額試算與流程指南。</span>
-          <span style="--d:3s">Japan tax-free refund calculator and guide for the new system starting 2026/11/1.</span>
-          <span style="--d:6s">2026年11月1日開始の日本の新免税制度、還付額の試算とガイド。</span>
-          <span style="--d:9s">2026년 11월 1일 일본 면세 신제도 환급액 계산기 및 안내。</span>
-        </div>
-      </div>
-      <span class="arrow">→</span>
-    </a>
-
-    <a class="app" href="https://preplo.maxteng.org" target="_blank" rel="noopener">
-      <div class="site-icon">🧯</div>
-      <div class="app-body">
-        <p class="app-name">Preplo 防災急救知識網站</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">防災與急救情境速查、互動練習與避難包清單，免登入即可使用。</span>
-          <span style="--d:3s">Disaster-prep and first-aid scenarios, practice questions and a go-bag checklist. No sign-up needed.</span>
-          <span style="--d:6s">防災・応急手当のシナリオ、練習問題、非常持ち出し袋チェックリスト。登録不要で使えます。</span>
-          <span style="--d:9s">재난 대비·응급처치 상황 가이드, 연습 문제, 비상용품 체크리스트. 가입 없이 이용할 수 있습니다.</span>
-        </div>
-      </div>
-      <span class="arrow">→</span>
-    </a>
-
-    <a class="app" href="https://chinanews.maxteng.org" target="_blank" rel="noopener">
-      <div class="site-icon">🧳</div>
-      <div class="app-body">
-        <p class="app-name">陸行快報 — 台灣人去大陸實用資訊</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">開戶、支付、退稅、居住證、門號一次整理，附出發前檢查清單。</span>
-          <span style="--d:3s">Practical mainland China info for Taiwanese travelers: banking, payments, tax refunds, residence permits.</span>
-          <span style="--d:6s">台湾から中国本土へ行く人向けの実用情報：口座開設・決済・税還付・居住証。</span>
-          <span style="--d:9s">대만인을 위한 중국 본토 실용 정보: 계좌 개설·결제·세금 환급·거주증.</span>
-        </div>
-      </div>
-      <span class="arrow">→</span>
-    </a>
-
-    <a class="app" href="https://voxlab-six.vercel.app" target="_blank" rel="noopener">
-      <div class="site-icon">🎙️</div>
-      <div class="app-body">
-        <p class="app-name">VoxLab — 聲音技術實驗室</p>
-        <div class="desc-cycle">
-          <span style="--d:0s">會議逐字稿、歌詞對齊、字幕產生、口述整理、語言跟讀，五種語音轉文字實驗。</span>
-          <span style="--d:3s">Speech-to-text lab: meeting transcripts, lyric sync, subtitles, dictation cleanup and shadowing practice.</span>
-          <span style="--d:6s">議事録・歌詞同期・字幕生成・口述整理・シャドーイング、5つの音声認識実験。</span>
-          <span style="--d:9s">회의록·가사 싱크·자막 생성·구술 정리·쉐도잉, 다섯 가지 음성 인식 실험.</span>
-        </div>
-      </div>
-      <span class="arrow">→</span>
-    </a>
-        </div>
-      </section>
-
-      <section class="section" id="about" aria-labelledby="about-title">
-        <div class="about">
-          <div>
-            <p class="section-kicker" data-i18n="aboutKicker">About MaxTeng</p>
-            <h2 id="about-title" data-i18n="aboutTitle">讓技術少一點距離，讓日常多一點從容。</h2>
-            <p data-i18n="aboutCopy">從影像處理、AI 到寵物照護與日常工具，我相信好產品不必複雜。MaxTeng 把明確的需求做成不需要說明書、打開就能用的產品。</p>
-          </div>
-          <div class="about-contact" id="contact">
-            <strong data-i18n="contactTitle">有想法，聊聊看。</strong>
-            <span data-i18n="contactCopy">合作、產品建議或技術交流都歡迎。</span>
-            <a href="mailto:ripteng@gmail.com">ripteng@gmail.com&nbsp;↗</a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <span>© 2026 MaxTeng</span>
-      <a href="mailto:ripteng@gmail.com" data-i18n="footerContact">聯絡我</a>
-    </footer>
-  </div>
-  <script>
-    (() => {
-      const copy = {
-        zh: {
-          navApps:'Apps', navWeb:'Web 工具', navAbout:'關於我', navContact:'聯絡',
-          heroEyebrow:'獨立開發者 · 台灣', heroTitle:'把日常的不便與需求，化成好用的 App 與 Web 工具。',
-          heroCopy:'MaxTeng 專注打造容易上手、能解決真實問題的 Android、iOS App 與 Web 工具。', heroPrimary:'探索所有作品', heroSecondary:'聯絡我',
-          statApps:'已上架 App', statWeb:'Web 工具', statPlatforms:'跨平台產品',
-          featuredKicker:'精選作品', featuredTitle:'從一個小麻煩開始', featuredDescription:'三個最能代表 MaxTeng 產品方向的實用 App。',
-          featureRoadGuard:'行車蒐證，精準留住關鍵畫面', featurePixZap:'一站完成照片處理與 AI 修復', featureSnifflo:'掃描成分，照顧毛孩更安心',
-          appsKicker:'App Portfolio', appsTitle:'已上架的 App', appsDescription:'用分類快速探索影像、寵物、生活工具與娛樂作品。',
-          filterAll:'全部', filterMedia:'影像與 AI', filterPets:'寵物照護', filterTools:'生活工具', filterPlay:'音樂與遊戲',
-          upcomingKicker:'Coming next', upcomingTitle:'即將推出', upcomingDescription:'還在打磨中的作品；上架後會在這裡第一時間更新。',
-          webKicker:'Web Portfolio', webTitle:'網站工具與實驗作品', webDescription:'不只行動 App，也把好點子做成即開即用的網頁工具。',
-          aboutKicker:'About MaxTeng', aboutTitle:'讓技術少一點距離，讓日常多一點從容。',
-          aboutCopy:'從影像處理、AI 到寵物照護與日常工具，我相信好產品不必複雜。MaxTeng 把明確的需求做成不需要說明書、打開就能用的產品。',
-          contactTitle:'有想法，聊聊看。', contactCopy:'合作、產品建議或技術交流都歡迎。', footerContact:'聯絡我'
-        },
-        en: {
-          navApps:'Apps', navWeb:'Web tools', navAbout:'About', navContact:'Contact',
-          heroEyebrow:'Independent developer · Taiwan', heroTitle:'Turning everyday friction into useful apps.',
-          heroCopy:'MaxTeng builds approachable Android, iOS, and web products that solve real problems.', heroPrimary:'Explore the work', heroSecondary:'Get in touch',
-          statApps:'Published apps', statWeb:'Web tools', statPlatforms:'Cross-platform products',
-          featuredKicker:'Featured work', featuredTitle:'Start with a small everyday problem', featuredDescription:'Three products that best represent the MaxTeng approach.',
-          featureRoadGuard:'Capture the moments that matter on the road', featurePixZap:'Photo tools and AI repair in one place', featureSnifflo:'Scan ingredients and care for pets with confidence',
-          appsKicker:'App portfolio', appsTitle:'Published apps', appsDescription:'Browse image, pet care, everyday utility, and entertainment products by category.',
-          filterAll:'All', filterMedia:'Image & AI', filterPets:'Pet care', filterTools:'Everyday tools', filterPlay:'Music & games',
-          upcomingKicker:'Coming next', upcomingTitle:'In the works', upcomingDescription:'A product still being refined. Its release status will be updated here.',
-          webKicker:'Web portfolio', webTitle:'Web tools & experiments', webDescription:'Good ideas also become instant, useful tools on the web.',
-          aboutKicker:'About MaxTeng', aboutTitle:'Less distance from technology. More ease in everyday life.',
-          aboutCopy:'From image tools and AI to pet care and everyday utilities, I believe useful products should not need a manual. MaxTeng turns clear needs into products you can simply open and use.',
-          contactTitle:'Have an idea? Let’s talk.', contactCopy:'Collaboration, feedback, and technical conversations are welcome.', footerContact:'Contact'
-        },
-        ja: {
-          navApps:'アプリ', navWeb:'Webツール', navAbout:'プロフィール', navContact:'お問い合わせ',
-          heroEyebrow:'個人開発者 · 台湾', heroTitle:'日常の小さな不便を、使いやすいアプリに。',
-          heroCopy:'MaxTeng は、すぐに使えて実際の課題を解決する Android、iOS、Web 製品をつくっています。', heroPrimary:'作品を見る', heroSecondary:'お問い合わせ',
-          statApps:'公開アプリ', statWeb:'Webツール', statPlatforms:'クロスプラットフォーム製品',
-          featuredKicker:'注目の作品', featuredTitle:'小さな不便から始める', featuredDescription:'MaxTeng の方向性を最もよく表す3つのアプリです。',
-          featureRoadGuard:'道路上の大切な瞬間を正確に記録', featurePixZap:'写真編集とAI修復をひとつに', featureSnifflo:'成分を読み取り、ペットをもっと安心に',
-          appsKicker:'アプリ一覧', appsTitle:'公開中のアプリ', appsDescription:'画像、ペットケア、生活ツール、エンタメをカテゴリから探せます。',
-          filterAll:'すべて', filterMedia:'画像・AI', filterPets:'ペットケア', filterTools:'生活ツール', filterPlay:'音楽・ゲーム',
-          upcomingKicker:'Coming next', upcomingTitle:'開発中', upcomingDescription:'現在ブラッシュアップ中の作品です。公開状況はここで更新します。',
-          webKicker:'Web作品', webTitle:'Webツールと実験作品', webDescription:'良いアイデアを、すぐ使えるWebツールにもしています。',
-          aboutKicker:'MaxTengについて', aboutTitle:'技術をもっと身近に。日常をもっと軽やかに。',
-          aboutCopy:'画像処理、AI、ペットケア、生活ツールまで、良い製品に説明書は要らないと考えています。MaxTeng は明確なニーズを、開けばすぐ使える製品に変えます。',
-          contactTitle:'アイデアがありますか？', contactCopy:'コラボレーション、フィードバック、技術的な交流を歓迎します。', footerContact:'お問い合わせ'
-        },
-        ko: {
-          navApps:'앱', navWeb:'웹 도구', navAbout:'소개', navContact:'연락하기',
-          heroEyebrow:'인디 개발자 · 대만', heroTitle:'일상의 불편을, 쓰기 좋은 앱으로 만듭니다.',
-          heroCopy:'MaxTeng은 실제 문제를 해결하고 누구나 쉽게 쓸 수 있는 Android, iOS, 웹 제품을 만듭니다.', heroPrimary:'작품 둘러보기', heroSecondary:'연락하기',
-          statApps:'출시 앱', statWeb:'웹 도구', statPlatforms:'크로스플랫폼 제품',
-          featuredKicker:'주요 작품', featuredTitle:'작은 일상의 불편에서 시작합니다', featuredDescription:'MaxTeng의 제품 방향을 잘 보여 주는 세 가지 앱입니다.',
-          featureRoadGuard:'도로 위 중요한 순간을 정확하게 기록', featurePixZap:'사진 도구와 AI 복원을 한곳에서', featureSnifflo:'성분을 스캔하고 반려동물을 더 안심하게',
-          appsKicker:'앱 포트폴리오', appsTitle:'출시된 앱', appsDescription:'이미지, 반려동물 케어, 생활 도구, 엔터테인먼트 작품을 찾아보세요.',
-          filterAll:'전체', filterMedia:'이미지 · AI', filterPets:'반려동물 케어', filterTools:'생활 도구', filterPlay:'음악 · 게임',
-          upcomingKicker:'Coming next', upcomingTitle:'개발 중', upcomingDescription:'완성도를 높이는 중인 작품입니다. 출시 상태는 여기에서 업데이트합니다.',
-          webKicker:'웹 포트폴리오', webTitle:'웹 도구와 실험 작품', webDescription:'좋은 아이디어는 바로 쓸 수 있는 웹 도구로도 만듭니다.',
-          aboutKicker:'MaxTeng 소개', aboutTitle:'기술은 더 가깝게, 일상은 더 여유롭게.',
-          aboutCopy:'이미지 처리, AI, 반려동물 케어, 생활 도구까지 좋은 제품에는 설명서가 필요 없다고 믿습니다. MaxTeng은 분명한 필요를 열자마자 쓸 수 있는 제품으로 만듭니다.',
-          contactTitle:'아이디어가 있으신가요?', contactCopy:'협업, 제품 제안, 기술 교류를 환영합니다.', footerContact:'연락하기'
-        }
-      };
-      const languageIndex = { zh: 0, en: 1, ja: 2, ko: 3 };
-      const documentLanguages = { zh: 'zh-Hant', en: 'en', ja: 'ja', ko: 'ko' };
-      const setLanguage = (language) => {
-        const strings = copy[language];
-        document.documentElement.lang = documentLanguages[language];
-        document.documentElement.dataset.languageReady = 'true';
-        document.querySelectorAll('[data-i18n]').forEach((element) => {
-          element.textContent = strings[element.dataset.i18n];
-        });
-        document.querySelectorAll('.desc-cycle').forEach((cycle) => {
-          cycle.querySelectorAll('span').forEach((item, index) => item.classList.toggle('is-active', index === languageIndex[language]));
-        });
-        document.querySelectorAll('.language-button').forEach((button) => {
-          button.setAttribute('aria-pressed', String(button.dataset.language === language));
-        });
-        try { localStorage.setItem('maxteng-language', language); } catch (error) { /* Storage may be disabled. */ }
-      };
-      const savedLanguage = (() => { try { return localStorage.getItem('maxteng-language'); } catch (error) { return null; } })();
-      setLanguage(copy[savedLanguage] ? savedLanguage : 'zh');
-      document.querySelectorAll('.language-button').forEach((button) => button.addEventListener('click', () => setLanguage(button.dataset.language)));
-      document.querySelectorAll('.filter-button').forEach((button) => button.addEventListener('click', () => {
-        const filter = button.dataset.filter;
-        document.querySelectorAll('.filter-button').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
-        document.querySelectorAll('.app-grid .app').forEach((card) => {
-          card.hidden = filter !== 'all' && !card.dataset.category.split(' ').includes(filter);
-        });
-      }));
-    })();
-  </script>
+<body data-page="home">
+<div class="wrap">
+<a class="skip-link" href="#top" data-i18n="skip">跳到主要內容</a>
+<header class="site-header">
+<a class="brand" href="/" data-i18n-aria-label="home" aria-label="MaxTeng 首頁">Max<span class="brand-mark">Teng</span>
+</a>
+<div class="language-switcher" role="group" data-i18n-aria-label="languageLabel" aria-label="選擇語言">
+<button class="language-button" type="button" data-language="zh" aria-pressed="true" aria-label="繁體中文" lang="zh-Hant">繁</button>
+<button class="language-button" type="button" data-language="en" aria-pressed="false" aria-label="English" lang="en">EN</button>
+<button class="language-button" type="button" data-language="ja" aria-pressed="false" aria-label="日本語" lang="ja">日</button>
+<button class="language-button" type="button" data-language="ko" aria-pressed="false" aria-label="한국어" lang="ko">한</button>
+</div>
+<button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" data-i18n="menu">選單</button>
+<nav id="site-nav" class="site-nav" data-i18n-aria-label="navLabel" aria-label="主要導覽">
+<a href="/#apps" data-i18n="navApps">Apps</a>
+<a href="/#web-projects" data-i18n="navWeb">Web 工具</a>
+<a href="/#about" data-i18n="navAbout">關於我</a>
+<a href="/#contact" data-i18n="navContact">聯絡</a>
+</nav>
+</header>
+<main id="top" tabindex="-1">
+<section class="hero" aria-labelledby="hero-title">
+<p class="eyebrow" data-i18n="heroEyebrow">獨立開發者 · 台灣</p>
+<h1 id="hero-title" data-i18n="heroTitle">把日常的不便與需求，化成好用的 App 與 Web 工具。</h1>
+<p class="hero-copy" data-i18n="heroCopy">MaxTeng 專注打造容易上手、能解決真實問題的 Android、iOS App 與 Web 工具。</p>
+<div class="hero-actions">
+<a class="button button-primary" href="#apps" data-i18n="heroPrimary">探索所有作品</a>
+<a class="button button-secondary" href="mailto:ripteng@gmail.com" data-i18n="heroSecondary">聯絡我</a>
+</div>
+<div class="hero-stats" aria-label="作品統計" data-i18n-aria-label="statsLabel">
+<div class="hero-stat">
+<strong data-count="apps">25</strong>
+<span data-i18n="statApps">已上架 App</span>
+</div>
+<div class="hero-stat">
+<strong data-count="web">12</strong>
+<span data-i18n="statWeb">Web 工具</span>
+</div>
+<div class="hero-stat">
+<strong>Android · iOS</strong>
+<span data-i18n="statPlatforms">跨平台產品</span>
+</div>
+</div>
+</section>
+<section class="section" aria-labelledby="featured-title">
+<div class="section-heading">
+<div>
+<p data-i18n="featuredKicker" class="section-kicker">精選作品</p>
+<h2 data-i18n="featuredTitle" id="featured-title">從一個小麻煩開始</h2>
+</div>
+<p data-i18n="featuredDescription" class="section-description">三個最能代表 MaxTeng 產品方向的實用 App。</p>
+</div>
+<div class="featured-grid">
+<article class="featured-card">
+<a class="featured-visual" href="/apps/roadguard/">
+<img src="/assets/screenshots/roadguard.webp" width="1000" height="449" alt="RoadGuard App 實際操作畫面" data-i18n-alt="roadguardScreenshot" loading="lazy">
+</a>
+<div class="featured-content">
+<div class="featured-identity">
+<img src="/assets/icons/roadguard.png" width="52" height="52" alt="" loading="lazy">
+<h3>RoadGuard</h3>
+</div>
+<p data-i18n="roadguardSummary">把行車影片中需要保留的細節，整理成清楚的畫面與片段。</p>
+<div class="featured-actions">
+<a class="detail-link" href="/apps/roadguard/">
+<span data-i18n="details">了解產品</span>
+<span aria-hidden="true">↗</span>
+</a>
+<a href="#roadguard" class="download-jump">
+<span data-i18n="viewCard">查看下載入口</span>
+</a>
+</div>
+</div>
+</article>
+<article class="featured-card">
+<a class="featured-visual" href="/apps/pixzap/">
+<img src="/assets/screenshots/pixzap.webp" width="555" height="1200" alt="PixZap App 實際操作畫面" data-i18n-alt="pixzapScreenshot" loading="lazy">
+</a>
+<div class="featured-content">
+<div class="featured-identity">
+<img src="/assets/icons/pixzap.png" width="52" height="52" alt="" loading="lazy">
+<h3>PixZap</h3>
+</div>
+<p data-i18n="pixzapSummary">壓縮、編輯、GIF 與 AI 工具，讓照片處理少一點來回切換。</p>
+<div class="featured-actions">
+<a class="detail-link" href="/apps/pixzap/">
+<span data-i18n="details">了解產品</span>
+<span aria-hidden="true">↗</span>
+</a>
+<a href="#pixzap" class="download-jump">
+<span data-i18n="viewCard">查看下載入口</span>
+</a>
+</div>
+</div>
+</article>
+<article class="featured-card">
+<a class="featured-visual" href="/apps/snifflo/">
+<img src="/assets/screenshots/snifflo.webp" width="555" height="1200" alt="Snifflo App 實際操作畫面" data-i18n-alt="sniffloScreenshot" loading="lazy">
+</a>
+<div class="featured-content">
+<div class="featured-identity">
+<img src="/assets/icons/snifflo.png" width="52" height="52" alt="" loading="lazy">
+<h3>Snifflo</h3>
+</div>
+<p data-i18n="sniffloSummary">拍下寵物食品成分標籤，整理貓狗需要留意的成分。</p>
+<div class="featured-actions">
+<a class="detail-link" href="/apps/snifflo/">
+<span data-i18n="details">了解產品</span>
+<span aria-hidden="true">↗</span>
+</a>
+<a href="#snifflo" class="download-jump">
+<span data-i18n="viewCard">查看下載入口</span>
+</a>
+</div>
+</div>
+</article>
+</div>
+</section>
+<section class="section" id="apps" aria-labelledby="apps-title">
+<div class="section-heading">
+<div>
+<p data-i18n="appsKicker" class="section-kicker">App Portfolio</p>
+<h2 data-i18n="appsTitle" id="apps-title">探索所有作品</h2>
+</div>
+<p data-i18n="appsDescription" class="section-description">依用途、平台或關鍵字，找到適合你的 App 與 Web 工具。</p>
+</div>
+<div class="explorer-controls">
+<div class="search-row">
+<label class="search-field" for="portfolio-search">
+<span data-i18n="searchLabel">搜尋全部作品</span>
+<input id="portfolio-search" type="search" autocomplete="off" placeholder="名稱或用途，例如：照片、貓咪、QR" data-i18n-placeholder="searchPlaceholder" aria-controls="app-results web-results">
+</label>
+<label class="platform-field" for="platform-filter">
+<span data-i18n="platformLabel">使用平台</span>
+<select id="platform-filter" aria-controls="app-results web-results">
+<option value="all" data-i18n="platformAll">所有平台</option>
+<option value="android">Android</option>
+<option value="ios">iOS</option>
+<option value="web">Web</option>
+</select>
+</label>
+</div>
+<div class="filter-bar" role="group" aria-label="作品分類" data-i18n-aria-label="categoryLabel">
+<button class="filter-button" type="button" data-filter="all" aria-pressed="true" data-i18n="filterAll">全部</button>
+<button class="filter-button" type="button" data-filter="media" aria-pressed="false" data-i18n="filterMedia">影像與 AI</button>
+<button class="filter-button" type="button" data-filter="pets" aria-pressed="false" data-i18n="filterPets">寵物照護</button>
+<button class="filter-button" type="button" data-filter="tools" aria-pressed="false" data-i18n="filterTools">生活工具</button>
+<button class="filter-button" type="button" data-filter="play" aria-pressed="false" data-i18n="filterPlay">音樂與遊戲</button>
+</div>
+<div class="results-row">
+<p id="result-count" role="status" aria-live="polite" aria-atomic="true">找到 37 個作品</p>
+<button type="button" class="reset-button" id="clear-filters" data-i18n="reset">清除篩選</button>
+</div>
+</div>
+<div class="result-group" id="app-results">
+<h3 class="group-title">
+<span data-i18n="appGroup">行動 App</span>
+<span class="group-count" id="app-count">25</span>
+</h3>
+<div class="app-grid">
+<div class="app app-dual" data-category="media tools" id="roadguard" data-platform="android ios">
+<img class="app-icon" src="assets/icons/roadguard.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name0" class="app-name">RoadGuard — 行車蒐證工具</h3>
+<div class="desc-cycle">
+<span >行車影片放大截圖，自動疊加時間戳，輕鬆蒐證違規。</span>
+<span >Zoom dashcam footage & screenshot with auto timestamp.</span>
+<span >ドラレコ映像を拡大・スクリーンショット、証拠保存。</span>
+<span >블랙박스 영상 확대·스크린샷으로 교통위반 증거 수집。</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.roadguard" target="_blank" rel="noopener">Google Play</a>
+<a class="store-badge" href="https://apps.apple.com/tw/app/roadguard-行車蒐證/id6790757795" target="_blank" rel="noopener">App Store</a>
+</div>
+<div class="card-meta">
+<a class="detail-link" href="/apps/roadguard/">
+<span data-i18n="details">了解產品</span>
+<span aria-hidden="true">↗</span>
+</a>
+<a class="privacy-link" href="/privacy/roadguard/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="media play" id="snappuzzle" data-platform="android ios">
+<img class="app-icon" src="assets/icons/snappuzzle.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name1" class="app-name">SnapPuzzle — 照片拼圖大冒險</h3>
+<div class="desc-cycle">
+<span >把照片變成拼圖，傳給朋友比快、藏入祕密訊息！</span>
+<span >Turn photos into puzzles. Challenge friends & hide messages!</span>
+<span >写真をパズルに！友達に挑戦状を、秘密のメッセージも。</span>
+<span >사진을 퍼즐로! 친구에게 도전장·비밀 메시지 숨기기。</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.snap_puzzle" target="_blank" rel="noopener">Google Play</a>
+<a class="store-badge" href="https://apps.apple.com/tw/app/snappuzzle-jigsaw-master/id6790626144" target="_blank" rel="noopener">App Store</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/snappuzzle/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="play" id="singlo" data-platform="android ios">
+<img class="app-icon" src="assets/icons/singlo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name2" class="app-name">唱歌囉 Singlo — AI 卡拉 OK 神器</h3>
+<div class="desc-cycle">
+<span >跟著歌詞唱歌，AI 幫你即時打分，人人都能開演唱會。</span>
+<span >Sing along with real-time AI scoring. Karaoke anywhere.</span>
+<span >歌詞に合わせて歌うとAIが即採点。どこでもカラオケ。</span>
+<span >가사 따라 부르면 AI가 실시간 채점. 어디서나 노래방。</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.singlo" target="_blank" rel="noopener">Google Play</a>
+<a class="store-badge" href="https://apps.apple.com/tw/app/id6791690079" target="_blank" rel="noopener">App Store</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/singlo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="media" id="pixzap" data-platform="android ios">
+<img class="app-icon" src="assets/icons/pixzap.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name3" class="app-name">PixZap — 全能照片編輯器</h3>
+<div class="desc-cycle">
+<span >壓縮、GIF、AI 修復，一個 App 搞定所有圖片需求。</span>
+<span >Compress, GIF, AI style — all-in-one photo toolkit. Free!</span>
+<span >圧縮・GIF・AI修復、1つのアプリで写真のすべて。</span>
+<span >압축·GIF·AI복원, 사진 모든 것이 하나의 앱에!</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.pixzap" target="_blank" rel="noopener">Google Play</a>
+<a class="store-badge" href="https://apps.apple.com/tw/app/id6796897369" target="_blank" rel="noopener">App Store</a>
+</div>
+<div class="card-meta">
+<a class="detail-link" href="/apps/pixzap/">
+<span data-i18n="details">了解產品</span>
+<span aria-hidden="true">↗</span>
+</a>
+<a class="privacy-link" href="/privacy/pixzap/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="pets media" id="petsoul" data-platform="android ios">
+<img class="app-icon" src="assets/icons/petsoul.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name4" class="app-name">PetSoul — 寵物情緒 AI 日記</h3>
+<div class="desc-cycle">
+<span >拍一張照，AI 讀懂牠的心情，記錄毛孩的每一天。</span>
+<span >AI reads your pet's mood from a photo. Art & diary.</span>
+<span >写真1枚でAIがペットの感情を読み取り毎日記録。</span>
+<span >사진으로 AI가 반려동물 감정 분석·무드 아트 생성。</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.petsoul" target="_blank" rel="noopener">Google Play</a>
+<a class="store-badge" href="https://apps.apple.com/tw/app/id6790455772" target="_blank" rel="noopener">App Store</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/petsoul/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="pets" id="vitalo" data-platform="android ios">
+<img class="app-icon" src="assets/icons/vitalo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name5" class="app-name">Chronlo — 貓狗慢性病照護百科</h3>
+<div class="desc-cycle">
+<span >幫慢性病毛孩記錄體重、用藥與回診，照護不遺漏。</span>
+<span >Track weight, meds & vet visits for chronic-illness pets.</span>
+<span >持病のあるペットの体重・投薬・通院を記録、見守りを万全に。</span>
+<span >만성질환 반려동물의 체중·투약·통원을 기록, 꼼꼼한 케어。</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.vitalo" target="_blank" rel="noopener">Google Play</a>
+<a class="store-badge" href="https://apps.apple.com/tw/app/id6790975397" target="_blank" rel="noopener">App Store</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/vitalo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="pets" id="oddlo" data-platform="android ios">
+<img class="app-icon" src="assets/icons/oddlo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name6" class="app-name">Oddlo — 貓咪行為觀察速查</h3>
+<div class="desc-cycle">
+<span >貓咪最近怪怪的？一問一答整理成觀察重點，方便跟獸醫討論。</span>
+<span >Quick cat behavior check-ups — turn "something's off" into vet-ready notes.</span>
+<span >「猫の様子、変かも？」を整理して、獣医さんに伝える観察ポイントに。</span>
+<span >고양이가 좀 이상해요? 수의사와 상담할 관찰 포인트로 정리。</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.oddlo" target="_blank" rel="noopener">Google Play</a>
+<a class="store-badge" href="https://apps.apple.com/tw/app/oddlo/id6805944419" target="_blank" rel="noopener">App Store</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/oddlo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="pets" id="chowlo" data-platform="android ios">
+<img class="app-icon" src="assets/icons/chowlo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name7" class="app-name">Chowlo — 貓咪換糧排程與記帳</h3>
+<div class="desc-cycle">
+<span >換糧照比例慢慢來，飼料與用品花費也一起記好。</span>
+<span >Gradual cat food switching plan plus a simple pet expense log.</span>
+<span >猫フードの段階的な切り替えと、フード・グッズの支出記録をひとつに。</span>
+<span >고양이 사료를 천천히 바꾸는 일정과 지출 기록을 한 번에.</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.chowlo" target="_blank" rel="noopener">Google Play</a>
+<a class="store-badge" href="https://apps.apple.com/tw/app/id6805944828" target="_blank" rel="noopener">App Store</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/chowlo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="pets" id="growlo" data-platform="android ios">
+<img class="app-icon" src="assets/icons/growlo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name8" class="app-name">Growlo — 貓咪成長紀錄相簿</h3>
+<div class="desc-cycle">
+<span >對位拍照做成長時光機，再用手繪地圖記下牠的探索足跡。</span>
+<span >Aligned photos become a growth time machine, plus a hand-drawn roaming map.</span>
+<span >位置合わせ撮影で成長タイムマシン、手描きマップで家の中の足跡も記録。</span>
+<span >위치 맞춤 촬영으로 성장 타임머신, 손그림 지도로 집 안 발자취도 기록.</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.growlo" target="_blank" rel="noopener">Google Play</a>
+<a class="store-badge" href="https://apps.apple.com/tw/app/id6805945657" target="_blank" rel="noopener">App Store</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/growlo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="pets" id="sagelo" data-platform="android">
+<img class="app-icon" src="assets/icons/sagelo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name9" class="app-name">Sagelo — 老貓認知觀察日記</h3>
+<div class="desc-cycle">
+<span >記錄熟齡貓的日常變化，整理成獸醫看得懂的摘要。</span>
+<span >A senior cat observation diary with a vet-ready summary export.</span>
+<span >シニア猫の日々の変化を記録し、獣医に伝わる要約に。</span>
+<span >노령묘의 일상 변화를 기록하고 수의사용 요약으로 정리.</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.sagelo" target="_blank" rel="noopener">Google Play</a>
+<span data-i18n="appStoreReview" class="store-badge pending">App Store 審核中</span>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/sagelo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="pets" id="trucelo" data-platform="android">
+<img class="app-icon" src="assets/icons/trucelo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name10" class="app-name">Trucelo — 多貓家庭相處管理</h3>
+<div class="desc-cycle">
+<span >資源檢查表加上新貓引入排程，讓貓咪們好好停戰。</span>
+<span >Resource checklist and new-cat introduction schedule for multi-cat homes.</span>
+<span >資源チェックと新入り猫の導入スケジュールで、多頭飼いの平和を。</span>
+<span >자원 체크리스트와 합사 일정으로 다묘가정의 평화를.</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.trucelo" target="_blank" rel="noopener">Google Play</a>
+<span data-i18n="appStoreReview" class="store-badge pending">App Store 審核中</span>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/trucelo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="play tools" id="ticklo" data-platform="android ios">
+<img class="app-icon" src="assets/icons/ticklo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name11" class="app-name">Ticklo — 節拍器調音器練習計時器三器合一</h3>
+<div class="desc-cycle">
+<span >節拍器、調音器、練習計時器三合一，樂手練習好夥伴。</span>
+<span >Metronome + tuner + practice timer, all in one app.</span>
+<span >メトロノーム・チューナー・練習タイマーを1つに。</span>
+<span >메트로놈·튜너·연습 타이머를 하나로, 연주자의 필수 앱。</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.ticklo" target="_blank" rel="noopener">Google Play</a>
+<a class="store-badge" href="https://apps.apple.com/tw/app/ticklo-%E5%B0%88%E6%A5%AD%E7%AF%80%E6%8B%8D%E5%99%A8%E8%88%87%E8%AA%BF%E9%9F%B3%E8%A8%88%E6%99%82%E5%99%A8/id6791945683" target="_blank" rel="noopener">App Store</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/ticklo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="tools" id="spendlo" data-platform="ios">
+<img class="app-icon" src="assets/icons/spendlo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name12" class="app-name">Spendlo — 日韓購物退稅助手</h3>
+<div class="desc-cycle">
+<span >拍收據，AI 幫你判斷退稅資格，海外購物不吃虧。</span>
+<span >Scan your receipt. AI checks tax-refund eligibility instantly.</span>
+<span >レシートを撮るだけ、AIが免税対象かすぐ判定。</span>
+<span >영수증만 찍으면 AI가 세금 환급 자격을 바로 판별。</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://apps.apple.com/tw/app/spendlo/id6790820199" target="_blank" rel="noopener">App Store</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/spendlo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="media" id="talklo" data-platform="android ios">
+<img class="app-icon" src="assets/icons/talklo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name13" class="app-name">Talklo — 讓寵物與動漫角色開口說話</h3>
+<div class="desc-cycle">
+<span >上傳照片、輸入稿子，AI 幫寵物或動漫角色生成說話短影片。</span>
+<span >Upload a photo, AI brings your pet or character to life, talking.</span>
+<span >写真をアップするだけ、AIがペットやキャラを喋らせる。</span>
+<span >사진만 올리면 AI가 반려동물·캐릭터를 말하게 해줘요。</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.talklo" target="_blank" rel="noopener">Google Play</a>
+<a class="store-badge" href="https://apps.apple.com/tw/app/talklo/id6791154789" target="_blank" rel="noopener">App Store</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/talklo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="play" id="cheatlo" data-platform="android ios">
+<img class="app-icon" src="assets/icons/cheatlo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name14" class="app-name">Cheatlo — 遊戲金手指百科</h3>
+<div class="desc-cycle">
+<span >收錄 15 萬組金手指，自動匯出模擬器格式！</span>
+<span >159,510 retro cheats · Auto emulator format export.</span>
+<span >レトロゲームのチート15万件、エミュレータ形式自動変換。</span>
+<span >레트로 게임 치트 159,510개, 에뮬레이터 형식 자동 변환。</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.cheatlo" target="_blank" rel="noopener">Google Play</a>
+<a class="store-badge" href="https://apps.apple.com/tw/app/cheatlo-retro-cheat-codes/id6790375458" target="_blank" rel="noopener">App Store</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/cheatlo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="media" id="memorlo" data-platform="android ios">
+<img class="app-icon" src="assets/icons/memorlo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name15" class="app-name">Memorlo — 老照片修復與故事</h3>
+<div class="desc-cycle">
+<span >修復、上色、讓老照片動起來，再用 AI 寫下那段回憶。</span>
+<span >Restore, colorize & animate old photos. AI tells the story.</span>
+<span >古い写真を修復・着色・動かして、AIが思い出を綴る。</span>
+<span >오래된 사진 복원·채색·움직이기, AI가 그 추억의 이야기를.</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.memorlo" target="_blank" rel="noopener">Google Play</a>
+<a class="store-badge" href="https://apps.apple.com/tw/app/memorlo-%E8%80%81%E7%85%A7%E7%89%87%E4%BF%AE%E5%BE%A9%E4%B8%8A%E8%89%B2%E5%8B%95%E7%95%AB/id6790839918" target="_blank" rel="noopener">App Store</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/memorlo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="media" id="warplo" data-platform="ios">
+<img class="app-icon" src="assets/icons/warplo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name16" class="app-name">Warplo — 慢動作快動作攝影機</h3>
+<div class="desc-cycle">
+<span >一開啟就能選快動作或慢動作錄影，不用再進內建相機找模式。</span>
+<span >Open the app and pick fast or slow motion — no digging through camera modes.</span>
+<span >起動してすぐ早送り・スローモーション録画を選べる。</span>
+<span >앱 열자마자 고속·슬로우 모션 촬영 선택。</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://apps.apple.com/tw/app/id6793407669" target="_blank" rel="noopener">App Store</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/warplo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="tools" id="readlo" data-platform="ios">
+<img class="app-icon" src="assets/icons/readlo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name17" class="app-name">Readlo — 樂透彩券拍照對獎</h3>
+<div class="desc-cycle">
+<span >拍照辨識彩券號碼，自動查開獎結果並對獎。</span>
+<span >Photograph your lottery ticket — auto-checks if you won.</span>
+<span >宝くじ券を撮影するだけ、当選番号を自動照合。</span>
+<span >복권을 찍으면 당첨 번호를 자동으로 확인해줘요。</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://apps.apple.com/tw/app/id6798077578" target="_blank" rel="noopener">App Store</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/readlo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="tools" id="tracklo" data-platform="ios">
+<img class="app-icon" src="assets/icons/tracklo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name18" class="app-name">Tracklo — 超商寄件貨態查詢</h3>
+<div class="desc-cycle">
+<span >拍照辨識超商寄件收據，一鍵開啟官方查詢頁，免翻找代碼。</span>
+<span >Snap your shipping receipt — one tap opens the official tracking page.</span>
+<span >レシートを撮るだけ、公式追跡ページへワンタップ。</span>
+<span >영수증만 찍으면 공식 배송 조회 페이지로 한 번에 이동。</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://apps.apple.com/tw/app/id6797240955" target="_blank" rel="noopener">App Store</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/tracklo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="tools" id="preplo" data-platform="android ios">
+<img class="app-icon" src="assets/icons/preplo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name19" class="app-name">Preplo — 防災生存教學</h3>
+<div class="desc-cycle">
+<span >地震、瓦斯外洩、CPR 等 19 則情境速查卡，離線也能查。</span>
+<span >Disaster & first-aid quick-check cards that work offline.</span>
+<span >地震・ガス漏れ・CPRなど19の状況別カード、オフラインでも確認できます。</span>
+<span >지진·가스누출·CPR 등 19가지 상황별 카드, 오프라인에서도 확인 가능.</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.preplo" target="_blank" rel="noopener">Google Play</a>
+<a class="store-badge" href="https://apps.apple.com/tw/app/id6805942785" target="_blank" rel="noopener">App Store</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/preplo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="pets" id="snifflo" data-platform="android ios">
+<img class="app-icon" src="assets/icons/snifflo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name20" class="app-name">Snifflo — 寵物食品成分掃描</h3>
+<div class="desc-cycle">
+<span >拍一下標籤，立刻知道哪些成分對你的貓狗有害。</span>
+<span >Scan pet food labels. Know what's safe for your pet.</span>
+<span >ラベルをスキャンするだけ、ペットに危険な成分がわかる。</span>
+<span >라벨을 찍으면 끝. 반려동물에게 위험한 성분 즉시 확인。</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.snifflo" target="_blank" rel="noopener">Google Play</a>
+<a class="store-badge" href="https://apps.apple.com/tw/app/id6790632614" target="_blank" rel="noopener">App Store</a>
+</div>
+<div class="card-meta">
+<a class="detail-link" href="/apps/snifflo/">
+<span data-i18n="details">了解產品</span>
+<span aria-hidden="true">↗</span>
+</a>
+<a class="privacy-link" href="/privacy/snifflo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="tools" id="jotlo" data-platform="android">
+<img class="app-icon" src="assets/icons/jotlo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name21" class="app-name">Jotlo — 會 AI 的筆記本</h3>
+<div class="desc-cycle">
+<span >拍照讓 AI 整理，用 Markdown 優雅寫作。</span>
+<span >Photo → AI organizes it. Write beautifully in Markdown.</span>
+<span >写真を撮ればAIが整理。Markdownで美しく書ける。</span>
+<span >사진 찍으면 AI가 정리. Markdown으로 깔끔하게 작성。</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.jotlo" target="_blank" rel="noopener">Google Play</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/jotlo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="tools" id="filelo" data-platform="android">
+<img class="app-icon" src="assets/icons/filelo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name22" class="app-name">Filelo — 智能檔案整理器</h3>
+<div class="desc-cycle">
+<span >一鍵整理任何資料夾！智慧分類圖片、影片、文件，60秒讓手機變乾淨。</span>
+<span >Clean any folder in 60 seconds! Smart sorting for photos, videos & docs.</span>
+<span >どのフォルダも60秒でスッキリ！写真・動画・書類を自動整理。</span>
+<span >어떤 폴더든 60초 정리! 사진·동영상·문서 자동 분류 앱。</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.filelo" target="_blank" rel="noopener">Google Play</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/filelo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="tools" id="cliplo" data-platform="android">
+<img class="app-icon" src="assets/icons/cliplo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name23" class="app-name">Cliplo — 剪貼簿與 QR 掃描</h3>
+<div class="desc-cycle">
+<span >複製自動記錄、QR 隨手掃、一鍵翻譯，內建片語庫，再也不用到處找。</span>
+<span >Auto-saves everything you copy or scan. Translate, organize, one tap away.</span>
+<span >コピーもQRスキャンも自動記録。ワンタップ翻訳、定型文管理も内蔵。</span>
+<span >복사와 QR 스캔을 자동 저장. 원탭 번역과 문구 관리까지 한 번에。</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.cliplo" target="_blank" rel="noopener">Google Play</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/cliplo/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+<div class="app app-dual" data-category="play" id="blackjackpro" data-platform="android">
+<img class="app-icon" src="assets/icons/blackjackpro.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name24" class="app-name">Blackjack Trainer Pro — 21點專業訓練</h3>
+<div class="desc-cycle">
+<span >真實賭場規則的 21 點訓練，內建 Hi-Lo 算牌系統。</span>
+<span >Real casino rules. Hi-Lo card counting. Basic strategy.</span>
+<span >本物のルールで学ぶ21点。Hi-Loカードカウント搭載。</span>
+<span >실제 카지노 규칙 블랙잭 훈련. Hi-Lo 카드 카운팅。</span>
+</div>
+</div>
+<div class="store-links">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.maxteng.blackjackpro" target="_blank" rel="noopener">Google Play</a>
+</div>
+<div class="card-meta">
+<a class="privacy-link" href="/privacy/blackjack/">
+<span data-i18n="privacy">隱私政策</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="result-group" id="web-projects" aria-labelledby="web-projects-title">
+<div class="section-heading">
+<h3 class="group-title" id="web-projects-title">
+<span data-i18n="webGroup">Web 工具</span>
+<span class="group-count" id="web-count">12</span>
+</h3>
+<a class="back-to-search" href="#portfolio-search">
+<span data-i18n="searchLabel">搜尋全部作品</span> ↑</a>
+</div>
+<div class="web-grid" id="web-results">
+<a class="app" data-platform="web" data-category="pets" href="https://maozhidao.maxteng.org" target="_blank" rel="noopener">
+<div class="site-icon" aria-hidden="true">🐾</div>
+<div class="app-body">
+<h3 data-i18n="name26" class="app-name">貓知道 — 貓咪寵物百科</h3>
+<div class="desc-cycle">
+<span >寵物百科網站，收錄百種常見疾病與症狀懶人包。</span>
+<span >Pet health encyclopedia with symptom guides for common conditions.</span>
+<span >ペットの症状と病気をまとめた百科事典サイト。</span>
+<span >반려동물 질환·증상 백과사전 웹사이트。</span>
+</div>
+</div>
+<span class="arrow" aria-hidden="true">→</span>
+</a>
+<a class="app" data-platform="web" data-category="media tools" href="https://roadguard.maxteng.org" target="_blank" rel="noopener">
+<div class="site-icon" aria-hidden="true">🚗</div>
+<div class="app-body">
+<h3 data-i18n="name27" class="app-name">RoadGuard 網頁版</h3>
+<div class="desc-cycle">
+<span >行車記錄器違規查詢工具，App 同款功能網頁版。</span>
+<span >Web version of the dashcam violation-report lookup tool.</span>
+<span >ドライブレコーダー違反照会ツールのWeb版。</span>
+<span >블랙박스 위반 조회 도구의 웹 버전。</span>
+</div>
+</div>
+<span class="arrow" aria-hidden="true">→</span>
+</a>
+<a class="app" data-platform="web" data-category="tools" href="https://slimdrop.maxteng.org" target="_blank" rel="noopener">
+<div class="site-icon" aria-hidden="true">📦</div>
+<div class="app-body">
+<h3 data-i18n="name28" class="app-name">SlimDrop — 線上檔案壓縮</h3>
+<div class="desc-cycle">
+<span >線上檔案壓縮工具，支援 PPTX／圖片／影片一鍵瘦身。</span>
+<span >Online file compressor for PPTX, images, and videos.</span>
+<span >PPTX・画像・動画をワンクリックで圧縮するツール。</span>
+<span >PPTX·이미지·동영상을 한 번에 압축하는 도구。</span>
+</div>
+</div>
+<span class="arrow" aria-hidden="true">→</span>
+</a>
+<a class="app" data-platform="web" data-category="media" href="https://livingportrait.maxteng.org" target="_blank" rel="noopener">
+<div class="site-icon" aria-hidden="true">✨</div>
+<div class="app-body">
+<h3 data-i18n="name29" class="app-name">Living Portrait — 讓照片動起來</h3>
+<div class="desc-cycle">
+<span >照片動起來效果展示，AI 景深分層動畫，8 種模式任你切換。</span>
+<span >AI depth-animation demo — 8 motion modes for photos that move.</span>
+<span >写真を動かすAIエフェクトのデモ、8種類のモードを体験。</span>
+<span >사진을 움직이게 하는 AI 데모, 8가지 모드 체험。</span>
+</div>
+</div>
+<span class="arrow" aria-hidden="true">→</span>
+</a>
+<a class="app" data-platform="web" data-category="play" href="https://ticklo.maxteng.org" target="_blank" rel="noopener">
+<div class="site-icon" aria-hidden="true">🎵</div>
+<div class="app-body">
+<h3 data-i18n="name30" class="app-name">Ticklo 網頁版</h3>
+<div class="desc-cycle">
+<span >節拍器／調音器 App 的配套網頁工具。</span>
+<span >Companion web tool for the Ticklo metronome &amp; tuner app.</span>
+<span >メトロノーム・チューナーアプリの補助Webツール。</span>
+<span >메트로놈·튜너 앱의 보조 웹 도구。</span>
+</div>
+</div>
+<span class="arrow" aria-hidden="true">→</span>
+</a>
+<a class="app" data-platform="web" data-category="play" href="https://cheatlo.maxteng.org" target="_blank" rel="noopener">
+<div class="site-icon" aria-hidden="true">🕹️</div>
+<div class="app-body">
+<h3 data-i18n="name31" class="app-name">Cheatlo 網頁版 — 遊戲金手指資料庫</h3>
+<div class="desc-cycle">
+<span >15 萬組復古遊戲金手指查詢資料庫。</span>
+<span >Database of 150,000+ retro game cheat codes.</span>
+<span >レトロゲームのチートコード15万件のデータベース。</span>
+<span >레트로 게임 치트 코드 15만 개 데이터베이스。</span>
+</div>
+</div>
+<span class="arrow" aria-hidden="true">→</span>
+</a>
+<a class="app" data-platform="web" data-category="tools" href="https://cliplo.maxteng.org" target="_blank" rel="noopener">
+<div class="site-icon" aria-hidden="true">📋</div>
+<div class="app-body">
+<h3 data-i18n="name32" class="app-name">Cliplo 網頁版</h3>
+<div class="desc-cycle">
+<span >剪貼簿與 QR 掃描 App 的配套網頁工具。</span>
+<span >Companion web tool for the Cliplo clipboard &amp; QR app.</span>
+<span >クリップボード・QRアプリの補助Webツール。</span>
+<span >클립보드·QR 앱의 보조 웹 도구。</span>
+</div>
+</div>
+<span class="arrow" aria-hidden="true">→</span>
+</a>
+<a class="app" data-platform="web" data-category="media tools" href="https://playshotstudio.maxteng.org" target="_blank" rel="noopener">
+<div class="site-icon" aria-hidden="true">🖼️</div>
+<div class="app-body">
+<h3 data-i18n="name33" class="app-name">PlayShot Studio</h3>
+<div class="desc-cycle">
+<span >Android／iOS 商店截圖一鍵生成工具。</span>
+<span >One-click Android/iOS app store screenshot generator.</span>
+<span >Android／iOSストア画像をワンクリック生成するツール。</span>
+<span >Android/iOS 스토어 이미지를 한 번에 생성하는 도구。</span>
+</div>
+</div>
+<span class="arrow" aria-hidden="true">→</span>
+</a>
+<a class="app" data-platform="web" data-category="tools" href="https://jptax.maxteng.org" target="_blank" rel="noopener">
+<div class="site-icon" aria-hidden="true">💴</div>
+<div class="app-body">
+<h3 data-i18n="name34" class="app-name">日本退稅通 — 新制退稅試算</h3>
+<div class="desc-cycle">
+<span >日本 2026/11/1 免稅新制退稅金額試算與流程指南。</span>
+<span >Japan tax-free refund calculator and guide for the new system starting 2026/11/1.</span>
+<span >2026年11月1日開始の日本の新免税制度、還付額の試算とガイド。</span>
+<span >2026년 11월 1일 일본 면세 신제도 환급액 계산기 및 안내。</span>
+</div>
+</div>
+<span class="arrow" aria-hidden="true">→</span>
+</a>
+<a class="app" data-platform="web" data-category="tools" href="https://preplo.maxteng.org" target="_blank" rel="noopener">
+<div class="site-icon" aria-hidden="true">🧯</div>
+<div class="app-body">
+<h3 data-i18n="name35" class="app-name">Preplo 防災急救知識網站</h3>
+<div class="desc-cycle">
+<span >防災與急救情境速查、互動練習與避難包清單，免登入即可使用。</span>
+<span >Disaster-prep and first-aid scenarios, practice questions and a go-bag checklist. No sign-up needed.</span>
+<span >防災・応急手当のシナリオ、練習問題、非常持ち出し袋チェックリスト。登録不要で使えます。</span>
+<span >재난 대비·응급처치 상황 가이드, 연습 문제, 비상용품 체크리스트. 가입 없이 이용할 수 있습니다.</span>
+</div>
+</div>
+<span class="arrow" aria-hidden="true">→</span>
+</a>
+<a class="app" data-platform="web" data-category="tools" href="https://chinanews.maxteng.org" target="_blank" rel="noopener">
+<div class="site-icon" aria-hidden="true">🧳</div>
+<div class="app-body">
+<h3 data-i18n="name36" class="app-name">陸行快報 — 台灣人去大陸實用資訊</h3>
+<div class="desc-cycle">
+<span >開戶、支付、退稅、居住證、門號一次整理，附出發前檢查清單。</span>
+<span >Practical mainland China info for Taiwanese travelers: banking, payments, tax refunds, residence permits.</span>
+<span >台湾から中国本土へ行く人向けの実用情報：口座開設・決済・税還付・居住証。</span>
+<span >대만인을 위한 중국 본토 실용 정보: 계좌 개설·결제·세금 환급·거주증.</span>
+</div>
+</div>
+<span class="arrow" aria-hidden="true">→</span>
+</a>
+<a class="app" data-platform="web" data-category="media tools" href="https://voxlab-six.vercel.app" target="_blank" rel="noopener">
+<div class="site-icon" aria-hidden="true">🎙️</div>
+<div class="app-body">
+<h3 data-i18n="name37" class="app-name">VoxLab — 聲音技術實驗室</h3>
+<div class="desc-cycle">
+<span >會議逐字稿、歌詞對齊、字幕產生、口述整理、語言跟讀，五種語音轉文字實驗。</span>
+<span >Speech-to-text lab: meeting transcripts, lyric sync, subtitles, dictation cleanup and shadowing practice.</span>
+<span >議事録・歌詞同期・字幕生成・口述整理・シャドーイング、5つの音声認識実験。</span>
+<span >회의록·가사 싱크·자막 생성·구술 정리·쉐도잉, 다섯 가지 음성 인식 실험.</span>
+</div>
+</div>
+<span class="arrow" aria-hidden="true">→</span>
+</a>
+</div>
+</div>
+<p class="empty-state" id="empty-state" hidden data-i18n="empty">沒有符合的作品，試試其他關鍵字或清除篩選。</p>
+</section>
+<section class="section" id="upcoming" aria-labelledby="upcoming-title">
+<div class="section-heading">
+<div>
+<p class="section-kicker" data-i18n="upcomingKicker">Coming next</p>
+<h2 id="upcoming-title" data-i18n="upcomingTitle">即將推出</h2>
+</div>
+<p class="section-description" data-i18n="upcomingDescription">還在打磨中的作品；上架後會在這裡第一時間更新。</p>
+</div>
+<div class="app-coming">
+<img class="app-icon" src="assets/icons/scriblo.png" alt="" loading="lazy" width="180" height="180">
+<div class="app-body">
+<h3 data-i18n="name25" class="app-name">Scriblo — 螢幕錄影標註工具</h3>
+<div class="desc-cycle">
+<span style="--d:0s">錄螢幕的同時直接畫線圈選、寫字標記，重點一次到位。</span>
+<span style="--d:3s">Draw, circle & annotate on your screen while recording.</span>
+<span style="--d:6s">画面録画しながら丸で囲んだり書き込んだり、そのまま強調表示。</span>
+<span style="--d:9s">화면 녹화하면서 바로 동그라미·메모로 강조 표시。</span>
+</div>
+</div>
+<div class="badge-group">
+<span data-i18n="androidTesting" class="badge">Android 測試中</span>
+<span data-i18n="iosReview" class="ios-badge review">iOS 審核中</span>
+</div>
+</div>
+</section>
+<section class="section" id="about" aria-labelledby="about-title">
+<div class="about">
+<div>
+<p class="section-kicker" data-i18n="aboutKicker">About MaxTeng</p>
+<h2 id="about-title" data-i18n="aboutTitle">讓技術少一點距離，讓日常多一點從容。</h2>
+<p data-i18n="aboutCopy">從影像處理、AI 到寵物照護與日常工具，我相信好產品不必複雜。MaxTeng 把明確的需求做成不需要說明書、打開就能用的產品。</p>
+</div>
+<div class="about-contact" id="contact">
+<strong data-i18n="contactTitle">有想法，聊聊看。</strong>
+<span data-i18n="contactCopy">合作、產品建議或技術交流都歡迎。</span>
+<a href="mailto:ripteng@gmail.com">ripteng@gmail.com&nbsp;↗</a>
+</div>
+</div>
+</section>
+<aside class="support-note">
+<h3 data-i18n="support">產品支援</h3>
+<p data-i18n="supportCopy">遇到問題時，請來信附上 App 名稱、手機系統與問題畫面，方便我協助處理。</p>
+<a href="mailto:ripteng@gmail.com">ripteng@gmail.com ↗</a>
+</aside>
+</main>
+<footer>
+<span>© 2026 MaxTeng</span>
+<a href="/#contact" data-i18n="support">產品支援</a>
+<a href="mailto:ripteng@gmail.com" data-i18n="footerContact">聯絡我</a>
+</footer>
+</div>
 </body>
 </html>

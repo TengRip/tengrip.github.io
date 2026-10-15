@@ -4,9 +4,9 @@
 
 **線上網址：** https://tengrip.github.io
 **GitHub repo：** `TengRip/tengrip.github.io`（公開，預設分支 `main`）
-**版次：** v5.3
-**日期：** 2026-10-05
-**狀態：** 已上架 20 張 App 卡片、即將推出 1 張卡片、網站作品 10 張
+**版次：** v6.0
+**日期：** 2026-10-15
+**狀態：** 已上架 25 張 App 卡片、即將推出 1 張卡片、網站作品 12 張
 
 ---
 
@@ -47,15 +47,31 @@ asc apps public view --app <App ID> --country tw --output json
 
 Android 正式版清單沒有對應的 CLI，直接跟 RIP 要 Google Play Console 首頁截圖最準確（「應用程式狀態」欄要顯示「正式版」）。
 
-## 本地預覽
+## 本地預覽與驗證
 
-`file://` 協定在部分瀏覽器自動化工具會被擋，本地測試改用：
+網站仍是 GitHub Pages 可直接託管的靜態 HTML，不需要建置步驟。
 
 ```bash
-cd tengrip.github.io
-python -m http.server 8930
-# 開 http://localhost:8930/index.html
+npm run preview
+# http://127.0.0.1:8930
+
+npm install
+npx playwright install chromium
+npm test
 ```
+
+測試涵蓋作品數量、站內素材與連結、搜尋／分類／平台交集、空結果復原、精選錨點解除隱藏、四語內容與偏好保留、320／390／768／1440px 排版、手機選單、三個介紹頁、停用 JavaScript、減少動態效果與 sitemap。測試截圖寫入忽略的 `.artifacts/`。
+
+## 新增作品時的維護方式
+
+- 首頁卡片依然在 `index.html`，保留所有既有商店連結。卡片需有唯一 `id`、`data-platform`（如 `android ios`）與 `data-category`；Web 卡片使用 `data-platform="web"`。
+- 共用樣式是 `assets/site.css`；四語文字與互動在 `assets/site.js` 的 `copy` 字典與事件處理。每個新增 `data-i18n` 鍵須同時補齊四語。輔助標籤、圖片替代文字與 placeholder 分別用 `data-i18n-aria-label`、`data-i18n-alt`、`data-i18n-placeholder`。
+- 卡片四語短說明仍依繁中／英文／日文／韓文順序。名稱改用 `h3.app-name`，並透過 `data-i18n` 翻譯副標。腳本更新作品總數；HTML 的初始總數也要同步，保留無 JavaScript 的正確內容。
+- 產品介紹在 `apps/roadguard/`、`apps/pixzap/`、`apps/snifflo/`。圖片採用既有 App 截圖並轉成 WebP；介面可能因版本或平台不同。收費只說明模式，不固定跨地區售價。
+- 新增介紹頁或隱私頁後，同步 `sitemap.xml`。分享圖是 `assets/og-cover.png`（1200×630），網站圖示是 `favicon.svg` 與 `assets/apple-touch-icon.png`。
+- 點卡片錨點或 Web 導覽時，程式會先清除會隱藏目標的篩選，再定位；調整篩選邏輯時必須保留此行為。
+- 保持未經驗證的商店狀態原樣；本次沿用 v5.5 已記錄的使用者狀態標示要求。
+
 
 ---
 
@@ -71,6 +87,7 @@ python -m http.server 8930
 
 | 版次 | 日期 | 說明 |
 |---|---|---|
+| v6.0 | 2026-10-15 | 同步 dec9b58 最新版，保留 25 個 App、12 個 Web 工具與既有商店連結；新增真實截圖精選卡、RoadGuard／PixZap／Snifflo 四語介紹頁、全作品搜尋與平台／用途交集篩選、空結果復原、篩選後錨點修正、手機選單與鍵盤操作、完整四語副標與狀態、產品支援／隱私入口、分享圖與 favicon、robots／sitemap、共用 CSS／JS 及瀏覽器整合測試。 |
 | v5.5 | 2026-10-14 | 跟 v5.4（10/12 做好未 push）一起上線。**Google Play 轉正**：Oddlo／Chowlo／Growlo／Preplo／Sagelo／Trucelo 六支 Play 頁實測 200 且標題正確，四張「Google Play 審核中」換成真連結；**Sagelo、Trucelo 從「即將推出」搬進「已上架」**（Google Play 真連結＋`store-badge pending`「App Store 審核中」——iOS Sagelo 1.1.0 為 REJECTED、Trucelo 1.1.0 未送審，RIP 指示卡審一律標審核中）。**Scriblo** iOS（1.0 REJECTED）由「iOS 準備中」改 `ios-badge review`「iOS 審核中」。**Web 工具新增 2 張**：陸行快報（`chinanews.maxteng.org`）、VoxLab 聲音技術實驗室（`voxlab-six.vercel.app`）。Hero 已上架 23 → 25、Web 工具 10 → 12。公司內部系統（異常事件回報、事故輔導、值勤報到、技能檢定、ChronoTrace）依 RIP 指示不放。本機 http.server＋Playwright 桌機／375px 截圖核對，圖示全數載入、無橫向捲動。 |
 | v5.4 | 2026-10-12 | 貓咪系列＋Preplo 六支 Android 已送 Google Play 正式版審核（RIP 告知），網頁同步：**新增「已上架」卡片 3 張**——Chowlo（寵物照護）、Growlo（寵物照護）、Preplo（生活工具），iOS 皆已上架（`apps.apple.com/tw/app/id6805944828`／`id6805945657`／`id6805942785` 實測 200），此前漏做卡片；Google Play 頁實測 404，先放 `store-badge pending`「Google Play 審核中」。**Oddlo** 卡片同樣補「Google Play 審核中」。**新增「即將推出」2 張**——Sagelo、Trucelo（iOS 未上架：Sagelo 1.1.0 為 REJECTED、Trucelo 1.1.0 未送審，依 v3.1 慣例標「iOS 準備中」；Android 標「Android 審核中」）。Hero 已上架數 20 → 23。icon 由各專案 iOS AppIcon 1024 以 PIL 縮 180×180（已目視確認非預設圖）。本機 `python -m http.server`＋Playwright 桌機／375px 截圖核對無跑版。**待辦**：六支 Play 頁轉 200 後，pending 換成真連結，Sagelo／Trucelo 搬進「已上架」。 |
 | v5.3 | 2026-10-05 | Web 工具區新增卡片「Preplo 防災急救知識網站」（`https://preplo.maxteng.org`，🧯 圖示，四語輪播說明），Hero 統計「Web 工具」9 → 10。 |
