@@ -164,70 +164,50 @@
   <div id="privacy" class="page active">
 
     <div class="section">
-      <h2>資料蒐集</h2>
-      <p>Memorlo 在您使用時蒐集以下資料：</p>
+      <h2>資料蒐集與用途</h2>
+      <p>Memorlo 無需註冊帳號。當您同意並使用 AI 功能時，我們會處理：</p>
       <ul>
-        <li>您上傳的照片（僅用於 AI 處理，處理完成後不另行儲存至我們的伺服器）</li>
-        <li>您在「故事文字」功能中輸入的人物關係、年代、地點等補充資訊（選填）</li>
-        <li>使用記錄（功能使用次數、點數餘額，儲存於裝置本機）</li>
+        <li>您選擇的照片，以及故事功能選填的人物關係、年代、地點等文字，用於完成您要求的修復、上色、動畫或故事生成。</li>
+        <li>裝置安裝識別碼、點數餘額、功能扣點與退款記錄，用於提供初始點數、管理點數及防止重複扣款。</li>
+        <li>購買商品識別碼、商店交易識別碼、平台、收據驗證資訊及時間，用於驗證購買、避免重複入帳及處理交易問題。付款卡號等付款資料由 Apple 或 Google 處理，我們不取得完整卡號。</li>
+        <li>處理任務的請求識別碼、功能、狀態、時間、消耗點數與結果檔案網址，用於查詢任務、避免重複處理及協助重試下載。營運服務也可能產生必要的錯誤與安全記錄。</li>
       </ul>
+      <p>上述資料用於 App 功能、購買驗證、故障處理與安全防護，不用於廣告或跨 App 追蹤。</p>
     </div>
 
     <div class="section">
-      <h2>資料使用</h2>
-      <p>您的資料用於：</p>
+      <h2>AI 處理與第三方服務</h2>
+      <p>AI 處理需要網路，照片及必要文字會經由我們的後端或代理服務，依功能傳送至以下供應商：</p>
       <ul>
-        <li>提供照片修復（GFPGAN / Real-ESRGAN）、上色（Gemini / GPT-4o）、動起來（SadTalker）等 AI 功能</li>
-        <li>生成照片故事文字（Claude / OpenAI / Gemini）</li>
-        <li>改善 App 功能體驗（匿名統計，不包含個人識別資訊）</li>
+        <li><a href="https://replicate.com/privacy">Replicate</a>：照片修復、放大與人物動畫。</li>
+        <li><a href="https://policies.google.com/privacy">Google Gemini</a>：照片上色與故事文字。</li>
+        <li><a href="https://openai.com/policies/privacy-policy/">OpenAI</a>：上色與故事文字的備援處理。</li>
+        <li><a href="https://www.anthropic.com/legal/privacy">Anthropic Claude</a>：故事文字。</li>
+        <li><a href="https://www.apple.com/legal/privacy/">Apple App Store</a>、<a href="https://policies.google.com/privacy">Google Play</a>：付款、商店交易及購買驗證。</li>
       </ul>
-      <p>照片資料將傳送至 Replicate、Google Gemini 或 OpenAI 進行 AI 運算。各 AI 服務提供商有其獨立的隱私政策。</p>
+      <p>實際供應商依使用功能及服務可用情況而定。各供應商的資料處理與保留方式受其各自政策及服務設定規範；請在上傳前閱讀相關政策。Memorlo 不使用 RevenueCat。</p>
     </div>
 
     <div class="section">
-      <h2>資料儲存</h2>
-      <p>Memorlo 不在伺服器端長期儲存您的照片。所有 AI 處理完成後，暫存資料將被清除。</p>
-      <p>使用記錄（點數餘額、功能使用次數）僅儲存於您的裝置本機，Memorlo 不上傳至雲端。</p>
+      <h2>資料儲存與保留</h2>
+      <p>「我的作品」將原圖、處理成果、影片與故事儲存在您的裝置。您可在 App 中刪除作品，或先將重要成果匯出至相簿。移除 App 會刪除 App 本機資料；您自行匯出的副本需在相簿或其他儲存位置另行管理。</p>
+      <p>我們的後端不提供永久照片相簿。照片在處理與轉送期間可能有暫存；AI 供應商可能保留輸入或產生可在一段時間內下載的結果檔案。任務記錄可能保留結果網址，因此請勿將該網址公開。結果網址是否仍有效取決於供應商，不保證可永久重新下載。</p>
+      <p>點數、購買驗證與任務資料會儲存在我們的伺服器，並非僅存於本機。這些記錄依功能運作、交易查核、防止重複入帳、安全與依法保存的必要期間保留，不承諾處理完成立即刪除。若需查詢或刪除，請依下方聯絡方式提出；交易紀錄若有必要或法定保存義務，可能無法立即移除。</p>
     </div>
 
     <div class="section">
       <h2>人臉資料</h2>
-      <p>「照片修復」與「動起來」功能會處理您上傳照片中可能包含的人臉影像，說明如下：</p>
-      <ul>
-        <li><strong>蒐集內容</strong>：僅為您主動選擇上傳的照片本身。Memorlo 不會另外擷取、比對或建立任何人臉辨識特徵值（faceprint）或生物特徵樣板，不做身分辨識或身分比對。</li>
-        <li><strong>處理方式</strong>：照片以記憶體方式即時傳送至我們的伺服器代理，再轉送至 Replicate（第三方 AI 運算平台）執行 GFPGAN（人臉強化）、Real-ESRGAN（放大）或 SadTalker（讓照片人物眨眼、微笑的動畫）等模型運算。整個過程只是把一張影像轉換成另一張影像或影片，不涉及身分辨識。</li>
-        <li><strong>儲存與保留</strong>：我們的伺服器代理不會將照片寫入磁碟或做任何形式的留存，處理完成後記憶體中的資料即釋放清除。Replicate 端的資料保留規則，請參見其官方隱私政策。</li>
-        <li><strong>第三方分享</strong>：僅為完成上述 AI 運算目的，將照片傳送至 Replicate；不會將照片或其中的人臉影像用於廣告、行銷，或提供給任何其他第三方。</li>
-        <li><strong>刪除</strong>：由於 Memorlo 本身不儲存照片，無需另行申請刪除；處理完成後的結果檔案僅儲存在您的裝置本機，由您自行管理與刪除。</li>
-      </ul>
+      <p>您選擇的照片可能包含人臉，修復、上色、動畫或故事功能可能處理該影像。Memorlo 不做身分辨識、不比對人物身分，也不建立人臉辨識特徵值（faceprint）或生物特徵樣板。</p>
+      <p>修復與動畫將影像傳送至 Replicate；上色及故事依功能可能使用 Google、OpenAI 或 Anthropic。分享目的僅為完成您的 AI 處理要求，不用於廣告。影像、暫存、結果網址與本機作品的保留及刪除方式如上所述，第三方的保留規則請見其政策。</p>
     </div>
 
     <div class="section">
-      <h2>第三方服務</h2>
-      <p>Memorlo 使用以下第三方服務，各服務均有其獨立隱私政策：</p>
-      <ul>
-        <li>Replicate — AI 圖像處理（修復、動起來）</li>
-        <li>Google Gemini — 上色、故事文字生成</li>
-        <li>OpenAI — 上色備援、故事文字生成備援</li>
-        <li>Anthropic Claude — 故事文字生成</li>
-        <li>RevenueCat — 應用程式內購管理</li>
-        <li>Google Play — 付款處理</li>
-      </ul>
+      <h2>資料刪除與聯絡方式</h2>
+      <p>您可從「我的作品」刪除本機內容。若要提出伺服器資料查詢或刪除要求，請聯絡 <a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a>，並提供可協助辨識記錄的裝置安裝識別碼、購買交易識別碼或任務資訊；請勿寄送付款密碼或完整卡號。我們會核實請求並說明可刪除範圍。</p>
+      <p>移除 App 不等於刪除伺服器交易記錄，也不會自動刪除您匯出到相簿的檔案。第三方服務的資料請依其政策提出要求。如有其他隱私問題，也請來信聯絡。</p>
     </div>
 
-    <div class="section">
-      <h2>資料刪除</h2>
-      <p>Memorlo 不儲存個人帳號資料，無需登入即可使用全部功能。</p>
-      <p>如需洽詢資料相關問題，請聯絡：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
-    </div>
-
-    <div class="section">
-      <h2>聯絡方式</h2>
-      <p>如有隱私相關問題，請聯絡：</p>
-      <p>電子郵件：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></p>
-    </div>
-
-    <p class="updated">本政策最後更新：2026 年 7 月 22 日</p>
+    <p class="updated">本政策最後更新：2026 年 10 月 17 日</p>
   </div>
 
   <!-- ── 服務條款 ── -->
@@ -237,10 +217,11 @@
       <h2>服務說明</h2>
       <p>Memorlo 是一款老照片修復與 AI 故事生成應用程式，提供以下功能：</p>
       <ul>
-        <li>照片修復：人臉強化（GFPGAN）與超解析度放大（Real-ESRGAN）——永久免費</li>
+        <li>照片修復：人臉強化（GFPGAN）與超解析度放大（Real-ESRGAN）（每次 1 點）</li>
         <li>上色：黑白老照片染色（AI 上色）</li>
         <li>動起來：讓照片人物眨眼微笑（SadTalker 驅動動畫）</li>
-        <li>故事文字：AI 依照片內容生成回憶文字</li>
+        <li>故事文字：AI 依照片內容生成回憶文字（免費）</li>
+        <li>我的作品：在裝置上保存、比較、匯出及分享照片、影片與故事</li>
       </ul>
     </div>
 
@@ -251,7 +232,7 @@
         <li>僅上傳您有權使用的照片</li>
         <li>不將本 App 用於任何違法目的</li>
         <li>不嘗試破解、逆向工程或干擾服務運作</li>
-        <li>遵守 Google Play 服務條款（Android 版本）</li>
+        <li>依使用平台遵守 Apple App Store 或 Google Play 的服務條款</li>
       </ul>
     </div>
 
@@ -269,10 +250,11 @@
     <div class="section">
       <h2>付款與點數</h2>
       <ul>
-        <li>照片修復功能永久免費</li>
-        <li>上色、動起來、故事文字為付費功能，依點數或套組計費</li>
-        <li>點數為消耗型，使用後不予退款（法律另有規定者除外）</li>
-        <li>購買即表示同意 Google Play 的付款條款</li>
+        <li>新裝置首次使用提供 6 點；修復每次 1 點，上色與動起來每次各 2 點，故事文字免費。</li>
+        <li>提供 6 點、20 點與 45 點消耗型點數包，價格以 App 內商店顯示為準，沒有訂閱。</li>
+        <li>點數依裝置安裝識別碼管理，不支援跨裝置轉移。移除 App 或重設裝置可能失去存取原有點數的能力；消耗型購買不提供一般非消耗型商品的跨裝置還原功能。</li>
+        <li>處理失敗時系統會依任務狀態回補點數；如有購買或扣點問題，請提供交易或任務資訊聯絡支援。</li>
+        <li>付款及退款依 Apple App Store、Google Play 與適用法律辦理，不影響法定消費者權利。</li>
       </ul>
     </div>
 
@@ -282,7 +264,7 @@
       <p>本條款受中華民國法律管轄。</p>
     </div>
 
-    <p class="updated">本條款最後更新：2026 年 7 月 7 日</p>
+    <p class="updated">本條款最後更新：2026 年 10 月 17 日</p>
   </div>
 
 </main>
