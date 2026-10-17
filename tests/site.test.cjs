@@ -18,8 +18,8 @@ async function page(options={}){
  await page.goto(base+'/',{waitUntil:'networkidle'});return {page,context};
 }
 test('complete portfolio, local assets and unique IDs',async()=>{
- const {page:p,context}=await page();assert.equal(await p.locator('.app-grid .app').count(),25);assert.equal(await p.locator('.web-grid .app').count(),12);
- assert.match(await p.locator('#result-count').innerText(),/37/);
+ const {page:p,context}=await page();assert.equal(await p.locator('.app-grid .app').count(),23);assert.equal(await p.locator('.web-grid .app').count(),12);
+ assert.match(await p.locator('#result-count').innerText(),/35/);
  const problems=await p.evaluate(async()=>{
   const ids=[...document.querySelectorAll('[id]')].map(x=>x.id);const issues=ids.filter((x,i)=>ids.indexOf(x)!==i).map(x=>'Duplicate ID '+x);
   const urls=[...new Set([...document.querySelectorAll('[src],a[href],link[href]')].map(x=>x.getAttribute('src')||x.getAttribute('href')).filter(x=>x&&!x.startsWith('#')&&!x.startsWith('mailto:')&&!x.startsWith('http')))];
@@ -29,7 +29,7 @@ test('complete portfolio, local assets and unique IDs',async()=>{
 test('search, category and platform intersect with recoverable empty state',async()=>{
  const {page:p,context}=await page();await p.locator('#portfolio-search').fill('PixZap');assert.equal(await p.locator('.app-grid .app:visible').count(),1);
  await p.locator('[data-filter=pets]').click();assert(await p.locator('#empty-state').isVisible());assert.match(await p.locator('#result-count').innerText(),/0/);
- await p.locator('#clear-filters').click();assert.equal(await p.locator('.app-grid .app:visible').count(),25);
+ await p.locator('#clear-filters').click();assert.equal(await p.locator('.app-grid .app:visible').count(),23);
  await p.locator('#platform-filter').selectOption('web');assert.equal(await p.locator('.app-grid .app:visible').count(),0);assert.equal(await p.locator('.web-grid .app:visible').count(),12);
  await p.locator('[data-filter=pets]').click();assert.equal(await p.locator('.web-grid .app:visible').count(),1);
  await p.locator('#clear-filters').click();await p.locator('#platform-filter').selectOption('android');assert(await p.locator('#pixzap').isVisible());
@@ -67,7 +67,7 @@ test('product pages have working downloads, localized metadata and support links
  await context.close();
 });
 test('no-JavaScript fallback retains complete content and mobile navigation',async()=>{
- const {page:p,context}=await page({javaScriptEnabled:false,viewport:{width:390,height:844}});assert.equal(await p.locator('.app-grid .app:visible').count(),25);assert.equal(await p.locator('.web-grid .app:visible').count(),12);assert(await p.locator('.site-nav').isVisible());assert.equal(await p.locator('.explorer-controls').isVisible(),false);await context.close();
+ const {page:p,context}=await page({javaScriptEnabled:false,viewport:{width:390,height:844}});assert.equal(await p.locator('.app-grid .app:visible').count(),23);assert.equal(await p.locator('.web-grid .app:visible').count(),12);assert(await p.locator('.site-nav').isVisible());assert.equal(await p.locator('.explorer-controls').isVisible(),false);await context.close();
 });
 test('reduced motion, sitemap, metadata and JavaScript errors',async()=>{
  const {page:p,context}=await page({reducedMotion:'reduce'});assert.equal(await p.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior),'auto');assert.equal(await p.locator('meta[property="og:image"]').getAttribute('content'),'https://tengrip.github.io/assets/og-cover.png');

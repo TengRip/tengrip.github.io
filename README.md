@@ -6,7 +6,7 @@
 **GitHub repo：** `TengRip/tengrip.github.io`（公開，預設分支 `main`）
 **版次：** v6.0
 **日期：** 2026-10-15
-**狀態：** 已上架 25 張 App 卡片、即將推出 1 張卡片、網站作品 12 張
+**狀態：** 已上架 23 張 App 卡片、即將推出 1 張卡片、網站作品 12 張
 
 ---
 
@@ -87,6 +87,7 @@ npm test
 
 | 版次 | 日期 | 說明 |
 |---|---|---|
+| v6.1 | 2026-10-17 | **移除 Sagelo、Trucelo 卡片**（RIP 指示）。原因：Apple 10/17 維持 Sagelo 的 4.3 退件，兩支功能將併入 Oddlo（第一階段 Sagelo、第二階段 Trucelo），iOS 不再單獨送審。已上架 25 → 23、作品總數 37 → 35（首頁靜態數字與 `tests/site.test.cjs` 同步）。`privacy/sagelo/`、`privacy/trucelo/`、sitemap 對應網址與 icon **保留**：兩支 Android 仍在 Google Play 上架，商店頁需要隱私政策網址。`assets/site.js` 的 `name9`／`name10` 字串暫留未刪（已無元素引用）。`privacy/oddlo/` 的「系列內導流推薦 Trucelo、Sagelo」段落等 Oddlo 合併版上架時再改寫。 |
 | v6.0 | 2026-10-15 | 同步 dec9b58 最新版，保留 25 個 App、12 個 Web 工具與既有商店連結；新增真實截圖精選卡、RoadGuard／PixZap／Snifflo 四語介紹頁、全作品搜尋與平台／用途交集篩選、空結果復原、篩選後錨點修正、手機選單與鍵盤操作、完整四語副標與狀態、產品支援／隱私入口、分享圖與 favicon、robots／sitemap、共用 CSS／JS 及瀏覽器整合測試。 |
 | v5.5 | 2026-10-14 | 跟 v5.4（10/12 做好未 push）一起上線。**Google Play 轉正**：Oddlo／Chowlo／Growlo／Preplo／Sagelo／Trucelo 六支 Play 頁實測 200 且標題正確，四張「Google Play 審核中」換成真連結；**Sagelo、Trucelo 從「即將推出」搬進「已上架」**（Google Play 真連結＋`store-badge pending`「App Store 審核中」——iOS Sagelo 1.1.0 為 REJECTED、Trucelo 1.1.0 未送審，RIP 指示卡審一律標審核中）。**Scriblo** iOS（1.0 REJECTED）由「iOS 準備中」改 `ios-badge review`「iOS 審核中」。**Web 工具新增 2 張**：陸行快報（`chinanews.maxteng.org`）、VoxLab 聲音技術實驗室（`voxlab-six.vercel.app`）。Hero 已上架 23 → 25、Web 工具 10 → 12。公司內部系統（異常事件回報、事故輔導、值勤報到、技能檢定、ChronoTrace）依 RIP 指示不放。本機 http.server＋Playwright 桌機／375px 截圖核對，圖示全數載入、無橫向捲動。 |
 | v5.4 | 2026-10-12 | 貓咪系列＋Preplo 六支 Android 已送 Google Play 正式版審核（RIP 告知），網頁同步：**新增「已上架」卡片 3 張**——Chowlo（寵物照護）、Growlo（寵物照護）、Preplo（生活工具），iOS 皆已上架（`apps.apple.com/tw/app/id6805944828`／`id6805945657`／`id6805942785` 實測 200），此前漏做卡片；Google Play 頁實測 404，先放 `store-badge pending`「Google Play 審核中」。**Oddlo** 卡片同樣補「Google Play 審核中」。**新增「即將推出」2 張**——Sagelo、Trucelo（iOS 未上架：Sagelo 1.1.0 為 REJECTED、Trucelo 1.1.0 未送審，依 v3.1 慣例標「iOS 準備中」；Android 標「Android 審核中」）。Hero 已上架數 20 → 23。icon 由各專案 iOS AppIcon 1024 以 PIL 縮 180×180（已目視確認非預設圖）。本機 `python -m http.server`＋Playwright 桌機／375px 截圖核對無跑版。**待辦**：六支 Play 頁轉 200 後，pending 換成真連結，Sagelo／Trucelo 搬進「已上架」。 |
