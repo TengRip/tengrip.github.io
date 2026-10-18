@@ -87,6 +87,7 @@ npm test
 
 | 版次 | 日期 | 說明 |
 |---|---|---|
+| v6.2 | 2026-10-18 | **Oddlo 整合版（老貓觀察＋多貓相處）iOS 1.2.1 上架後同步**：首頁 Oddlo 卡片四語介紹改寫；`privacy/oddlo/` 隱私政策四語改寫——拿掉「App 沒有輸入欄位」與 Sagelo/Trucelo 導流說法，改為說明貓咪名字／年齡／觀察紀錄／備註／地點只存手機、PDF 在手機產生且只在使用者按分享時傳出、可在 App 內刪除；服務條款功能清單補老貓觀察、多貓相處、PDF 摘要。兩份文件更新日改 2026-10-18。 |
 | v6.1 | 2026-10-17 | **移除 Sagelo、Trucelo 卡片**（RIP 指示）。原因：Apple 10/17 維持 Sagelo 的 4.3 退件，兩支功能將併入 Oddlo（第一階段 Sagelo、第二階段 Trucelo），iOS 不再單獨送審。已上架 25 → 23、作品總數 37 → 35（首頁靜態數字與 `tests/site.test.cjs` 同步）。`privacy/sagelo/`、`privacy/trucelo/`、sitemap 對應網址與 icon **保留**：兩支 Android 仍在 Google Play 上架，商店頁需要隱私政策網址。`assets/site.js` 的 `name9`／`name10` 字串暫留未刪（已無元素引用）。`privacy/oddlo/` 的「系列內導流推薦 Trucelo、Sagelo」段落等 Oddlo 合併版上架時再改寫。 |
 | v6.0 | 2026-10-15 | 同步 dec9b58 最新版，保留 25 個 App、12 個 Web 工具與既有商店連結；新增真實截圖精選卡、RoadGuard／PixZap／Snifflo 四語介紹頁、全作品搜尋與平台／用途交集篩選、空結果復原、篩選後錨點修正、手機選單與鍵盤操作、完整四語副標與狀態、產品支援／隱私入口、分享圖與 favicon、robots／sitemap、共用 CSS／JS 及瀏覽器整合測試。 |
 | v5.5 | 2026-10-14 | 跟 v5.4（10/12 做好未 push）一起上線。**Google Play 轉正**：Oddlo／Chowlo／Growlo／Preplo／Sagelo／Trucelo 六支 Play 頁實測 200 且標題正確，四張「Google Play 審核中」換成真連結；**Sagelo、Trucelo 從「即將推出」搬進「已上架」**（Google Play 真連結＋`store-badge pending`「App Store 審核中」——iOS Sagelo 1.1.0 為 REJECTED、Trucelo 1.1.0 未送審，RIP 指示卡審一律標審核中）。**Scriblo** iOS（1.0 REJECTED）由「iOS 準備中」改 `ios-badge review`「iOS 審核中」。**Web 工具新增 2 張**：陸行快報（`chinanews.maxteng.org`）、VoxLab 聲音技術實驗室（`voxlab-six.vercel.app`）。Hero 已上架 23 → 25、Web 工具 10 → 12。公司內部系統（異常事件回報、事故輔導、值勤報到、技能檢定、ChronoTrace）依 RIP 指示不放。本機 http.server＋Playwright 桌機／375px 截圖核對，圖示全數載入、無橫向捲動。 |
