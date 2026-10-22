@@ -109,8 +109,8 @@
     <p>拍攝收據時需要相機權限；選取相片時使用作業系統的相片選擇或授權機制。您可以在系統設定管理相機與相片權限。照片確認後，由您主動開始辨識；未開始辨識的手動退款編輯不會把整本旅程資料送到 AI 服務。</p>
 
     <h2>3. AI 收據辨識與服務用量</h2>
-    <p>開始辨識時，所選照片、購買國家及顯示語言經由 HTTPS 傳送至我們的後端代理，再交由 OpenAI 進行收據文字辨識與翻譯。照片可能包含店名、交易日期、金額及您未遮蔽的其他內容；請僅選擇您願意提供給辨識服務的照片。辨識結果回傳後保存在本機。OpenAI 的處理及保留規則依其服務政策與適用設定辦理。</p>
-    <p>App 會產生安裝識別碼並於辨識請求送出，用於服務用量限制及防止濫用。網路服務亦會接收 IP 位址及必要的連線資訊；它們不等同於您的銀行或海關資料。後端代理並非旅程雲端備份服務。</p>
+    <p>開始辨識時，所選照片、購買國家及顯示語言經由 HTTPS 傳送至我們的後端代理，再交由 Google Gemini 進行收據文字辨識與翻譯；主服務不可用時會改用 OpenAI 備援。照片可能包含店名、交易日期、金額及您未遮蔽的其他內容；請僅選擇您願意提供給辨識服務的照片。辨識結果回傳後保存在本機。AI 服務的處理及保留規則依各服務政策與適用設定辦理。</p>
+    <p>App 會產生安裝識別碼並於辨識請求送出，用於服務用量限制及防止濫用。後端代理透過 Upstash 保存安裝識別碼、IP 位址及每日用量計數，限流計數設定在最後更新後約 25 小時到期；託管與網路服務亦會接收必要的連線資訊。它們不等同於您的銀行或海關資料。後端代理並非旅程雲端備份服務。</p>
 
     <h2>4. 匯率查詢與外部網站</h2>
     <p>匯率查詢經後端代理向匯率來源（如 Frankfurter / currency-api）取得參考值，請求包含所需幣別，無須傳送完整收據或退款紀錄。外部服務仍會接收必要的網路連線資訊。</p>
@@ -133,13 +133,14 @@
     <ul>
       <li><a href="https://policies.google.com/privacy">Google 隱私政策</a>、<a href="https://developers.google.com/admob/ios/privacy/data-disclosure">AdMob 資料揭露</a></li>
       <li><a href="https://openai.com/policies/privacy-policy/">OpenAI 隱私政策</a></li>
+      <li><a href="https://ai.google.dev/gemini-api/terms">Google Gemini API 服務條款與資料使用說明</a>、<a href="https://upstash.com/trust/privacy.pdf">Upstash 隱私政策</a>、<a href="https://vercel.com/legal/privacy-policy">Vercel 隱私政策</a></li>
       <li><a href="https://developer.apple.com/app-store/user-privacy-and-data-use/">Apple 追蹤授權說明</a></li>
       <li>聯絡信箱：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></li>
     </ul>
     <p>本服務不特別針對 13 歲以下兒童。政策變更時會更新本頁日期。</p>
 
     <h2>English summary</h2>
-    <p>Spendlo stores trips, receipts and manual refund-provider records on your device. Starting AI recognition uploads your selected receipt images, purchase country and display language through our HTTPS proxy to OpenAI. An installation identifier supports usage limits and abuse prevention. Third-party services may receive network metadata. Refund records are not automatically submitted to providers or banks.</p>
+    <p>Spendlo stores trips, receipts and manual refund-provider records on your device. Starting AI recognition uploads your selected receipt images, purchase country and display language through our HTTPS proxy to Google Gemini, with OpenAI as a fallback. An installation identifier and IP address support usage limits and abuse prevention through Upstash; quota counters expire about 25 hours after their last update. Hosting and third-party services may receive network metadata under their own policies. Refund records are not automatically submitted to providers or banks.</p>
     <p>The free version uses Google AdMob. Depending on permissions and configuration, the SDK may process IP address and approximate location, device identifiers, ad interactions, usage and diagnostic data. iOS requests ATT permission; without authorization the system IDFA is unavailable. Local reminders are optional. App Store or Google Play handles Pro purchases; Spendlo does not receive full payment-card details. Pro removes in-app ads. Manage permissions in system settings, and delete local records in the app. Contact the email above for privacy questions.</p>
 
     <hr>
