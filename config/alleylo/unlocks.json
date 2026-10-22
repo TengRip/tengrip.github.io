@@ -1,0 +1,6 @@
+{
+  "installs": 0,
+  "forceUnlocked": [],
+  "updatedAt": "2026-10-23T02:30:00+08:00",
+  "_note": "Alleylo 場景開放設定。installs＝Google Play＋App Store 累計下載量（RIP 手動更新）；forceUnlocked＝要提前開放的場景 id，例如 [\"temple\"]；App 只讀 installs、forceUnlocked、updatedAt，這行說明會被忽略。"
+}

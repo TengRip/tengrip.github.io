@@ -4,11 +4,18 @@
 
 **線上網址：** https://tengrip.github.io
 **GitHub repo：** `TengRip/tengrip.github.io`（公開，預設分支 `main`）
-**版次：** v6.3（補記本次已部署的 Spendlo 隱私政策更新）
-**日期：** 2026-10-22（台北時間）
+**版次：** v6.4（新增 Alleylo 場景開放設定檔）
+**日期：** 2026-10-23（台北時間）
 **狀態：** 已上架 23 張 App 卡片、即將推出 1 張卡片、網站作品 12 張
 
 ---
+
+## 2026-10-23 v6.4：Alleylo 場景開放設定檔
+
+- **新增：** `config/alleylo/unlocks.json`，網址 https://tengrip.github.io/config/alleylo/unlocks.json 。Alleylo（流浪貓 TNR 遊戲，開發中）App 啟動時讀這個檔，決定哪些場景要開放。
+- **欄位：** `installs`＝Google Play＋App Store 累計下載量（RIP 手動更新）；`forceUnlocked`＝提前開放的場景 id 清單；`updatedAt`＝更新時間；`_note` 只是說明，App 不讀。
+- **怎麼更新：** 改 `installs` 數字和 `updatedAt`，commit＋push 即可，約 1～10 分鐘生效（GitHub Pages 快取）。App 讀不到時會沿用上次存的值。
+- 沒有改首頁卡片、隱私政策或其他頁面。
 
 ## 2026-10-22 v6.3：Spendlo 1.2.0 隱私政策與送審同步
 
@@ -30,7 +37,8 @@ tengrip.github.io/
 ├── index.html          # 首頁本體，App 卡片清單
 ├── app-ads.txt          # AdMob 驗證用，格式固定不要動
 ├── assets/icons/        # 各 App icon，統一裁成 180×180 png
-└── privacy/{app}/       # 各 App 隱私政策頁（部分 App 仍用舊的獨立 repo，見下方說明）
+├── privacy/{app}/       # 各 App 隱私政策頁（部分 App 仍用舊的獨立 repo，見下方說明）
+└── config/{app}/        # App 啟動時讀的遠端設定（例如 Alleylo 的場景開放）
 ```
 
 ## 卡片規則（重要，之後新增/更新卡片前先看這段）
@@ -100,6 +108,7 @@ npm test
 
 | 版次 | 日期 | 說明 |
 |---|---|---|
+| v6.4 | 2026-10-23 | 新增 `config/alleylo/unlocks.json`：Alleylo 依下載量開放場景的遠端設定（installs、forceUnlocked、updatedAt）。未改首頁與隱私政策。 |
 | v6.3 | 2026-10-22 | Spendlo 1.2.0 隱私政策同步：修正舊的無廣告宣稱，補 AdMob／ATT、Gemini 主服務／OpenAI 備援、安裝 ID／IP／Upstash 限流、本機退款紀錄／通知、內購、刪除與第三方政策連結，附英文摘要。0af1bd7、ff3aa06 已推送並部署；公開頁與政策連結 HTTP 200。補記 App 08:08 送審與退稅網站 0.15.0 部署關聯。 |
 | v6.2 | 2026-10-18 | **Oddlo 整合版（老貓觀察＋多貓相處）iOS 1.2.1 上架後同步**：首頁 Oddlo 卡片四語介紹改寫；`privacy/oddlo/` 隱私政策四語改寫——拿掉「App 沒有輸入欄位」與 Sagelo/Trucelo 導流說法，改為說明貓咪名字／年齡／觀察紀錄／備註／地點只存手機、PDF 在手機產生且只在使用者按分享時傳出、可在 App 內刪除；服務條款功能清單補老貓觀察、多貓相處、PDF 摘要。兩份文件更新日改 2026-10-18。 |
 | v6.1 | 2026-10-17 | **移除 Sagelo、Trucelo 卡片**（RIP 指示）。原因：Apple 10/17 維持 Sagelo 的 4.3 退件，兩支功能將併入 Oddlo（第一階段 Sagelo、第二階段 Trucelo），iOS 不再單獨送審。已上架 25 → 23、作品總數 37 → 35（首頁靜態數字與 `tests/site.test.cjs` 同步）。`privacy/sagelo/`、`privacy/trucelo/`、sitemap 對應網址與 icon **保留**：兩支 Android 仍在 Google Play 上架，商店頁需要隱私政策網址。`assets/site.js` 的 `name9`／`name10` 字串暫留未刪（已無元素引用）。`privacy/oddlo/` 的「系列內導流推薦 Trucelo、Sagelo」段落等 Oddlo 合併版上架時再改寫。 |
