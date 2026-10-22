@@ -4,11 +4,24 @@
 
 **線上網址：** https://tengrip.github.io
 **GitHub repo：** `TengRip/tengrip.github.io`（公開，預設分支 `main`）
-**版次：** v6.0
-**日期：** 2026-10-15
+**版次：** v6.3（補記本次已部署的 Spendlo 隱私政策更新）
+**日期：** 2026-10-22（台北時間）
 **狀態：** 已上架 23 張 App 卡片、即將推出 1 張卡片、網站作品 12 張
 
 ---
+
+## 2026-10-22 v6.3：Spendlo 1.2.0 隱私政策與送審同步
+
+- **範圍：** `privacy/spendlo/index.html`；網址維持 https://tengrip.github.io/privacy/spendlo/ 。本次沒有調整作品卡片、商店連結或 App 上架徽章。
+- **廣告揭露：** 移除「不含任何廣告 SDK」的過時敘述，明確說明免費版使用 Google AdMob、可能處理的網路／裝置／互動／診斷資料、iOS ATT 與未授權時無法取得 IDFA；Pro 移除 App 內廣告顯示。
+- **AI 與用量：** 依後端實際程式補 Google Gemini 主服務、OpenAI 備援、照片／購買國家／顯示語言上傳；安裝識別碼及 IP 透過 Upstash 用於用量限制，限流計數最後更新後約 25 小時到期；補託管及第三方政策連結。
+- **App 新資料：** 旅程、收據、業者、登記狀態、退款編號／入口、預計入帳日及實收記錄保存在本機；不自動向業者代辦、查銀行或領款。說明外部網址、作業系統相機／相片授權、Pro 商店交易、本機通知、刪除與備份的界線。
+- **語言與日期：** 完整繁中政策加英文摘要；未宣稱已完成四語全文。政策頁標示最後更新日為 2026-10-21（準備日期），實際 commit、推送與部署確認發生於 2026-10-22。
+- **來源與發佈：** [`0af1bd7`](https://github.com/TengRip/tengrip.github.io/commit/0af1bd7c1c47cf92b4d029672b192c6a5bcce853)（08:01）及 [`ff3aa06`](https://github.com/TengRip/tengrip.github.io/commit/ff3aa060d1a96af4121722a5859807133a5ca4e8)（08:03）已推送 `main`。GitHub Pages build/deployment `39697389095` 成功；公開政策及列出的 Gemini、Upstash、Vercel 政策連結均讀回 HTTP 200。
+- **對應 App：** Spendlo 1.2.0（build 16）於 2026-10-22 08:08 提交 Apple，當次讀回 WAITING_FOR_REVIEW、核准後自動上架。這是新版本送審紀錄，不據此改成已過審；App Privacy 完整發布狀態無法由公開 API 核實。
+- **關聯網站：** 日本退稅通 0.15.0 已於 2026-10-21 部署 READY；新增三語退款業者指南、逐筆費用與憑證淨額。此站僅託管 Spendlo 的公開政策與原有開發者入口。
+
+完整改動與驗證紀錄：[Spendlo README](https://github.com/TengRip/Spendlo/blob/master/README.md)、[日本退稅通 README](https://github.com/TengRip/jp-tax-refund/blob/master/README.md)。本次 README 將已完成的政策改動補列為 v6.3，不改 App 的 1.2.0+16 或退稅網站的 0.15.0 版號。
 
 ## 資料夾結構
 
@@ -87,6 +100,7 @@ npm test
 
 | 版次 | 日期 | 說明 |
 |---|---|---|
+| v6.3 | 2026-10-22 | Spendlo 1.2.0 隱私政策同步：修正舊的無廣告宣稱，補 AdMob／ATT、Gemini 主服務／OpenAI 備援、安裝 ID／IP／Upstash 限流、本機退款紀錄／通知、內購、刪除與第三方政策連結，附英文摘要。0af1bd7、ff3aa06 已推送並部署；公開頁與政策連結 HTTP 200。補記 App 08:08 送審與退稅網站 0.15.0 部署關聯。 |
 | v6.2 | 2026-10-18 | **Oddlo 整合版（老貓觀察＋多貓相處）iOS 1.2.1 上架後同步**：首頁 Oddlo 卡片四語介紹改寫；`privacy/oddlo/` 隱私政策四語改寫——拿掉「App 沒有輸入欄位」與 Sagelo/Trucelo 導流說法，改為說明貓咪名字／年齡／觀察紀錄／備註／地點只存手機、PDF 在手機產生且只在使用者按分享時傳出、可在 App 內刪除；服務條款功能清單補老貓觀察、多貓相處、PDF 摘要。兩份文件更新日改 2026-10-18。 |
 | v6.1 | 2026-10-17 | **移除 Sagelo、Trucelo 卡片**（RIP 指示）。原因：Apple 10/17 維持 Sagelo 的 4.3 退件，兩支功能將併入 Oddlo（第一階段 Sagelo、第二階段 Trucelo），iOS 不再單獨送審。已上架 25 → 23、作品總數 37 → 35（首頁靜態數字與 `tests/site.test.cjs` 同步）。`privacy/sagelo/`、`privacy/trucelo/`、sitemap 對應網址與 icon **保留**：兩支 Android 仍在 Google Play 上架，商店頁需要隱私政策網址。`assets/site.js` 的 `name9`／`name10` 字串暫留未刪（已無元素引用）。`privacy/oddlo/` 的「系列內導流推薦 Trucelo、Sagelo」段落等 Oddlo 合併版上架時再改寫。 |
 | v6.0 | 2026-10-15 | 同步 dec9b58 最新版，保留 25 個 App、12 個 Web 工具與既有商店連結；新增真實截圖精選卡、RoadGuard／PixZap／Snifflo 四語介紹頁、全作品搜尋與平台／用途交集篩選、空結果復原、篩選後錨點修正、手機選單與鍵盤操作、完整四語副標與狀態、產品支援／隱私入口、分享圖與 favicon、robots／sitemap、共用 CSS／JS 及瀏覽器整合測試。 |
