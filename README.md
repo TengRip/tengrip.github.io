@@ -4,11 +4,17 @@
 
 **線上網址：** https://tengrip.github.io
 **GitHub repo：** `TengRip/tengrip.github.io`（公開，預設分支 `main`）
-**版次：** v6.4（新增 Alleylo 場景開放設定檔）
+**版次：** v6.5（新增 Polylo 隱私政策）
 **日期：** 2026-10-23（台北時間）
 **狀態：** 已上架 23 張 App 卡片、即將推出 1 張卡片、網站作品 12 張
 
 ---
+
+## 2026-10-23 v6.5：Polylo 隱私政策
+
+- **新增：** `privacy/polylo/index.html`，網址 https://tengrip.github.io/privacy/polylo/ 。Polylo（外語學習：單字、影片跟讀、AI 對話，開發中未上架）付費頁、設定頁、AI 同意畫面會連到這裡。
+- **內容依實際程式：** 本機保存學習資料、AI 對話不存檔；麥克風只在按錄音時使用；字幕語音轉文字 Groq（備援 OpenAI）、翻譯與對話 OpenAI（備援 Gemini），經 Vercel 上的 shadowlo-ai-proxy；安裝識別碼與用量計數雜湊後存 Upstash 約 40 天、IP 雜湊約 2 天；Pro 帶 RevenueCat 匿名編號驗證（快取約 10 分鐘）；每日影片從 Cloudflare R2（lessons.maxteng.org）下載、AI 生成；AdMob 獎勵廣告；使用條款連 Apple 標準 EULA。
+- 沒有新增首頁卡片（兩平台都還沒送審，依卡片規則不放）。
 
 ## 2026-10-23 v6.4：Alleylo 場景開放設定檔
 

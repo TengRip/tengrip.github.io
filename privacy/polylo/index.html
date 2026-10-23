@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polylo 隱私政策</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+      background: #FFFFFF;
+      color: #252525;
+      line-height: 1.75;
+      padding: 24px 16px 60px;
+    }
+    .container { max-width: 720px; margin: 0 auto; }
+    .logo {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 32px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #C33E31;
+    }
+    .logo-name {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #C33E31;
+    }
+    .logo-sub { font-size: 13px; color: #666; }
+    a { color: #C33E31; overflow-wrap: anywhere; }
+    h1 { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+    .updated { font-size: 13px; color: #777; margin-bottom: 28px; }
+    .intro {
+      font-size: 15px;
+      margin-bottom: 32px;
+      padding: 14px 16px;
+      background: #F6F4F2;
+      border-left: 3px solid #C33E31;
+    }
+    h2 { font-size: 17px; font-weight: 600; margin: 30px 0 10px; }
+    p { font-size: 14px; color: #3a3a3a; margin-bottom: 10px; }
+    ul { list-style: none; padding-left: 4px; }
+    ul li { font-size: 14px; color: #3a3a3a; padding: 4px 0; }
+    ul li::before { content: "— "; color: #C33E31; }
+    hr { border: none; border-top: 1px solid #ddd; margin: 36px 0 16px; }
+    .footer { font-size: 12px; color: #777; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="logo">
+      <span class="logo-name">Polylo</span>
+      <span class="logo-sub">外語學習：單字・影片跟讀・AI 對話</span>
+    </div>
+
+    <h1>隱私政策</h1>
+    <p class="updated">最後更新：2026 年 10 月 23 日</p>
+    <p class="intro">本 App 由 MaxTeng Studio 開發。本政策適用於 Polylo 的 iOS 與 Android 版本，說明本機學習資料、AI 字幕與對話、每日練習影片、廣告與購買的資料處理方式。Polylo 不需要註冊帳號。</p>
+
+    <h2>1. 保存在手機裡的資料</h2>
+    <p>單字本、字卡與複習進度、匯入的影片（會複製一份到 App 內）、產生的字幕與翻譯、筆記及設定，都保存在您的裝置本機，不會上傳到我們的伺服器做雲端備份。AI 對話內容只暫存在畫面上，離開對話就清除，不會存檔。</p>
+    <p>從其他 App 分享影片給 Polylo 時，只有您分享的那支影片會被複製進 App。</p>
+
+    <h2>2. 麥克風</h2>
+    <p>AI 對話可以用說的回答，這時需要麥克風權限。錄音只在您按下錄音時進行，單句最長 60 秒，錄完會送去轉成文字（見第 3 節），App 不會在背景錄音。不允許麥克風時，仍可用打字對話。您可以在系統設定管理麥克風權限。</p>
+
+    <h2>3. AI 字幕、翻譯與對話</h2>
+    <p>第一次使用 AI 功能前，App 會先說明並請您同意。使用時會經由 HTTPS 傳送下列資料到我們的後端代理（架設在 Vercel），再交給 AI 服務處理：</p>
+    <ul>
+      <li>產生字幕：您選取的影片片段音訊，以及影片語言（若有指定）。語音轉文字由 Groq 處理，Groq 不可用時改用 OpenAI。</li>
+      <li>字幕翻譯與 AI 對話：字幕或對話文字、練習語言與情境，以及為了練習而帶入的部分單字。由 OpenAI 處理，OpenAI 不可用時改用 Google Gemini。</li>
+      <li>用說的回答：該句錄音先轉成文字（同上方語音轉文字流程），再進行對話。</li>
+    </ul>
+    <p>請避免在影片或對話中提供不必要的個人資料。處理結果回傳後保存在您的手機。AI 服務對資料的處理與保留依各服務政策及我們的 API 設定辦理。</p>
+
+    <h2>4. 用量限制與防止濫用</h2>
+    <p>App 安裝時會產生一組隨機的安裝識別碼，AI 請求會帶上它以及請求編號，用來計算免費與 Pro 的每月額度、避免重複扣額度。後端代理使用 Upstash 保存經雜湊處理後的識別碼與用量計數，約 40 天後自動到期；IP 位址只以雜湊值做每日總量保護，約 2 天後到期。已訂閱 Pro 的使用者，App 會另外帶上 RevenueCat 的匿名購買者編號，讓伺服器向 RevenueCat 確認訂閱狀態；確認結果暫存約 10 分鐘。託管與網路服務也會收到連線所需的一般資訊（例如 IP 位址）。</p>
+
+    <h2>5. 每日練習影片</h2>
+    <p>每日練習影片與清單從 Cloudflare 的儲存空間（lessons.maxteng.org）下載。下載時不會傳送您的學習紀錄或識別碼，但 Cloudflare 會收到連線所需的一般資訊。這些影片的台詞由 AI 撰寫、語音由 AI 合成，App 內會標示「AI 生成」。</p>
+
+    <h2>6. 朗讀</h2>
+    <p>單字朗讀與 AI 回覆的語音使用手機內建的文字轉語音功能，由您的裝置作業系統處理。</p>
+
+    <h2>7. 廣告</h2>
+    <p>免費版提供可自由選擇觀看的獎勵廣告（看完增加 AI 使用額度），使用 Google AdMob（Google Mobile Ads SDK）。SDK 可能處理 IP 位址與概略位置、裝置與廣告識別碼、廣告曝光與互動、當機與效能診斷資訊，用於廣告投放、成效評估與防止詐欺。實際處理依平台權限、SDK 設定與 Google 政策而異。</p>
+    <p>在 iOS 上，若 App 請求追蹤授權而您未允許，AdMob 無法取得系統廣告識別碼 IDFA；拒絕不影響 App 的學習功能。您可在系統隱私設定管理此授權，Android 使用者可在系統設定重設或刪除廣告 ID。</p>
+
+    <h2>8. 訂閱與購買</h2>
+    <p>Pro 訂閱與永久版購買由 App Store 或 Google Play 處理，我們透過 RevenueCat 確認購買權益以開通功能；我們不會取得您的完整付款卡號。訂閱會自動續訂，您可以在 App Store 或 Google Play 的帳號設定中管理或取消。</p>
+
+    <h2>9. 儲存、安全與刪除</h2>
+    <p>App 與伺服器之間的連線使用 HTTPS。您可以在 App 內刪除影片、字卡與單字本，或移除 App 以清除所有本機資料；系統備份及第三方服務已處理的資料，依各自的機制管理。伺服器上的用量計數會依第 4 節的時間自動到期。移除 App 不會取消商店中的訂閱，請另行在商店取消。</p>
+
+    <h2>10. 第三方政策與聯絡</h2>
+    <ul>
+      <li><a href="https://openai.com/policies/privacy-policy/">OpenAI 隱私政策</a>、<a href="https://groq.com/privacy-policy/">Groq 隱私政策</a>、<a href="https://ai.google.dev/gemini-api/terms">Google Gemini API 服務條款</a></li>
+      <li><a href="https://policies.google.com/privacy">Google 隱私政策</a>、<a href="https://developers.google.com/admob/ios/privacy/data-disclosure">AdMob 資料揭露</a></li>
+      <li><a href="https://www.revenuecat.com/privacy/">RevenueCat 隱私政策</a>、<a href="https://upstash.com/trust/privacy.pdf">Upstash 隱私政策</a>、<a href="https://vercel.com/legal/privacy-policy">Vercel 隱私政策</a>、<a href="https://www.cloudflare.com/privacypolicy/">Cloudflare 隱私政策</a></li>
+      <li>使用條款：<a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple 標準使用者授權合約（EULA）</a></li>
+      <li>聯絡信箱：<a href="mailto:ripteng@gmail.com">ripteng@gmail.com</a></li>
+    </ul>
+    <p>本服務不特別針對 13 歲以下兒童。政策變更時會更新本頁日期。</p>
+
+    <h2>English summary</h2>
+    <p>Polylo requires no account. Vocabulary, review progress, imported videos, subtitles, notes and settings stay on your device; AI conversations are not saved. When you use AI features (after an in-app consent), the selected audio clip or text is sent over HTTPS to our proxy on Vercel, then to Groq (speech-to-text, OpenAI as fallback) and OpenAI (translation and conversation, Google Gemini as fallback). The microphone is used only while you record an answer (up to 60 seconds per turn).</p>
+    <p>A random installation ID and request IDs enforce monthly quotas; hashed identifiers and usage counters are kept in Upstash and expire after about 40 days, and hashed IP addresses after about 2 days. Pro users also send an anonymous RevenueCat customer ID so the server can verify the subscription (cached about 10 minutes). Daily lessons are downloaded from Cloudflare without your learning data; their scripts and voices are AI-generated. The free version offers optional rewarded ads through Google AdMob, which may process device identifiers, approximate location, ad interactions and diagnostics. App Store or Google Play handles purchases, verified via RevenueCat; we never receive full card numbers. Subscriptions renew automatically and can be managed in your store account. Contact the email above for privacy questions.</p>
+
+    <hr>
+    <p class="footer">© 2026 MaxTeng Studio. All rights reserved.</p>
+  </div>
+</body>
+</html>
