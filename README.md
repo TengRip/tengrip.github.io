@@ -4,11 +4,16 @@
 
 **線上網址：** https://tengrip.github.io
 **GitHub repo：** `TengRip/tengrip.github.io`（公開，預設分支 `main`）
-**版次：** v6.5（新增 Polylo 隱私政策）
+**版次：** v6.6（Polylo 隱私政策補刪除資料步驟）
 **日期：** 2026-10-23（台北時間）
 **狀態：** 已上架 23 張 App 卡片、即將推出 1 張卡片、網站作品 12 張
 
 ---
+
+## 2026-10-23 v6.6：Polylo 隱私政策補「如何要求刪除資料」
+
+- `privacy/polylo/index.html` 第 9 節後新增 `#delete`（中文）與 `#delete-en`（英文）：寫信到 ripteng@gmail.com、30 天內回覆、會刪哪些資料（Upstash 雜湊識別碼與用量計數，本來就約 40 天自動到期）、哪些不在範圍（AI 服務商、AdMob、商店與 RevenueCat）。
+- 原因：Google Play「資料安全性」的刪除資料網址必須列出要求步驟與刪除範圍。Play Console 填 https://tengrip.github.io/privacy/polylo/#delete 。
 
 ## 2026-10-23 v6.5：Polylo 隱私政策
 
@@ -114,6 +119,7 @@ npm test
 
 | 版次 | 日期 | 說明 |
 |---|---|---|
+| v6.6 | 2026-10-23 | Polylo 隱私政策補 `#delete` 刪除資料步驟（Play 資料安全性刪除網址用）。 |
 | v6.4 | 2026-10-23 | 新增 `config/alleylo/unlocks.json`：Alleylo 依下載量開放場景的遠端設定（installs、forceUnlocked、updatedAt）。未改首頁與隱私政策。 |
 | v6.3 | 2026-10-22 | Spendlo 1.2.0 隱私政策同步：修正舊的無廣告宣稱，補 AdMob／ATT、Gemini 主服務／OpenAI 備援、安裝 ID／IP／Upstash 限流、本機退款紀錄／通知、內購、刪除與第三方政策連結，附英文摘要。0af1bd7、ff3aa06 已推送並部署；公開頁與政策連結 HTTP 200。補記 App 08:08 送審與退稅網站 0.15.0 部署關聯。 |
 | v6.2 | 2026-10-18 | **Oddlo 整合版（老貓觀察＋多貓相處）iOS 1.2.1 上架後同步**：首頁 Oddlo 卡片四語介紹改寫；`privacy/oddlo/` 隱私政策四語改寫——拿掉「App 沒有輸入欄位」與 Sagelo/Trucelo 導流說法，改為說明貓咪名字／年齡／觀察紀錄／備註／地點只存手機、PDF 在手機產生且只在使用者按分享時傳出、可在 App 內刪除；服務條款功能清單補老貓觀察、多貓相處、PDF 摘要。兩份文件更新日改 2026-10-18。 |
