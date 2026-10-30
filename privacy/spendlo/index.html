@@ -98,7 +98,7 @@
     </div>
 
     <h1>隱私政策</h1>
-    <p class="updated">最後更新：2026 年 10 月 21 日</p>
+    <p class="updated">最後更新：2026 年 10 月 30 日</p>
     <p class="intro">本 App 由 MaxTeng Studio 開發。本政策適用於 Spendlo 的 iOS 與 Android 版本，說明本機資料、AI 辨識、廣告、購買與提醒的資料處理方式。</p>
 
     <h2>1. 旅程、收據與退款紀錄</h2>
@@ -110,7 +110,7 @@
 
     <h2>3. AI 收據辨識與服務用量</h2>
     <p>開始辨識時，所選照片、購買國家及顯示語言經由 HTTPS 傳送至我們的後端代理，再交由 Google Gemini 進行收據文字辨識與翻譯；主服務不可用時會改用 OpenAI 備援。照片可能包含店名、交易日期、金額及您未遮蔽的其他內容；請僅選擇您願意提供給辨識服務的照片。辨識結果回傳後保存在本機。AI 服務的處理及保留規則依各服務政策與適用設定辦理。</p>
-    <p>App 會產生安裝識別碼並於辨識請求送出，用於服務用量限制及防止濫用。後端代理透過 Upstash 保存安裝識別碼、IP 位址及每日用量計數，限流計數設定在最後更新後約 25 小時到期；託管與網路服務亦會接收必要的連線資訊。它們不等同於您的銀行或海關資料。後端代理並非旅程雲端備份服務。</p>
+    <p>App 會產生安裝識別碼並於辨識請求送出，用於服務用量限制及防止濫用。後端代理透過 Upstash 保存安裝識別碼、IP 位址及每日用量計數，限流計數設定在最後更新後約 25 小時到期。另依月份保存各安裝識別碼的辨識成功次數（不含照片或收據內容），用於統計免費額度的使用情形，每個月份的資料約 400 天後自動刪除；託管與網路服務亦會接收必要的連線資訊。它們不等同於您的銀行或海關資料。後端代理並非旅程雲端備份服務。</p>
 
     <h2>4. 匯率查詢與外部網站</h2>
     <p>匯率查詢經後端代理向匯率來源（如 Frankfurter / currency-api）取得參考值，請求包含所需幣別，無須傳送完整收據或退款紀錄。外部服務仍會接收必要的網路連線資訊。</p>
@@ -121,13 +121,14 @@
     <p>iOS 使用 App Tracking Transparency（ATT）請求追蹤授權；未允許時，無法取得系統廣告識別碼 IDFA。拒絕追蹤不會取消收據與退款整理功能，但免費版仍可能顯示廣告，廣告服務仍可能處理提供服務所需的其他資料。您可在系統隱私設定管理授權。Pro 移除 App 內廣告顯示。</p>
 
     <h2>6. Pro 內購</h2>
-    <p>Pro 購買與恢復購買由 App Store 或 Google Play 處理。App 接收交易及購買權益資訊以啟用功能；我們不會取得您的完整支付卡號。Pro 為一次性購買，移除廣告並將累計掃描上限提高至 3,000 次。</p>
+    <p>Pro 購買與恢復購買由 App Store 或 Google Play 處理。App 接收交易及購買權益資訊以啟用功能；我們不會取得您的完整支付卡號。Pro 為一次性購買，開放預計入帳日提醒與匯出旅程紀錄、移除廣告，並將累計掃描上限提高至 3,000 次。</p>
 
     <h2>7. 本機通知</h2>
-    <p>旅行與預計入帳日提醒需由您啟用並允許系統通知。提醒依本機保存的日期排程，不代表海關確認或實際退款成功。您可在 App 或系統通知設定關閉；不需要向退稅業者傳送資料來排程通知。</p>
+    <p>旅行與預計入帳日提醒需由您啟用並允許系統通知（預計入帳日提醒為 Pro 功能）。提醒依本機保存的日期排程，不代表海關確認或實際退款成功。您可在 App 或系統通知設定關閉；不需要向退稅業者傳送資料來排程通知。</p>
 
     <h2>8. 儲存、安全與刪除</h2>
     <p>App 的辨識與匯率請求使用 HTTPS。您可在 App 刪除收據或旅程，或移除 App 以清除其本機資料；系統備份及第三方服務已處理的資料須依各自機制管理。移除 App 不會自動取消商店中的購買紀錄，也不會刪除您已向外部業者提交的資料。</p>
+    <p>匯出旅程紀錄（文字摘要或 CSV 檔）時，內容只在您的裝置上產生，並由您透過系統分享面板選擇要傳送的對象；Spendlo 不會自動上傳匯出內容。</p>
 
     <h2>9. 第三方政策與聯絡</h2>
     <ul>
@@ -140,8 +141,8 @@
     <p>本服務不特別針對 13 歲以下兒童。政策變更時會更新本頁日期。</p>
 
     <h2>English summary</h2>
-    <p>Spendlo stores trips, receipts and manual refund-provider records on your device. Starting AI recognition uploads your selected receipt images, purchase country and display language through our HTTPS proxy to Google Gemini, with OpenAI as a fallback. An installation identifier and IP address support usage limits and abuse prevention through Upstash; quota counters expire about 25 hours after their last update. Hosting and third-party services may receive network metadata under their own policies. Refund records are not automatically submitted to providers or banks.</p>
-    <p>The free version uses Google AdMob. Depending on permissions and configuration, the SDK may process IP address and approximate location, device identifiers, ad interactions, usage and diagnostic data. iOS requests ATT permission; without authorization the system IDFA is unavailable. Local reminders are optional. App Store or Google Play handles Pro purchases; Spendlo does not receive full payment-card details. Pro removes in-app ads. Manage permissions in system settings, and delete local records in the app. Contact the email above for privacy questions.</p>
+    <p>Spendlo stores trips, receipts and manual refund-provider records on your device. Starting AI recognition uploads your selected receipt images, purchase country and display language through our HTTPS proxy to Google Gemini, with OpenAI as a fallback. An installation identifier and IP address support usage limits and abuse prevention through Upstash; quota counters expire about 25 hours after their last update. Monthly counts of successful recognitions per installation identifier (no images or receipt content) are kept to understand free-quota usage and are deleted automatically about 400 days later. Hosting and third-party services may receive network metadata under their own policies. Refund records are not automatically submitted to providers or banks.</p>
+    <p>The free version uses Google AdMob. Depending on permissions and configuration, the SDK may process IP address and approximate location, device identifiers, ad interactions, usage and diagnostic data. iOS requests ATT permission; without authorization the system IDFA is unavailable. Local reminders are optional. App Store or Google Play handles Pro purchases; Spendlo does not receive full payment-card details. Pro unlocks payout-date reminders and trip export, and removes in-app ads. Exported summaries and CSV files are created on your device and shared only where you choose through the system share sheet. Manage permissions in system settings, and delete local records in the app. Contact the email above for privacy questions.</p>
 
     <hr>
     <p class="footer">© 2026 MaxTeng Studio. All rights reserved.</p>
