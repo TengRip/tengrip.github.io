@@ -4,11 +4,16 @@
 
 **線上網址：** https://tengrip.github.io
 **GitHub repo：** `TengRip/tengrip.github.io`（公開，預設分支 `main`）
-**版次：** v7.0（Talklo 隱私政策補統計用途、服務條款退款說明補 App Store）
-**日期：** 2026-10-31（台北時間）
+**版次：** v7.1（Spendlo 補 Google Play 徽章）
+**日期：** 2026-11-09（台北時間）
 **狀態：** 已上架 23 張 App 卡片、即將推出 1 張卡片、網站作品 12 張
 
 ---
+
+## 2026-11-09 v7.1：Spendlo 補 Google Play 徽章
+
+- Spendlo Android 正式版已公開（Play 頁 curl 200、標題「Spendlo：日韓購物退稅助手」），卡片 `data-platform` 改 `android ios`，新增 Google Play 徽章（放 App Store 前面，跟其他雙平台卡一致）
+- 卡片總數不變（已上架 23 張），不用改 `data-count` 與測試數字
 
 ## 2026-10-31 v7.0：Talklo 隱私政策補統計用途、服務條款退款說明補 App Store
 
