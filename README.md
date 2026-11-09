@@ -4,11 +4,17 @@
 
 **線上網址：** https://tengrip.github.io
 **GitHub repo：** `TengRip/tengrip.github.io`（公開，預設分支 `main`）
-**版次：** v7.1（Spendlo 補 Google Play 徽章）
+**版次：** v7.2（新增 Polylo 卡片、Scriblo Android 改審核中）
 **日期：** 2026-11-09（台北時間）
-**狀態：** 已上架 23 張 App 卡片、即將推出 1 張卡片、網站作品 12 張
+**狀態：** 已上架 24 張 App 卡片、即將推出 1 張卡片、網站作品 12 張
 
 ---
+
+## 2026-11-09 v7.2：新增 Polylo 卡片、Scriblo Android 改審核中
+
+- **Polylo 新增「已上架」卡片**（生活工具分類）：Android 正式版 1.0.29(31) 已公開（Play 頁 curl 200、標題「Polylo：影片跟讀・單字・AI會話」）放 Google Play 真連結；iOS 1.0.29 為 `WAITING_FOR_REVIEW`、`asc apps public view` 查無公開頁，依規則放 `store-badge pending`「App Store 審核中」。icon 由 Polylo iOS AppIcon 1024 以 ffmpeg 縮 180×180。`site.js` 四語新增 `name38`。
+- **Scriblo**（即將推出）：Android 正式版 1.0.0(22) 已送 Google 審核、Play 頁仍 404，徽章由「Android 測試中」改「Android 審核中」（`site.js` 四語新增 `androidReview`）；iOS 維持「iOS 審核中」。
+- 已上架 23 → 24、`#result-count` 35 → 36，`tests/site.test.cjs` 數字同步；`npm test` 8 項全過，本機截圖確認卡片正常。
 
 ## 2026-11-09 v7.1：Spendlo 補 Google Play 徽章
 
